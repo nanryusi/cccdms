@@ -26,7 +26,7 @@
 
         <!-- Header -->
         <header id="header">
-          <a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+          <a href="index.html" class="logo"><strong>확인용</strong> by HTML5 UP</a>
           <ul class="icons">
             <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
             <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -112,32 +112,79 @@
             <h2>Menu</h2>
           </header>
           <ul>
-            <li><a href="index.html">Homepage</a></li>
-            <li><a href="generic.html">Generic</a></li>
-            <li><a href="elements.html">Elements</a></li>
             <li>
-              <span class="opener">Submenu</span>
+              <span class="opener">보육과정 및 상호작용</span>
               <ul>
-                <li><a href="#">Lorem Dolor</a></li>
-                <li><a href="#">Ipsum Adipiscing</a></li>
-                <li><a href="#">Tempus Magna</a></li>
-                <li><a href="#">Feugiat Veroeros</a></li>
+                <li><a href="#">연간보육계획안</a></li>
+                <li><a href="#">월간, 주간보육계획안</a></li>
+                <li><a href="#">일일보육계획안 및 보육일지</a></li>
+                <li><a href="#">특별활동동의서(부모대상)</a></li>
+                <li><a href="#">운영위원회 회의록(부모공개)</a></li>
+                <li><a href="#">관찰일지</a></li>
+                <li><a href="#">영유아 발달평가</a></li>
+                <li><a href="#">*(장애) 개별화 보육계획안 및 보육일지</a></li>
+                <li><a href="#">*(장애) 치료일지 또는 개별화 보육일지</a></li>
               </ul>
             </li>
-            <li><a href="#">Etiam Dolore</a></li>
-            <li><a href="#">Adipiscing</a></li>
             <li>
-              <span class="opener">Another Submenu</span>
+              <span class="opener">보육환경 및 운영관리</span>
               <ul>
-                <li><a href="#">Lorem Dolor</a></li>
-                <li><a href="#">Ipsum Adipiscing</a></li>
-                <li><a href="#">Tempus Magna</a></li>
-                <li><a href="#">Feugiat Veroeros</a></li>
+                <li><a href="#">운영계획을 위한 수요조사(부모대상)</a></li>
+                <li><a href="#">어린이집 운영계획서</a></li>
+                <li><a href="#">운영일지</a></li>
+                <li><a href="#">신입원아 적응 일지</a></li>
+                <li><a href="#">부모교육 (부모대상)</a></li>
+                <li><a href="#">가정통신문(부모대상)</a></li>
+                <li><a href="#">부모면담일지</a></li>
+                <li><a href="#">부모 만족도조사(부모대상)</a></li>
+                <li><a href="#">지역사회 연계활동</a></li>
               </ul>
             </li>
-            <li><a href="#">Maximus Erat</a></li>
-            <li><a href="#">Sapien Mauris</a></li>
-            <li><a href="#">Amet Lacinia</a></li>
+            <li>
+              <span class="opener">건강, 안전</span>
+              <ul>
+                <li><a href="#">실내 공기질 측정 관리 기록</a></li>
+                <li><a href="#">식단표 및 제공기록(부모공개)</a></li>
+                <li><a href="#">알레르기질환 조사서 및 지침서(부모대상)</a></li>
+                <li><a href="#">투약의뢰서(부모대상)</a></li>
+                <li><a href="#">건강검진기간 알림 서류</a></li>
+                <li><a href="#">응급처치동의서(부모대상)</a></li>
+                <li><a href="#">귀가동의서(부모대상)</a></li>
+                <li><a href="#">차량안전검점표</a></li>
+                <li><a href="#">소방대피훈련일지</a></li>
+                <li><a href="#">영유아 안전교육 일지</a></li>
+                <li><a href="#">비상시 업무분장표</a></li>
+              </ul>
+            </li>
+            <li>
+              <span class="opener">교직원</span>
+              <ul>
+                <li><a href="#">교사회의록</a></li>
+                <li><a href="#">업무분장표</a></li>
+                <li><a href="#">교직원 개별면담</a></li>
+                <li><a href="#">교직원 복지향상</a></li>
+                <li><a href="#">교직원 교육 연간계획안</a></li>
+                <li><a href="#">직원교육 관리 대장</a></li>
+                <li><a href="#">연수보고서</a></li>
+                <li><a href="#">교직원 상호작용 지원 관찰 기록지</a></li>
+                <li><a href="#">근무평가서</a></li>
+              </ul>
+            </li>
+            <li>
+              <span class="opener">정보제공</span>
+              <ul>
+                <li><a href="#">신규 직원 오리엔테이션 자료</a></li>
+                <li><a href="#">신입 원아 부모 오리엔테이션 자료</a></li>
+                <li><a href="#">보육실 개방 및 참관 안내문</a></li>
+                <li><a href="#">지역사회 전문기관 정보</a></li>
+                <li><a href="#">감염병 관리수칙</a></li>
+                <li><a href="#">차량안전수칙</a></li>
+                <li><a href="#">비상시 대처방안</a></li>
+                <li><a href="#">영유아 학대 예방 지침</a></li>
+                <li><a href="#">근로계약서(예시)</a></li>
+                <li><a href="#">취업규칙-복무규정(예시)</a></li>
+              </ul>
+            </li>
           </ul>
         </nav>
 
