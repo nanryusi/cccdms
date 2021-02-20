@@ -21,4 +21,11 @@ public class cccdmsMainController {
     return "main/CccdmsMainView";
   }
 
+//메인페이지 호출
+  @RequestMapping(value = "/cccdms/main/samplePage.do")
+  public String getSamplePage(HttpServletRequest request, ModelMap model)
+      throws Exception{
+
+    return "main/main_sample";
+  }
 }
