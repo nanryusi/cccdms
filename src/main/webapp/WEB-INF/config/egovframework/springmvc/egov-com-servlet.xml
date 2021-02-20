@@ -44,6 +44,16 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+	<!-- cccdms 로그인 체크가 필요한 URL과 로그인 여부를 체크해준다 -->
+	<mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/cccdms/main/*.do"/>
+            <mvc:exclude-mapping path="/cccdms/login/actionLogin.do"/>
+            <!-- <mvc:exclude-mapping path="/cccdms/login/loginPage.do"/> -->
+		    <bean class="egovframework.cccdms.common.interceptor.AuthenticInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!-- Annotation 을 사용하지 않는 경우에 대한 MVC 처리 설정 -->
     <mvc:view-controller path="/cmmn/validator.do" view-name="cmmn/validator"/>
     
