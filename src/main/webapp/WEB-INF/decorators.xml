@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/jsp">
+	<decorator name="top_menu" page="common/top_menu.jsp"/>
+	<decorator name="left_menu" page="common/left_menu.jsp"/>
+	<decorator name="main" page="common/layout.jsp">
+		<pattern>/cccdms/main/samplePage.do</pattern>
+	</decorator>
+    
+	<excludes>
+		<pattern>/login/*.do</pattern>
+		<!-- <pattern>/*_pop</pattern> -->
+	</excludes>
+</decorators>
