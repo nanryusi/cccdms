@@ -6,6 +6,9 @@
         </Console>
     </Appenders>
     <Loggers>
+        <logger name="log4jdbc.log4j2" level="error" additivity="false">
+            <appender-ref ref="Console" />
+        </logger>
         <Logger name="java.sql" level="INFO" additivity="false">
             <AppenderRef ref="console" />
         </Logger>
