@@ -6,9 +6,13 @@
 					<a class="list-group-item list-group-item-info text-center font-weight-bold">게시판</a>
 					<a href="#"
 						class="list-group-item list-group-item-action text-center font-weight-bold">일상
-						공유</a> <a href="#"
+						공유</a> <a href=""
 						class="list-group-item list-group-item-action text-center font-weight-bold">코딩
 						공유</a>
+					<a href="/cccdms/cprcss/cPlanYrPage.do"
+					   class="list-group-item list-group-item-action text-center font-weight-bold">
+						연간보육계획안
+					</a>
 				</div>
 
 			</div>

@@ -2,12 +2,12 @@
 <Configuration>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d %5p [%c] %m%n" />
+            <PatternLayout pattern="%d [%clr(%5p)] %msg %n" />
         </Console>
     </Appenders>
     <Loggers>
-        <logger name="log4jdbc.log4j2" level="error" additivity="false">
-            <appender-ref ref="Console" />
+        <logger name="log4jdbc.log4j2" level="ERROR" additivity="false">
+            <Appender-ref ref="console" />
         </logger>
         <Logger name="java.sql" level="INFO" additivity="false">
             <AppenderRef ref="console" />
