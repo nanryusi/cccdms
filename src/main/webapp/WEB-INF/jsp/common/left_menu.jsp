@@ -1,18 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="col-lg-3">
-
-				<h3 class="my-4 text-center">Category</h3>
-				<div class="list-group mb-4">
-					<a class="list-group-item list-group-item-info text-center font-weight-bold">게시판</a>
-					<a href="#"
-						class="list-group-item list-group-item-action text-center font-weight-bold">일상
-						공유</a> <a href=""
-						class="list-group-item list-group-item-action text-center font-weight-bold">코딩
-						공유</a>
-					<a href="/cccdms/cprcss/cPlanYrPage.do"
-					   class="list-group-item list-group-item-action text-center font-weight-bold">
-						연간보육계획안
-					</a>
-				</div>
-
-			</div>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <span data-feather="home"></span>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file"></span>
+              Orders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="shopping-cart"></span>
+              Products
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="users"></span>
+              Customers
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="bar-chart-2"></span>
+              Reports
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="layers"></span>
+              Integrations
+            </a>
+          </li>
+        </ul>

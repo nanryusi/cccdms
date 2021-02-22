@@ -22,9 +22,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
 <meta http-equiv="content-language" content="ko">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>경량환경 단순홈페이지 템플릿 - 로그인</title>
-<link href="<c:url value='/'/>css/common.css" rel="stylesheet" type="text/css" >
-<link href="<c:url value='/'/>css/login.css" rel="stylesheet" type="text/css" >
+<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+<link rel="stylesheet" href="/static/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="/static/css/signin.css">
+<style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+</style>
 <script type="text/javascript">
 function actionLogin() {
     if (document.loginForm.id.value =="") {
@@ -35,6 +53,7 @@ function actionLogin() {
         return false;
     } else {
         document.loginForm.action="<c:url value='/cccdms/login/actionLogin.do'/>";
+        document.loginForm.method="post";
         //document.loginForm.j_username.value = document.loginForm.userSe.value + document.loginForm.username.value;
         //document.loginForm.action="<c:url value='/j_spring_security_check'/>";
         document.loginForm.submit();
@@ -85,60 +104,25 @@ function fnInit() {
 }
 </script>
 </head>
-<body  onload="fnInit();">
-<noscript>자바스크립트를 지원하지 않는 브라우저에서는 일부 기능을 사용하실 수 없습니다.</noscript>    
-<!-- 전체 레이어 시작 -->
-<div id="wrap">
-    <!-- container 시작 -->
-    <div id="container">
-            <!-- content 시작 --> 
-            <div id="content">
-                <!-- 타이틀 이미지 -->            
-                <div id="content_img_div"><img  alt="LOGIN 표준프레임워크 경량환경 단순 홈페이지에 오신것을 환영합니다." src="<c:url value='/'/>images/subtitle/img_subtitle_login.gif" width="776" height="230" /></div>       
-                    <div class="user_login">
-                            <form:form name="loginForm" method="post" action="#LINK">
-                            <div class="user_login_ultop">
-                                <ul>
-                                    <li>
-                                        <label for="id"><img alt="login" src="<c:url value='/'/>images/login/img_idtext.gif" /></label>
-                                        <input type="text" class="input_style" title="아이디를 입력하세요." id="id" name="id" maxlength="20"/>
-                                    </li>
-                                    <li>
-                                        <label for="password"><img alt="password" src="<c:url value='/'/>images/login/img_pwtext.gif" /></label>
-                                        <input type="password" class="input_style" maxlength="25" title="비밀번호를 입력하세요." id="password" name="password" onkeydown="if (event.keyCode == 13) { actionLogin(); }"/>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" name="checkId" onclick="saveid(this.form);" id="checkId" /><label for="checkId">ID저장</label>
-                                    </li>
-                                </ul>
-                                <input type="image" alt="로그인 버튼" class="btn_style" onclick="actionLogin()" src="<c:url value='/'/>images/login/btn_login.gif"  />
-                            </div>
-                            <input type="hidden" name="message" value="${message}" />
-				            <input type="hidden" name="userSe"  value="USR"/>
-				            <!-- <input type="hidden" name="j_username" />-->
-                            </form:form>
-                            <div class="text_area">
-                                <ul>
-                                    <li>비밀번호는 6~12자의 영문 대/소문자, 숫자, 특수문자를 혼합해서 사용하실 수 있습니다.aaaa</li>
-                                    <li>쉬운 비밀번호나 자주 쓰는 사이트의 비밀번호가 같을 경우, 도용되기 쉬우므로 주기적으로 변경하셔서 사용하는 것이 좋습니다.</li>
-                                </ul>
-                            </div>
-                        <!-- 
-                        <div class="user_login_btstyle">
-                            <ul class="bt_ulstyle1">
-                                <li><a href="" ><img src="<c:url value='/'/>images/login/btn_regist.gif" /></a></li>
-                            </ul>
-                            <ul class="bt_ulstyle2">
-                                <li><a href="" ><img src="<c:url value='/'/>images/login/btn_findidpw.gif" /></a></li>
-                            </ul>
-                        </div>
-                         -->
-                    </div>
-            </div>                      
-            <!-- //content 끝 -->    
-    </div>  
-    <!-- //container 끝 -->
+<body class="text-center" onload="fnInit();">
+<div class="container">
+   <form:form name="loginForm" class="form-signin" method="post" action="#LINK">
+    <input type="hidden" name="message" value="${message}" />
+    <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1> -->
+    <!-- <label for="inputId" class="visually-hidden">아이디</label> -->
+    <input type="text" id="id" name="id" class="form-control" placeholder="아이디를 입력하세요." required autofocus>
+    <!-- <label for="inputPassword" class="visually-hidden">비밀번호</label> -->
+    <input type="password" id="password" name="password" class="form-control" placeholder="비밀번호를 입력하세요." required>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" name="checkId" onclick="saveid(this.form);" id="checkId" value="ID저장"> ID저장
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" onclick="actionLogin();">로그인</button>
+    <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> -->
+  </form:form>
 </div>
-<!-- //전체 레이어 끝 -->
 </body>
 </html>
