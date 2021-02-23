@@ -67,5 +67,6 @@
         </div>
         <div name="div_m_bottom">신규생성</div>
     </div>
+    <script type="text/javascript" src="/static/js/cccdms/cprcss/cPlanYr.js"></script>
     </body>
 </html>
