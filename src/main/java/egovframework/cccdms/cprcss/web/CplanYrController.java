@@ -2,7 +2,7 @@
  * Copyright 2021. Team oktop all rights reserved.
  */
 
-package egovframework.cccdms.cprcss;
+package egovframework.cccdms.cprcss.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

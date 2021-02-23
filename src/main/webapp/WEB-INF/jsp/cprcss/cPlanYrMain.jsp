@@ -15,9 +15,56 @@
     <div class="col-lg-9 my-4 mb-4">
         <div name="div_m_top">프린터, 파일저장</div>
         <div name="div_m_search">
-            검색조건
+            <button id="btn_seacrh">검색</button>
         </div>
-        <div name="div_m_table">테이블<br>페이징</div>
+        <div name="div_m_table">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>4</td>
+                    <td>제목입니다.</td>
+                    <td>도우너</td>
+                    <td>2021.02.22</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>제목입니다.</td>
+                    <td>또치</td>
+                    <td>2021.02.22</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>제목입니다.</td>
+                    <td>둘리</td>
+                    <td>2021.02.22</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>제목입니다.</td>
+                    <td>희동이</td>
+                    <td>2021.02.22</td>
+                    <td>0</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <ul class="pagination">
+                <li><a href="#">1</a></li>
+            </ul>
+        </div>
         <div name="div_m_bottom">신규생성</div>
     </div>
     </body>
