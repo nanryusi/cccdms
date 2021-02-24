@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * CplanYrController : 연간보육계획안 컨트롤러
@@ -50,15 +50,15 @@ public class CplanYrController {
 
     /**
     * @name    : search : 연간보육계획안 리스트
-    * @return  : ArrayList<ListVo>
+    * @return  : List<ListVo>
     * @history :||user      ||date          ||modified comments
     *           ||ryusi    ||2021-02-23    ||created
     **/
     @ResponseBody
     @RequestMapping("search.do")
-    public ArrayList<ListVo> search(@RequestBody String jsonStr) throws Exception{
+    public List<ListVo> search(@RequestBody String jsonStr) throws Exception{
 
-        ArrayList<ListVo> rList = new ArrayList<>();
+        List<ListVo> rList = null;
         //json 데이터 매핑
         ObjectMapper oMapper = new ObjectMapper();
         SearchVo sVo = oMapper.readValue(jsonStr, SearchVo.class);
