@@ -65,7 +65,7 @@ public class cccdmsLoginController {
 
 		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("") && loginPolicyYn) {
 			request.getSession().setAttribute("LoginVO", resultVO);
-			return "forward:/cccdms/main/mainPage.do";
+			return "redirect:/cccdms/main/mainPage.do";
 		} else {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
 			return "main/CccdmsLogin";
@@ -90,7 +90,7 @@ public class cccdmsLoginController {
 		}
 
 		// 2. 메인 페이지 이동
-		return "forward:/cccdms/main/mainPage.do";
+		return "redirect:/cccdms/main/mainPage.do";
 	}
 
 	/**
@@ -103,6 +103,6 @@ public class cccdmsLoginController {
 
 		RequestContextHolder.getRequestAttributes().removeAttribute("LoginVO", RequestAttributes.SCOPE_SESSION);
 
-		return "forward:/cccdms/login/loginPage.do";
+		return "redirect:/cccdms/main/mainPage.do";
 	}
 }
