@@ -7,6 +7,8 @@ package egovframework.cccdms.cprcss.service.impl;
 import egovframework.cccdms.cprcss.domain.SearchVo;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import org.springframework.stereotype.Repository;
+
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,11 +22,21 @@ public class CplanYrDAO extends EgovAbstractDAO {
 
     /**
     * @name    : search : 연간보육계획안 구현 검색 리스트
-    * @return  : ArrayList
+    * @return  : List
     * @history :||user      ||date          ||modified comments
     *           ||ryusi    ||2021-02-24     ||created
     **/
     public List<?> search(SearchVo searchVo) throws Exception{
         return listWithPaging("", searchVo, 1, 10);
+    }
+
+    /**
+    * @name    : codeList : 공통 코드 리스트 호출
+    * @return  : List
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-02-28     ||created
+    **/
+    public List<?> codeList(HashMap map) throws Exception{
+        return list("", map, 1, 10);
     }
 }

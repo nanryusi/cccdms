@@ -1,6 +1,6 @@
 // Copyright 2021. Team oktop all rights reserved.
 /**
- * 연간보육계획안 js
+ * 연간보육계획안 메인화면 js
  **/
 
 /** 공통변수 선언 start **/
@@ -15,7 +15,11 @@ const obj_cPlanYr = {
     ev_click(){
         switch (this.id){
             case 'btn_seacrh' :
-                fn_search()
+                fn_search();
+                break;
+
+            case 'btn_addPage' :
+                fn_getPage("add");
                 break;
 
             default : break;
@@ -31,12 +35,23 @@ const obj_cPlanYr = {
 function fn_event(){
     /**이벤트 발생 객체 선언**/
     let vSearch = document.getElementById("btn_seacrh");
+    let vAddPage = document.getElementById("btn_addPage");
 
     /** 이벤트 리스너 **/
     //검색버튼 클릭
     vSearch.addEventListener('click', obj_cPlanYr.ev_click);
+    //신규 작성 버튼 클릭
+    vAddPage.addEventListener('click', obj_cPlanYr.ev_click);
 }
 
+
+/** 화면 이동 **/
+function fn_getPage(pageNm){
+    switch (pageNm){
+        case 'add' : window.location.href = "http://localhost:8080/cccdms/cprcss/addPage.do";
+        default : break;
+    }
+}
 
 /** 검색 이벤트 ajax 통신 **/
 async function fn_search() {

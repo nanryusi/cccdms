@@ -65,8 +65,10 @@
                 <li><a href="#">1</a></li>
             </ul>
         </div>
-        <div name="div_m_bottom">신규생성</div>
+        <div name="div_m_bottom">
+            <button id="btn_addPage">신규 작성</button>
+        </div>
     </div>
-    <script type="text/javascript" src="/static/js/cccdms/cprcss/cPlanYr.js"></script>
+    <script type="text/javascript" src="/static/js/cccdms/cprcss/cPlanYrMain.js"></script>
     </body>
 </html>

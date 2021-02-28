@@ -8,6 +8,8 @@ import egovframework.cccdms.cprcss.domain.SearchVo;
 import egovframework.cccdms.cprcss.service.CplanYrService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -22,12 +24,23 @@ public class CplanYrServiceImpl implements CplanYrService {
 
     /**
     * @name    : search : 연간보육계획안 검색 리스트
-    * @return  : ArrayList
+    * @return  : List
     * @history :||user      ||date          ||modified comments
     *           ||ryusi    ||2021-02-24     ||created
     **/
     @Override
     public List<?> search(SearchVo searchVo) throws Exception {
+        return null;
+    }
+
+    /**
+    * @name    : codeList : 공통코드 리스트
+    * @return  : List
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-02-28     ||created
+    **/
+    @Override
+    public List<?> codeList(HashMap map) throws Exception {
         return null;
     }
 }
