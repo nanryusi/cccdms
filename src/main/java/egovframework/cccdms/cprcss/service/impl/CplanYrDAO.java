@@ -36,7 +36,7 @@ public class CplanYrDAO extends EgovAbstractDAO {
     * @history :||user      ||date          ||modified comments
     *           ||ryusi    ||2021-02-28     ||created
     **/
-    public List<?> codeList(HashMap map) throws Exception{
-        return list("", map, 1, 10);
+    public List<?> selectCodeList(HashMap map) throws Exception{
+        return list("CplanYrDAO.selectCodeList", map);
     }
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CplanYrMaster">
+
+	<!-- 연간보육계획안 공통코드 호출 -->
+	<select id="CplanYrDAO.selectCodeList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        SELECT
+            A.schl_cl_cd    AS cl_cd
+            ,B.sub_nm       AS cl_nm
+            ,A.tch_div_cd   AS div_cd
+            ,C.nm           AS div_nm
+        FROM tb_teacher A
+                 JOIN tb_school B
+                      ON A.schl_cd = B.cd
+                       AND A.schl_cl_cd = B.sub_cd
+                 LEFT OUTER JOIN tb_common C
+                      ON A.tch_div_cd = C.cd
+        WHERE 1=1
+          AND A.id = #id#
+          AND A.schl_cd = #school_cd#
+          AND A.us_yn = 'Y'
+	</select>
+
+</sqlMap>

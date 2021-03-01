@@ -24,6 +24,8 @@ function fn_make_selbox(nm, obj){
     sBox_cl = document.getElementById(nm);
     let opt = "";
     code_comm_cl = JSON.parse(obj);
+    //담임, 부담임, 원장 표시용
+    let class_nm = document.getElementById("div_nm");
 
     code_comm_cl.forEach(function(data, idx){
 
@@ -34,6 +36,10 @@ function fn_make_selbox(nm, obj){
             if(key == 'div_cd'){ opt.div_cd = data[key];}
             if(key == 'div_nm'){ opt.div_nm = data[key];}
 
+            //기본값을 위해 맨 처음 div_nm 값을 입력시킴
+            if(idx==0 && key == 'div_nm'){
+                class_nm.innerHTML = data[key];
+            }
         }
         sBox_cl.options.add(opt);
     });
@@ -57,10 +63,9 @@ const obj_cPlanYr = {
     },
     //셀렉트 박스 체인지
     ev_boxChange(){
-        //todo 셀렉트 박스가 바뀌면 담임, 부담임으로 자동 변경
-        //let class_nm = document.getElementById("div_nm");
-        //alert(class_nm.text);
-        //class_nm.text = sBox_cl.option.div_nm;
+        //셀렉트 박스가 바뀌면 담임, 부담임으로 자동 변경
+        let class_nm = document.getElementById("div_nm");
+        class_nm.innerHTML = sBox_cl[sBox_cl.selectedIndex].div_nm;
     }
 
 

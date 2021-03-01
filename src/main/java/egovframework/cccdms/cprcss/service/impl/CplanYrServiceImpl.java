@@ -6,6 +6,8 @@ package egovframework.cccdms.cprcss.service.impl;
 
 import egovframework.cccdms.cprcss.domain.SearchVo;
 import egovframework.cccdms.cprcss.service.CplanYrService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +23,9 @@ import java.util.List;
 @Service
 @Transactional
 public class CplanYrServiceImpl implements CplanYrService {
+
+    @Autowired
+    private CplanYrDAO cplanYrDAO;
 
     /**
     * @name    : search : 연간보육계획안 검색 리스트
@@ -41,6 +46,6 @@ public class CplanYrServiceImpl implements CplanYrService {
     **/
     @Override
     public List<?> codeList(HashMap map) throws Exception {
-        return null;
+        return cplanYrDAO.selectCodeList(map);
     }
 }
