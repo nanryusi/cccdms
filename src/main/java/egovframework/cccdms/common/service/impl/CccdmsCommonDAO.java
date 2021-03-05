@@ -2,9 +2,6 @@ package egovframework.cccdms.common.service.impl;
 
 import java.util.List;
 
-import egovframework.com.cmm.ComDefaultCodeVO;
-import egovframework.com.cmm.service.CmmnDetailCode;
-
 import org.springframework.stereotype.Repository;
 
 /**
@@ -24,40 +21,38 @@ import org.springframework.stereotype.Repository;
  */
 @Repository("commonDAO")
 public class CccdmsCommonDAO extends EgovComAbstractDAO {
-
-    /**
-     * 주어진 조건에 따른 공통코드를 불러온다.
+	
+	/**
+     * 목록카운트을 불러온다.
      *
      * @param vo
      * @return
      * @throws Exception
      */
-    @SuppressWarnings("unchecked")
-	public List<CmmnDetailCode> selectCmmCodeDetail(ComDefaultCodeVO vo) throws Exception {
-	return (List<CmmnDetailCode>) list("CmmUseDAO.selectCmmCodeDetail", vo);
+	public int selectCnt(Object vo, String str) throws Exception {
+		System.out.println("dao=="+str);
+    	return (int) select(str+".selectCnt", vo);
     }
 
-    /**
-     * 공통코드로 사용할 조직정보를 를 불러온다.
+	/**
+     * 목록을 불러온다.
      *
      * @param vo
      * @return
      * @throws Exception
      */
-    @SuppressWarnings("unchecked")
-    public List<CmmnDetailCode> selectOgrnztIdDetail(ComDefaultCodeVO vo) throws Exception {
-	return (List<CmmnDetailCode>) list("CmmUseDAO.selectOgrnztIdDetail", vo);
+	public List<?> selectList(Object vo, String str) throws Exception {
+    	return (List<?>) list(str+".selectList", vo);
     }
-
+	
     /**
-     * 공통코드로 사용할그룹정보를 를 불러온다.
+     * 상세보기를 불러온다.
      *
      * @param vo
      * @return
      * @throws Exception
      */
-    @SuppressWarnings("unchecked")
-    public List<CmmnDetailCode> selectGroupIdDetail(ComDefaultCodeVO vo) throws Exception {
-	return (List<CmmnDetailCode>) list("CmmUseDAO.selectGroupIdDetail", vo);
+	public Object selectDetail(Object vo, String str) throws Exception {
+    	return (Object) select(str+".selectDetail", vo);
     }
 }

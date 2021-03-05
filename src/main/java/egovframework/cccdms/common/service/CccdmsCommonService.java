@@ -1,9 +1,6 @@
 package egovframework.cccdms.common.service;
 
 import java.util.List;
-import java.util.Map;
-
-import egovframework.com.cmm.ComDefaultCodeVO;
 
 
 
@@ -25,40 +22,31 @@ import egovframework.com.cmm.ComDefaultCodeVO;
  * </pre>
  */
 public interface CccdmsCommonService {
-
-    /**
-     * 공통코드를 조회한다.
+	
+	/**
+     * 목록카운트을 불러온다.
      *
      * @param vo
-     * @return List(코드)
+     * @return
      * @throws Exception
      */
-    List<CmmnDetailCode> selectCmmCodeDetail(ComDefaultCodeVO vo) throws Exception;
-
-    /**
-     * ComDefaultCodeVO의 리스트를 받아서 여러개의 코드 리스트를 맵에 담아서 리턴한다.
+	int selectCnt(Object vo, String str) throws Exception;
+	
+	/**
+     * 목록을 불러온다.
      *
-     * @param voList
-     * @return Map(코드)
+     * @param vo
+     * @return
      * @throws Exception
      */
-    Map<String, List<CmmnDetailCode>> selectCmmCodeDetails(List<?> voList) throws Exception;
-
+	List<?> selectList(Object vo, String str) throws Exception;
+	
     /**
-     * 조직정보를 코드형태로 리턴한다.
+     * 상세보기를 불러온다.
      *
-     * @param 조회조건정보 vo
-     * @return 조직정보 List
+     * @param vo
+     * @return
      * @throws Exception
      */
-    List<CmmnDetailCode> selectOgrnztIdDetail(ComDefaultCodeVO vo) throws Exception;
-
-    /**
-     * 그룹정보를 코드형태로 리턴한다.
-     *
-     * @param 조회조건정보 vo
-     * @return 그룹정보 List
-     * @throws Exception
-     */
-    List<CmmnDetailCode> selectGroupIdDetail(ComDefaultCodeVO vo) throws Exception;
+	Object selectDetail(Object vo, String str) throws Exception;
 }

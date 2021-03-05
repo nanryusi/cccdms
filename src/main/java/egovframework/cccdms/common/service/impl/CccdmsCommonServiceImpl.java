@@ -1,13 +1,8 @@
 package egovframework.cccdms.common.service.impl;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-import egovframework.com.cmm.ComDefaultCodeVO;
-import egovframework.com.cmm.service.CmmnDetailCode;
-import egovframework.com.cmm.service.EgovCmmUseService;
+import egovframework.cccdms.common.service.CccdmsCommonService;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
@@ -31,65 +26,45 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service("commonService")
-public class CccdmsCommonServiceImpl extends EgovAbstractServiceImpl implements EgovCmmUseService {
+public class CccdmsCommonServiceImpl extends EgovAbstractServiceImpl implements CccdmsCommonService {
 
 	@Resource(name = "commonDAO")
 	private CccdmsCommonDAO commonDAO;
-
+	
 	/**
-	 * 공통코드를 조회한다.
-	 *
-	 * @param vo
-	 * @return
-	 * @throws Exception
-	 */
+     * 목록카운트을 불러온다.
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
 	@Override
-	public List<CmmnDetailCode> selectCmmCodeDetail(ComDefaultCodeVO vo) throws Exception {
-		return commonDAO.selectCmmCodeDetail(vo);
-	}
-
+	public int selectCnt(Object vo, String str) throws Exception {
+		System.out.println("ServiceImpl=="+str);
+    	return commonDAO.selectCnt(vo, str);
+    }
+	
 	/**
-	 * ComDefaultCodeVO의 리스트를 받아서 여러개의 코드 리스트를 맵에 담아서 리턴한다.
-	 *
-	 * @param voList
-	 * @return
-	 * @throws Exception
-	 */
+     * 목록을 불러온다.
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
 	@Override
-	public Map<String, List<CmmnDetailCode>> selectCmmCodeDetails(List<?> voList) throws Exception {
-		ComDefaultCodeVO vo;
-		Map<String, List<CmmnDetailCode>> map = new HashMap<String, List<CmmnDetailCode>>();
-
-		Iterator<?> iter = voList.iterator();
-		while (iter.hasNext()) {
-			vo = (ComDefaultCodeVO) iter.next();
-			map.put(vo.getCodeId(), commonDAO.selectCmmCodeDetail(vo));
-		}
-
-		return map;
-	}
-
-	/**
-	 * 조직정보를 코드형태로 리턴한다.
-	 *
-	 * @param 조회조건정보 vo
-	 * @return 조직정보 List
-	 * @throws Exception
-	 */
+	public List<?> selectList(Object vo, String str) throws Exception {
+    	return commonDAO.selectList(vo, str);
+    }
+	
+    /**
+     * 상세보기를 불러온다.
+     *
+     * @param vo
+     * @return
+     * @throws Exception
+     */
 	@Override
-	public List<CmmnDetailCode> selectOgrnztIdDetail(ComDefaultCodeVO vo) throws Exception {
-		return commonDAO.selectOgrnztIdDetail(vo);
-	}
-
-	/**
-	 * 그룹정보를 코드형태로 리턴한다.
-	 *
-	 * @param 조회조건정보 vo
-	 * @return 그룹정보 List
-	 * @throws Exception
-	 */
-	@Override
-	public List<CmmnDetailCode> selectGroupIdDetail(ComDefaultCodeVO vo) throws Exception {
-		return commonDAO.selectGroupIdDetail(vo);
-	}
+	public Object selectDetail(Object vo, String str) throws Exception {
+		return commonDAO.selectDetail(vo, str);
+    }
 }

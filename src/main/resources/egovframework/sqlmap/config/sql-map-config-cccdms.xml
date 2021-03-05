@@ -3,4 +3,5 @@
 
 <sqlMapConfig>						
 	<sqlMap resource="egovframework/sqlmap/cccdms/Cccdms_Login_SQL.xml"/>
+	<sqlMap resource="egovframework/sqlmap/cccdms/Cccdms_Sample_SQL.xml"/>
 </sqlMapConfig>
