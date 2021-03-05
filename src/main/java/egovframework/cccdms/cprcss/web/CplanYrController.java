@@ -5,6 +5,7 @@
 package egovframework.cccdms.cprcss.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import egovframework.cccdms.cprcss.domain.CplanYrVo;
 import egovframework.cccdms.cprcss.domain.ListVo;
 import egovframework.cccdms.cprcss.domain.SearchVo;
 import egovframework.cccdms.cprcss.service.CplanYrService;
@@ -29,7 +30,7 @@ import java.util.List;
  * ||수정자       ||수정일     ||수정내용
  */
 @Controller
-@RequestMapping("/cccdms/cprcss")
+@RequestMapping("/cccdms/cprcss/cplanyr")
 public class CplanYrController {
     //로그
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -39,13 +40,13 @@ public class CplanYrController {
     private CplanYrService cplanYrService;
     
     /**
-    * @name    : getCplanYrPage : 연간보육계획안 메인화면
+    * @name    : getCplanYrMainPage : 연간보육계획안 메인화면
     * @return  : java.lang.String
     * @history :||user      ||date          ||modified comments
     *           ||ryusi    ||2021-02-20    ||created
     **/
-    @RequestMapping(value = "cPlanYrPage.do")
-    public String getCplanYrPage(HttpServletRequest request, ModelMap model)
+    @RequestMapping(value = "mainPage.do")
+    public String getCplanYrMainPage(HttpServletRequest request, ModelMap model)
             throws Exception{
 
         //로그 테스트
@@ -102,7 +103,32 @@ public class CplanYrController {
         //모델에 담기
         model.addAttribute("comm_cl", comm_cl);
         logger.debug("신규 생성 페이지 컨트롤러 끝");
-        return "cprcss/cPlanAdd";
+        return "cprcss/cPlanYrAdd";
+    }
+
+    /**
+    * @name    : add_ajax : 연간보육계획안 저장
+    * @return  : HashMap
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-03-05     ||created
+    **/
+    @ResponseBody
+    @RequestMapping("add_ajax.do")
+    public HashMap add_ajax(@RequestBody String jsonStr) throws Exception{
+        HashMap reMap = new HashMap();
+
+        logger.debug("add_ajax 컨트롤러 시작");
+        logger.debug("str 내용 : "+ jsonStr);
+        
+        ObjectMapper oMapper = new ObjectMapper();
+        CplanYrVo sVo = oMapper.readValue(jsonStr, CplanYrVo.class);
+
+
+        logger.debug("메인이벤트 : "+sVo.getMainEvent());
+
+
+        reMap.put("result", "확인용");
+        return reMap;
     }
 
 }

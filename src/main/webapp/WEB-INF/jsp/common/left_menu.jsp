@@ -37,7 +37,7 @@
             </a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="/cccdms/cprcss/cPlanYrPage.do">
+          <a class="nav-link" href="/cccdms/cprcss/cplanyr/mainPage.do">
             <span data-feather="layers"></span>
             연간보육계획안
           </a>

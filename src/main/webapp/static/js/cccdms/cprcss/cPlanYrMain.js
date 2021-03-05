@@ -48,7 +48,7 @@ function fn_event(){
 /** 화면 이동 **/
 function fn_getPage(pageNm){
     switch (pageNm){
-        case 'add' : window.location.href = "http://localhost:8080/cccdms/cprcss/addPage.do";
+        case 'add' : window.location.href = "http://localhost:8080/cccdms/cprcss/cplanyr/addPage.do";
         default : break;
     }
 }
