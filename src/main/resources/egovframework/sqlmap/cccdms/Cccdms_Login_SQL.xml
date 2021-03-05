@@ -4,18 +4,6 @@
 <sqlMap namespace="cccdmsLoginDAO">
 
 	<typeAlias alias="cccdmsLoginVO" type="egovframework.cccdms.login.service.CccdmsLoginVO"/>
-
-	<!-- 로그인 처리를 위한 resultMap -->
-	<!-- <resultMap id="login" class="egovframework.com.cmm.LoginVO">
-		<result property="id" column="id" columnIndex="1"/>
-		<result property="name" column="name" columnIndex="2"/>
-		<result property="ihidNum" column="ihidNum" columnIndex="3"/>
-		<result property="email" column="email" columnIndex="4"/>
-		<result property="password" column="password" columnIndex="5"/>
-		<result property="userSe" column="userSe" columnIndex="6"/>
-		<result property="orgnztId" column="orgnztId" columnIndex="7"/>
-		<result property="uniqId" column="uniqId" columnIndex="8"/>		
-	</resultMap> -->
 	
 	<!-- 아이디 찾기를 위한 resultMap 
 	<resultMap id="id" class="egovframework.com.cmm.LoginVO">
