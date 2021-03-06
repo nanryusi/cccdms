@@ -5,14 +5,14 @@
 
 	<typeAlias alias="sampleVO" type="egovframework.cccdms.sample.vo.CccdmsSampleVO"/>
 	
-	
+	<!-- 목록 갯수 -->
 	<select id="sample.selectCnt" parameterClass="sampleVO" resultClass="int">
             SELECT COUNT(*)
               FROM TB_SAMPLE
              WHERE DEL_YN = 'N'
 	</select>
 	
-	<!-- 일반 로그인 -->
+	<!-- 목록 조회 -->
 	<select id="sample.selectList" parameterClass="sampleVO" resultClass="sampleVO">
             SELECT seq_no seqNo
                  , title
@@ -28,7 +28,74 @@
                  , view_yn viewYn
 			  FROM TB_SAMPLE
              WHERE DEL_YN = 'N'
-             ORDER BY seq_no DESC
+             ORDER BY SEQ_NO DESC
              LIMIT #recordCountPerPage# OFFSET #firstIndex#
 	</select>
+	
+	<!-- 상세보기 -->
+	<select id="sample.selectDetail" parameterClass="sampleVO" resultClass="sampleVO">
+            SELECT seq_no seqNo
+                 , title
+                 , contents
+                 , DATE_FORMAT(reg_dt, '%Y.%m.%d') regDt
+                 , reg_id regId
+                 , DATE_FORMAT(mod_dt, '%Y.%m.%d') modDt
+                 , mod_id modId
+                 , del_yn delYn
+                 , DATE_FORMAT(del_dt, '%Y.%m.%d') delDt
+                 , del_id delId
+                 , view_cnt viewCnt
+                 , view_yn viewYn
+			  FROM TB_SAMPLE
+             WHERE DEL_YN = 'N'
+               AND SEQ_NO = #seqNo#
+	</select>
+	
+	<!-- 조회수 -->
+	<update id="sample.updateViewCnt" parameterClass="sampleVO">
+            UPDATE TB_SAMPLE
+               SET view_cnt = view_cnt+1
+             WHERE SEQ_NO = #seqNo#
+	</update>
+	
+	<!-- 입력 -->
+	<insert id="sample.insert" parameterClass="sampleVO">
+            INSERT INTO tb_sample
+                      ( seq_no
+                      , title
+                      , contents
+                      , reg_dt
+                      , reg_id
+                      , del_yn
+                      , view_cnt
+                      , view_yn
+                      ) VALUES
+                      ( (SELECT IFNULL(MAX(seq_no)+1, 1) FROM tb_sample)
+                      , #title#
+                      , #contents#
+                      , NOW()
+                      , 'regId'
+                      , 'N'
+                      , 0
+                      , #viewYn#
+                      )
+	</insert>
+	
+	<!-- 수정 -->
+	<update id="sample.update" parameterClass="sampleVO">
+            UPDATE TB_SAMPLE
+               SET title = #title#
+                 , contents = #contents#
+                 , mod_dt = NOW()
+                 , mod_id = #modId#
+             WHERE SEQ_NO = #seqNo#
+	</update>
+	
+	<!-- 삭제 -->
+	<update id="sample.delete" parameterClass="sampleVO">
+            UPDATE TB_SAMPLE
+               SET del_yn = 'Y'
+                 , del_dt = NOW()
+             WHERE SEQ_NO = #seqNo#
+	</update>
 </sqlMap>

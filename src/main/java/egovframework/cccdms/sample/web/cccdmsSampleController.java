@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import egovframework.cccdms.common.service.CccdmsCommonService;
 import egovframework.cccdms.sample.vo.CccdmsSampleVO;
 import egovframework.com.cmm.EgovMessageSource;
+import egovframework.let.cop.bbs.service.BoardMasterVO;
 import egovframework.rte.fdl.cmmn.trace.LeaveaTrace;
 import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -44,13 +45,10 @@ public class cccdmsSampleController {
 	/**
 	 * 샘플게시판 목록
 	 * @param vo - SampleVO
-	 * @param request - 세션처리를 위한 HttpServletRequest
-	 * @return result - 로그인결과(세션정보)
 	 * @exception Exception
 	 */
-	@RequestMapping(value = "main.do")
-	public String List(@ModelAttribute("searchVO") CccdmsSampleVO sampleVO, ModelMap model)
-	throws Exception{
+	@RequestMapping("main.do")
+	public String List(@ModelAttribute("searchVO") CccdmsSampleVO sampleVO, ModelMap model)	throws Exception{
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
 
@@ -62,16 +60,35 @@ public class cccdmsSampleController {
 		sampleVO.setLastIndex(paginationInfo.getLastRecordIndex());
 		sampleVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
-		int totCnt = commonService.selectCnt(sampleVO, "sample");
-
+		int totCnt = commonService.selectCnt(sampleVO, "sample");//목록 카운트
+		
 		@SuppressWarnings("unchecked")
-		List<CccdmsSampleVO> resultList = (List<CccdmsSampleVO>) commonService.selectList(sampleVO, "sample");
+		List<CccdmsSampleVO> resultList = (List<CccdmsSampleVO>) commonService.selectList(sampleVO, "sample");//전체목록 조회
 		
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("resultList", resultList);
 		model.addAttribute("resultCnt", totCnt);
 
-		return "sample/list";
+		return "sample/sampleList";
 	}
+	
+	/**
+     * 게시판 마스터 상세내용을 조회한다.
+     *
+     * @param boardMasterVO
+     * @param model
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("view.do")
+    public String view(@ModelAttribute("searchVO") CccdmsSampleVO sampleVO, ModelMap model) throws Exception {
+    	
+    	CccdmsSampleVO vo = (CccdmsSampleVO) commonService.selectDetail(sampleVO, "sample");//상세조회
+    	commonService.viewCnt(sampleVO, "sample");//조회수
+    	
+		model.addAttribute("resultVO", vo);
+
+		return "sample/sampleView";
+    }
 }

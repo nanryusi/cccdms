@@ -5,9 +5,18 @@
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<h2>Section title</h2>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<h2>샘플게시판</h2>
 <div class="table-responsive">
 <table class="table table-striped table-sm">
+	<caption>샘플게시판</caption>
+	<colgroup>
+		<col width="5%">
+		<col width="*">  
+		<col width="10%">
+		<col width="10%">
+		<col width="10%">
+	</colgroup>
 	<thead>
 		<tr>
 			<th>번호</th>
@@ -19,18 +28,21 @@
 	</thead>
 	<tbody>
 	<c:choose>
-		<c:when test="${resultCnt > 0}">
+		<c:when test="${resultCnt == 0}">
+		<tr>
+			<td nowrap colspan="5">데이터가 없습니다.</td>  
+		</tr>
+		</c:when>
+		<c:otherwise>
 		<c:forEach var="result" items="${resultList}" varStatus="status">
 			<tr>
-				<td><c:out value="${status.count }"/></td>
-				<td><c:out value="${result.title }"/></td>
+				<td><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
+				<td><a href="<c:url value='/cccdms/sample/view.do?seqNo=${result.seqNo }'/>"><c:out value="${result.title }"/></a></td>
 				<td><c:out value="${result.regId }"/></td>
 				<td><c:out value="${result.regDt }"/></td>
 				<td><c:out value="${result.viewCnt }"/></td>
 			</tr>
 		</c:forEach>
-		</c:when>
-		<c:otherwise>
 		</c:otherwise>
 	</c:choose>
 	</tbody>

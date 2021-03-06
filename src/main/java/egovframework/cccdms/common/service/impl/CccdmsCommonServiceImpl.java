@@ -11,16 +11,16 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 /**
- * @Class Name : EgovCmmUseServiceImpl.java
- * @Description : 공통코드등 전체 업무에서 공용해서 사용해야 하는 서비스를 정의하기위한 서비스 구현 클래스
+ * @Class Name : CccdmsCommonServiceImpl.java
+ * @Description : 전체 업무에서 공용해서 사용해야 하는 서비스를 정의하기위한 서비스 구현 클래스
  * @Modification Information
  *
  *    수정일       수정자         수정내용
  *    -------        -------     -------------------
- *    2009. 3. 11.     이삼섭
+ *    2021.03.05     hong
  *
- * @author 공통 서비스 개발팀 이삼섭
- * @since 2009. 3. 11.
+ * @author 
+ * @since 
  * @version
  * @see
  *
@@ -40,7 +40,6 @@ public class CccdmsCommonServiceImpl extends EgovAbstractServiceImpl implements 
      */
 	@Override
 	public int selectCnt(Object vo, String str) throws Exception {
-		System.out.println("ServiceImpl=="+str);
     	return commonDAO.selectCnt(vo, str);
     }
 	
@@ -66,5 +65,45 @@ public class CccdmsCommonServiceImpl extends EgovAbstractServiceImpl implements 
 	@Override
 	public Object selectDetail(Object vo, String str) throws Exception {
 		return commonDAO.selectDetail(vo, str);
+    }
+	
+	/**
+     * 등록된 게시판 조회수를 수정한다.
+     *
+     * @param Object vo
+     */
+	@Override
+    public void viewCnt(Object vo, String str) throws Exception {
+    	commonDAO.viewCnt(vo, str);
+    }
+	
+	/**
+     * 신규 게시판 속성정보를 등록한다.
+     *
+     * @param Object vo
+     */
+	@Override
+    public String insert(Object vo, String str) throws Exception {
+    	return commonDAO.insert(vo, str);
+    }
+    
+    /**
+     * 등록된 게시판 속성정보를 수정한다.
+     *
+     * @param Object vo
+     */
+	@Override
+    public void update(Object vo, String str) throws Exception {
+    	commonDAO.update(vo, str);
+    }
+    
+    /**
+     * 등록된 게시판 속성정보를 삭제한다.
+     *
+     * @param Object vo
+     */
+	@Override
+    public void delete(Object vo, String str) throws Exception {
+    	commonDAO.delete(vo, str);
     }
 }
