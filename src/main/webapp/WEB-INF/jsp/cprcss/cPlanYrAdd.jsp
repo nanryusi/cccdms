@@ -13,17 +13,12 @@
     <title>연간보육계획안 등록</title>
 </head>
 <body>
-    <div class="col-lg-9 my-4 mb-4">
+    <section class="main">
         <div name="div_m_top">프린터, 파일저장</div>
         <%--<div name="div_m_search"></div>--%>
-        <div name="div_m_upper">
-            <div name="school_nm"></div>
-            <div name="comm_code">분반
-                <select name="comm_cl" id="comm_cl"></select>
-            </div>
-            <div name="div_nm" id="div_nm">빈값</div>
-            <div>
-                <select id="sBox_yr">
+        <div class="row" name="div_m_upper">
+            <div class="col-1">
+                <select class="selectpicker show-tick" data-style="btn-outline-primary" data-width="120px" id="sBox_yr">
                     <option value="2020">2020년</option>
                     <option value="2021">2021년</option>
                     <option value="2022">2022년</option>
@@ -37,23 +32,29 @@
                     <option value="2030">2030년</option>
                 </select>
             </div>
+            <div class="col-md-2" name="school_nm"></div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2" name="comm_code">
+                <select class="selectpicker show-tick" data-style="btn-outline-primary" data-width="120px" name="comm_cl" id="comm_cl"></select>
+            </div>
+            <div class="col align-middle align-right" name="div_nm" id="div_nm"></div>
         </div>
-        <div>
-        <table>
-            <thead>
+        <div class="table-responsive" name="div_m_table">
+        <table class="table table-striped table-sm">
+            <thead class="table-warning">
             <tr>
                 <th>월</th>
                 <th>주</th>
                 <th>어린이집 행사</th>
                 <th>유아의 주요경험<br>
-                    (명절, 기관 적응, 특별한 날 등)
                 </th>
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr style="height: available">
                 <td>
-                    <select id="sBox_mn">
+                    <select class="selectpicker show-tick" data-style="btn-outline-primary" data-width="80px" id="sBox_mn">
                         <option value="01">1월</option>
                         <option value="02">2월</option>
                         <option value="03">3월</option>
@@ -69,7 +70,7 @@
                     </select>
                 </td>
                 <td>
-                    <select id="sBox_wk">
+                    <select class="selectpicker show-tick" data-style="btn-outline-primary" data-width="80px" id="sBox_wk">
                         <option value="1">1주차</option>
                         <option value="2">2주차</option>
                         <option value="3">3주차</option>
@@ -77,16 +78,17 @@
                         <option value="5">5주차</option>
                     </select>
                 </td>
-                <td><textarea id="txt_m_evnt"></textarea></td>
-                <td><textarea id="txt_m_exp"></textarea></td>
+                <td><textarea rows="15" cols="40%" id="txt_m_evnt"></textarea></td>
+                <td><textarea rows="15" cols="40%" id="txt_m_exp"></textarea></td>
             </tr>
             </tbody>
         </table>
         </div>
         <div name="div_m_bottom">
-            <button id="btn_add">저장</button>
+            <button class="btn btn-success" id="btn_add">저장</button>
         </div>
-    </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
     <script type="text/javascript" src="/static/js/cccdms/util/util.js"></script>
     <script type="text/javascript" src="/static/js/cccdms/cprcss/cPlanYrAdd.js"></script>
     <script type="text/javascript">

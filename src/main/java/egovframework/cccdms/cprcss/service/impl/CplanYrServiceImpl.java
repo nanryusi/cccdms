@@ -4,6 +4,7 @@
 
 package egovframework.cccdms.cprcss.service.impl;
 
+import egovframework.cccdms.cprcss.domain.CplanYrVo;
 import egovframework.cccdms.cprcss.domain.SearchVo;
 import egovframework.cccdms.cprcss.service.CplanYrService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,16 @@ public class CplanYrServiceImpl implements CplanYrService {
     @Override
     public List<?> codeList(HashMap map) throws Exception {
         return cplanYrDAO.selectCodeList(map);
+    }
+
+    /**
+    * @name    : cntExist : 연간 보육 계획안 유무 체크
+    * @return  : int
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-03-06     ||created
+    **/
+    @Override
+    public int cntExist(CplanYrVo vo) throws Exception {
+        return cplanYrDAO.selectCplanYrCnt(vo);
     }
 }

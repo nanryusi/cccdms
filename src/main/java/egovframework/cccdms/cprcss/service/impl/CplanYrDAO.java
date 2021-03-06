@@ -4,6 +4,7 @@
 
 package egovframework.cccdms.cprcss.service.impl;
 
+import egovframework.cccdms.cprcss.domain.CplanYrVo;
 import egovframework.cccdms.cprcss.domain.SearchVo;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import org.springframework.stereotype.Repository;
@@ -38,5 +39,15 @@ public class CplanYrDAO extends EgovAbstractDAO {
     **/
     public List<?> selectCodeList(HashMap map) throws Exception{
         return list("CplanYrDAO.selectCodeList", map);
+    }
+
+    /**
+    * @name    : selectCplanYrCnt : 연간 보육 계획안 유무 체크
+    * @return  : int
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-03-06     ||created
+    **/
+    public int selectCplanYrCnt(CplanYrVo vo) throws Exception{
+        return (int)select("CplanYrDAO.selectCplanYrCnt", vo);
     }
 }

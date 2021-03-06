@@ -116,6 +116,7 @@ public class CplanYrController {
     @RequestMapping("add_ajax.do")
     public HashMap add_ajax(@RequestBody String jsonStr) throws Exception{
         HashMap reMap = new HashMap();
+        String reTxt = "";
 
         logger.debug("add_ajax 컨트롤러 시작");
         logger.debug("str 내용 : "+ jsonStr);
@@ -123,11 +124,15 @@ public class CplanYrController {
         ObjectMapper oMapper = new ObjectMapper();
         CplanYrVo sVo = oMapper.readValue(jsonStr, CplanYrVo.class);
 
+        int cnt = cplanYrService.cntExist(sVo);
+        if(cnt==0){
+            reTxt = "Success";
+            //todo 저장한다.
+        }else{
+            reTxt = "이미 등록된 문서입니다.";
+        }
 
-        logger.debug("메인이벤트 : "+sVo.getMainEvent());
-
-
-        reMap.put("result", "확인용");
+        reMap.put("result", reTxt);
         return reMap;
     }
 

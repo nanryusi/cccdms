@@ -3,6 +3,8 @@
 
 <sqlMap namespace="CplanYrMaster">
 
+    <typeAlias  alias="CplanYrVo" type="egovframework.cccdms.cprcss.domain.CplanYrVo"/>
+
 	<!-- 연간보육계획안 공통코드 호출 -->
 	<select id="CplanYrDAO.selectCodeList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
         SELECT
@@ -20,6 +22,20 @@
           AND A.id = #id#
           AND A.schl_cd = #school_cd#
           AND A.us_yn = 'Y'
+	</select>
+
+    <select id="CplanYrDAO.selectCplanYrCnt" parameterClass="CplanYrVo" resultClass="java.lang.Integer">
+		<![CDATA[
+        SELECT
+            COUNT(*)
+        FROM tb_cplan_yr
+        WHERE 1=1
+          AND schl_cd    = #school_code#
+          AND schl_cl_cd = #class_code#
+          AND stnd_yr    = #year#
+          AND stnd_mn    = #month#
+          AND stnd_wk    = #week#
+        ]]>
 	</select>
 
 </sqlMap>

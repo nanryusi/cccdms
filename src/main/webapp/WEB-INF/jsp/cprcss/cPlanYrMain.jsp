@@ -12,13 +12,19 @@
     <head>
     </head>
     <body>
-    <div class="col-lg-9 my-4 mb-4">
+    <h2>연간보육계획안</h2>
+    <section class="main">
         <div name="div_m_top">프린터, 파일저장</div>
-        <div name="div_m_search">
-            <button id="btn_seacrh">검색</button>
+        <div class="row" name="div_m_search">
+            <div class="col-8">
+                <input type="text">
+            </div>
+            <div class="col-4">
+                <button class="btn btn-outline-primary" id="btn_seacrh">검색</button>
+            </div>
         </div>
-        <div name="div_m_table">
-            <table class="table">
+        <div class="table-responsive" name="div_m_table">
+            <table class="table table-striped table-sm">
                 <thead>
                 <tr>
                     <th>번호</th>
@@ -62,13 +68,27 @@
         </div>
         <div class="text-center">
             <ul class="pagination">
-                <li><a href="#">1</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
             </ul>
         </div>
-        <div name="div_m_bottom">
-            <button id="btn_addPage">신규 작성</button>
+        <div class="row" name="div_m_bottom">
+            <div class="col">
+                <button class="btn btn-primary fa-pull-right" id="btn_addPage">신규 작성</button>
+            </div>
         </div>
-    </div>
+    </section>
     <script type="text/javascript" src="/static/js/cccdms/cprcss/cPlanYrMain.js"></script>
     </body>
 </html>

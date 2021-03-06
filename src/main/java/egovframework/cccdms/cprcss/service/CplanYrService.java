@@ -4,6 +4,7 @@
 
 package egovframework.cccdms.cprcss.service;
 
+import egovframework.cccdms.cprcss.domain.CplanYrVo;
 import egovframework.cccdms.cprcss.domain.SearchVo;
 
 import java.util.HashMap;
@@ -32,4 +33,12 @@ public interface CplanYrService {
     *           ||ryusi    ||2021-02-28     ||created
     **/
     List<?> codeList(HashMap map) throws Exception;
+
+    /**
+    * @name    : cntExist : 연간 보육 계획안 유무 체크
+    * @return  : int
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-03-06     ||created
+    **/
+    int cntExist(CplanYrVo vo) throws Exception;
 }
