@@ -50,4 +50,14 @@ public class CplanYrDAO extends EgovAbstractDAO {
     public int selectCplanYrCnt(CplanYrVo vo) throws Exception{
         return (int)select("CplanYrDAO.selectCplanYrCnt", vo);
     }
+
+    /**
+    * @name    : insertCplanYr : 연간 보육 계획안 입력
+    * @return  :
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-03-07     ||created
+    **/
+    public void insertCplanYr(CplanYrVo vo) throws Exception{
+        insert("CplanYrDAO.insertCplanYr", vo);
+    }
 }

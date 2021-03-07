@@ -41,4 +41,12 @@ public interface CplanYrService {
     *           ||ryusi    ||2021-03-06     ||created
     **/
     int cntExist(CplanYrVo vo) throws Exception;
+
+    /**
+    * @name    : addCplanYr : 연간 보육 계획안 입력
+    * @return  :
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-03-07     ||created
+    **/
+    void addCplanYr(CplanYrVo vo) throws Exception;
 }

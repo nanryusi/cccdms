@@ -60,4 +60,15 @@ public class CplanYrServiceImpl implements CplanYrService {
     public int cntExist(CplanYrVo vo) throws Exception {
         return cplanYrDAO.selectCplanYrCnt(vo);
     }
+
+    /**
+    * @name    : addCplanYr
+    * @return  :
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-03-07     ||created
+    **/
+    @Override
+    public void addCplanYr(CplanYrVo vo) throws Exception {
+        cplanYrDAO.insertCplanYr(vo);
+    }
 }

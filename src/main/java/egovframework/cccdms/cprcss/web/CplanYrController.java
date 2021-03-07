@@ -124,10 +124,14 @@ public class CplanYrController {
         ObjectMapper oMapper = new ObjectMapper();
         CplanYrVo sVo = oMapper.readValue(jsonStr, CplanYrVo.class);
 
+        //todo 세션에서 id, schoolcd 가져오기
+        sVo.setId("teacher001");
+        sVo.setSchool_code("100000");
+
         int cnt = cplanYrService.cntExist(sVo);
         if(cnt==0){
+            cplanYrService.addCplanYr(sVo);
             reTxt = "Success";
-            //todo 저장한다.
         }else{
             reTxt = "이미 등록된 문서입니다.";
         }
