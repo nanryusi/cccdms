@@ -68,16 +68,14 @@
                       , reg_id
                       , del_yn
                       , view_cnt
-                      , view_yn
                       ) VALUES
-                      ( (SELECT IFNULL(MAX(seq_no)+1, 1) FROM tb_sample)
+                      ( (SELECT IFNULL(MAX(seq_no)+1, 1) FROM tb_sample A)
                       , #title#
                       , #contents#
                       , NOW()
-                      , 'regId'
+                      , #regId#
                       , 'N'
                       , 0
-                      , #viewYn#
                       )
 	</insert>
 	

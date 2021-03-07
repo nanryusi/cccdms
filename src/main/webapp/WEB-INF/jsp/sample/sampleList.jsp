@@ -6,6 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<script type="text/javascript" src="/static/js/cccdms/cm.function.js"></script>
 <h2>샘플게시판</h2>
 <div class="table-responsive">
 <table class="table table-striped table-sm">
@@ -52,4 +53,7 @@
 	<ul class="pagination">
 		<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_egov_select_noticeList" />    
 	</ul>
+</div>
+<div name="div_m_bottom">
+	<button id="btn_addPage">신규 작성</button>
 </div>

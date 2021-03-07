@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import egovframework.let.cop.bbs.service.BoardMaster;
 
 /**
  * @Class Name : CccdmsCommonDAO.java

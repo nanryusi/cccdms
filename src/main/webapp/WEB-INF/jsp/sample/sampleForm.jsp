@@ -8,7 +8,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="/static/js/cccdms/cm.function.js"></script>
 <div class="table-responsive">
-<form:form commandName="resultVO" name="viewForm" method="post" enctype="multipart/form-data" >
+<form:form commandName="sampleVO" name="actionForm" method="post" enctype="multipart/form-data" >
 <form:hidden path="seqNo"/>
 <table class="table table-striped table-sm">
 	<caption>샘플게시판</caption>
@@ -21,29 +21,33 @@
 	<tbody>
 		<tr>
 			<td>작성자</td>
-			<td><c:out value="${resultVO.regId }"/></td>
+			<td><form:input title="작성자 입력" path="regId" cssStyle="width:100%" />&nbsp;<form:errors path="regId" /></td>
 			<td>작성일</td>
-			<td><c:out value="${resultVO.regDt }"/></td>
+			<td><form:input title="작성일 입력" path="regDt" cssStyle="width:100%" />&nbsp;<form:errors path="regDt" /></td>
 		</tr>
 		<tr>
 			<td>수정자</td>
-			<td><c:out value="${resultVO.modId }"/></td>
+			<td><form:input title="수정자 입력" path="modId" cssStyle="width:100%" />&nbsp;<form:errors path="modId" /></td>
 			<td>수정일</td>
-			<td><c:out value="${resultVO.modDt }"/></td>
+			<td><form:input title="수정일 입력" path="modDt" cssStyle="width:100%" />&nbsp;<form:errors path="modDt" /></td>
 		</tr>
 		<tr>
 			<td>제목</td>
-			<td colspan="3"><c:out value="${resultVO.title }"/></td>
+			<td colspan="3"><form:input title="제목 입력" path="title" cssStyle="width:100%" />&nbsp;<form:errors path="title" /></td>
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td colspan="3"><c:out value="${resultVO.contents }"/></td>
+			<td colspan="3"><form:textarea title="내용 입력" path="contents" cols="75" rows="4" cssStyle="width:100%" />&nbsp;<form:errors path="contents" /></td>
 		</tr>
 	</tbody>
 </table>
 </form:form>
 <div name="div_m_bottom">
-	<button id="btn_update">수정</button>
-	<button id="btn_delete">삭제</button>
+	<c:if test="${sampleVO.pathVariable eq 'insert' }">
+	<button id="btn_add">입력</button>
+	</c:if>
+	<c:if test="${sampleVO.pathVariable eq 'update' }">
+	<button id="btn_updateAction">수정</button>
+	</c:if>
 </div>
 </div>

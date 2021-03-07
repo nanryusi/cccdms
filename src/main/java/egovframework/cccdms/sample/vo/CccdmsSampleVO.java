@@ -1,6 +1,6 @@
 package egovframework.cccdms.sample.vo;
 
-import egovframework.cccdms.common.service.CccdmsVO;
+import egovframework.cccdms.common.service.CommonVO;
 
 /**
  * @Class Name : CccdmsLoginVO.java
@@ -18,7 +18,7 @@ import egovframework.cccdms.common.service.CccdmsVO;
  *  @see
  *  
  */
-public class CccdmsSampleVO extends CccdmsVO{
+public class CccdmsSampleVO extends CommonVO{
 	
 	/**
 	 * 

@@ -17,7 +17,7 @@ import java.io.Serializable;
  *  @see
  *  
  */
-public class CccdmsVO implements Serializable{
+public class CommonVO implements Serializable{
 	
 	/**
 	 * 
@@ -43,6 +43,12 @@ public class CccdmsVO implements Serializable{
     /** 페이지당 레코드 개수 */
     private int recordCountPerPage = 10;
 	
+    /** 검색어 */
+    private String schText;
+    
+    /** 상태 */
+    private String pathVariable;
+    
 	public int getPageIndex() {
 		return pageIndex;
 	}
@@ -78,5 +84,17 @@ public class CccdmsVO implements Serializable{
 	}
 	public void setRecordCountPerPage(int recordCountPerPage) {
 		this.recordCountPerPage = recordCountPerPage;
+	}
+	public String getSchText() {
+		return schText;
+	}
+	public void setSchText(String schText) {
+		this.schText = schText;
+	}
+	public String getPathVariable() {
+		return pathVariable;
+	}
+	public void setPathVariable(String pathVariable) {
+		this.pathVariable = pathVariable;
 	}
 }
