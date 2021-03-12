@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CccdmsMainController {
 
   //메인페이지 호출
-  @RequestMapping(value = "/cccdms/main/mainPage.do")
+  @RequestMapping(value = "/cccdms/main/main.do")
   public String getMainPage(HttpServletRequest request, ModelMap model)
       throws Exception{
 

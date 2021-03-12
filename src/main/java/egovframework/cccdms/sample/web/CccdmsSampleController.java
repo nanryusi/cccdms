@@ -10,7 +10,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import egovframework.cccdms.common.service.CccdmsCommonService;
 import egovframework.cccdms.sample.model.CccdmsSampleVO;
 import egovframework.com.cmm.EgovMessageSource;
-import egovframework.let.cop.bbs.service.BoardMasterVO;
 import egovframework.rte.fdl.cmmn.trace.LeaveaTrace;
 import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -43,7 +42,9 @@ public class CccdmsSampleController {
 	/** TRACE */
 	@Resource(name = "leaveaTrace")
 	LeaveaTrace leaveaTrace;
-
+	
+	private String PROGRAM_ID = "sample";
+	
 	/**
 	 * 샘플게시판 목록
 	 * 
@@ -66,7 +67,7 @@ public class CccdmsSampleController {
 		int totCnt = commonService.selectCnt(sampleVO, "sample");// 목록 카운트
 
 		@SuppressWarnings("unchecked")
-		List<CccdmsSampleVO> resultList = (List<CccdmsSampleVO>) commonService.selectList(sampleVO, "sample");// 전체목록 조회
+		List<CccdmsSampleVO> resultList = (List<CccdmsSampleVO>) commonService.selectList(sampleVO, PROGRAM_ID);// 전체목록 조회
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -87,7 +88,7 @@ public class CccdmsSampleController {
 	@RequestMapping("view.do")
 	public String view(@ModelAttribute("searchVO") CccdmsSampleVO sampleVO, ModelMap model) throws Exception {
 
-		CccdmsSampleVO vo = (CccdmsSampleVO) commonService.selectDetail(sampleVO, "sample");// 상세조회
+		CccdmsSampleVO vo = (CccdmsSampleVO) commonService.selectDetail(sampleVO, PROGRAM_ID);// 상세조회
 		commonService.viewCnt(sampleVO, "sample");// 조회수
 
 		model.addAttribute("resultVO", vo);
@@ -110,7 +111,7 @@ public class CccdmsSampleController {
 			sampleVO.setPathVariable(pathVariable);
 			model.addAttribute("sampleVO", sampleVO);
 		} else if("update".equals(pathVariable)) {
-			CccdmsSampleVO vo = (CccdmsSampleVO) commonService.selectDetail(sampleVO, "sample");// 상세조회
+			CccdmsSampleVO vo = (CccdmsSampleVO) commonService.selectDetail(sampleVO, PROGRAM_ID);// 상세조회
 			vo.setPathVariable(pathVariable);
 			model.addAttribute("sampleVO", vo);
 		}
@@ -142,10 +143,10 @@ public class CccdmsSampleController {
 		sampleVO.setModId(loginId);
 		
 		if("insert".equals(pathVariable)) {
-			commonService.insert(sampleVO, "sample");// 입력
+			commonService.insert(sampleVO, PROGRAM_ID);// 입력
 			rtn = "redirect:/cccdms/sample/main.do";
 		} else if("update".equals(pathVariable)) {
-			commonService.update(sampleVO, "sample");// 수정
+			commonService.update(sampleVO, PROGRAM_ID);// 수정
 			rtn = "redirect:/cccdms/sample/view.do?seqNo="+sampleVO.getSeqNo();
 		}
 		
@@ -165,7 +166,7 @@ public class CccdmsSampleController {
 	@RequestMapping("delete.do")
 	public String delete(@ModelAttribute("searchVO") CccdmsSampleVO sampleVO, SessionStatus status, ModelMap model) throws Exception {
 
-		commonService.delete(sampleVO, "sample");// 삭제
+		commonService.delete(sampleVO, PROGRAM_ID);// 삭제
 		
 		status.setComplete();
 		

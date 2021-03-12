@@ -66,7 +66,7 @@ public class CccdmsLoginController {
 		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("") && loginPolicyYn) {
 			request.getSession().setAttribute("LoginVO", resultVO);
 			request.getSession().setAttribute("LoginId", resultVO.getId());
-			return "redirect:/cccdms/main/mainPage.do";
+			return "redirect:/cccdms/main/main.do";
 		} else {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
 			return "main/CccdmsLogin";
@@ -103,7 +103,8 @@ public class CccdmsLoginController {
 	public String actionLogout(HttpServletRequest request, ModelMap model) throws Exception {
 
 		RequestContextHolder.getRequestAttributes().removeAttribute("LoginVO", RequestAttributes.SCOPE_SESSION);
-
-		return "redirect:/cccdms/main/mainPage.do";
+		RequestContextHolder.getRequestAttributes().removeAttribute("LoginId", RequestAttributes.SCOPE_SESSION);
+		
+		return "redirect:/cccdms/login/loginPage.do";
 	}
 }
