@@ -3,7 +3,7 @@
 
 <sqlMap namespace="cccdmsLoginDAO">
 
-	<typeAlias alias="cccdmsLoginVO" type="egovframework.cccdms.login.service.CccdmsLoginVO"/>
+	<typeAlias alias="cccdmsLoginVO" type="egovframework.cccdms.login.model.CccdmsLoginVO"/>
 	
 	<!-- 아이디 찾기를 위한 resultMap 
 	<resultMap id="id" class="egovframework.com.cmm.LoginVO">

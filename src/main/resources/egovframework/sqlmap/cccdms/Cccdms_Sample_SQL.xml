@@ -3,7 +3,7 @@
 
 <sqlMap namespace="sample">
 
-	<typeAlias alias="sampleVO" type="egovframework.cccdms.sample.vo.CccdmsSampleVO"/>
+	<typeAlias alias="sampleVO" type="egovframework.cccdms.sample.model.CccdmsSampleVO"/>
 	
 	<!-- 목록 갯수 -->
 	<select id="sample.selectCnt" parameterClass="sampleVO" resultClass="int">

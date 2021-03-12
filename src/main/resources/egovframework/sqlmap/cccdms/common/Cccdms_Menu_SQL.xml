@@ -3,7 +3,7 @@
 
 <sqlMap namespace="cccdmsMenuDAO">
 
-	<typeAlias alias="cccdmsMenuVO" type="egovframework.cccdms.common.service.CccdmsMenuVO"/>
+	<typeAlias alias="cccdmsMenuVO" type="egovframework.cccdms.common.model.CccdmsMenuVO"/>
 
 	<select id="cccdmsMenuDAO.actionLogin" resultClass="cccdmsMenuVO">
 	</select>
