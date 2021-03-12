@@ -7,10 +7,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="/static/js/cccdms/cm.function.js"></script>
-<div class="table-responsive">
+<div class="sm_title">샘플게시판</div>
 <form:form commandName="resultVO" name="viewForm" method="post" enctype="multipart/form-data" >
 <form:hidden path="seqNo"/>
-<table class="table table-striped table-sm">
+<table class="bbs_view">
 	<caption>샘플게시판</caption>
 	<colgroup>
 		<col width="15%">
@@ -20,24 +20,24 @@
 	</colgroup>
 	<tbody>
 		<tr>
-			<td>작성자</td>
+			<th scope="row"><span class="bar">작성자</span></th>
 			<td><c:out value="${resultVO.regId }"/></td>
-			<td>작성일</td>
+			<th scope="row"><span class="bar">작성일</span></th>
 			<td><c:out value="${resultVO.regDt }"/></td>
 		</tr>
 		<tr>
-			<td>수정자</td>
+			<th scope="row"><span class="bar">수정자</span></th>
 			<td><c:out value="${resultVO.modId }"/></td>
-			<td>수정일</td>
-			<td><c:out value="${resultVO.modDt }"/></td>
+			<th scope="row"><span class="bar">수정일</span></th>
+			<td scope="row"><c:out value="${resultVO.modDt }"/></td>
 		</tr>
 		<tr>
-			<td>제목</td>
+			<th scope="row"><span class="bar">제목</span></th>
 			<td colspan="3"><c:out value="${resultVO.title }"/></td>
 		</tr>
 		<tr>
-			<td>내용</td>
-			<td colspan="3"><c:out value="${resultVO.contents }"/></td>
+			<th scope="row"><span class="bar">내용</span></th>
+			<td colspan="3"><c:out value="${resultVO.contents }" escapeXml="false"/></td>
 		</tr>
 	</tbody>
 </table>
@@ -45,5 +45,4 @@
 <div name="div_m_bottom">
 	<button id="btn_update">수정</button>
 	<button id="btn_delete">삭제</button>
-</div>
 </div>

@@ -5,9 +5,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
 import egovframework.cccdms.common.service.CccdmsCommonService;
-import egovframework.cccdms.sample.vo.CccdmsSampleVO;
+import egovframework.cccdms.sample.model.CccdmsSampleVO;
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.let.cop.bbs.service.BoardMasterVO;
 import egovframework.rte.fdl.cmmn.trace.LeaveaTrace;
@@ -18,13 +19,14 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * CCCDMS 샘플게시판을 화면 컨드롤러 Created by hong on 2021-03-05
  */
 @Controller
 @RequestMapping(value = "/cccdms/sample")
-public class cccdmsSampleController {
+public class CccdmsSampleController {
 
 	/** EgovLoginService */
 	@Resource(name = "commonService")
@@ -125,9 +127,19 @@ public class cccdmsSampleController {
 	 * @throws Exception
 	 */
 	@RequestMapping("{pathVariable}Action.do")
-	public String action(@PathVariable String pathVariable, @ModelAttribute("searchVO") CccdmsSampleVO sampleVO, ModelMap model) throws Exception {
+	public String action(@PathVariable String pathVariable, 
+			@ModelAttribute("searchVO") CccdmsSampleVO sampleVO,
+			SessionStatus status,
+			HttpServletRequest request,
+			ModelMap model) throws Exception {
+		
+		HttpSession session = request.getSession();
+		String loginId = (String)session.getAttribute("LoginId");
 		
 		String rtn = "";
+		
+		sampleVO.setRegId(loginId);
+		sampleVO.setModId(loginId);
 		
 		if("insert".equals(pathVariable)) {
 			commonService.insert(sampleVO, "sample");// 입력
@@ -136,6 +148,8 @@ public class cccdmsSampleController {
 			commonService.update(sampleVO, "sample");// 수정
 			rtn = "redirect:/cccdms/sample/view.do?seqNo="+sampleVO.getSeqNo();
 		}
+		
+		status.setComplete();
 		
 		return rtn;
 	}
@@ -149,10 +163,12 @@ public class cccdmsSampleController {
 	 * @throws Exception
 	 */
 	@RequestMapping("delete.do")
-	public String delete(@ModelAttribute("searchVO") CccdmsSampleVO sampleVO, ModelMap model) throws Exception {
+	public String delete(@ModelAttribute("searchVO") CccdmsSampleVO sampleVO, SessionStatus status, ModelMap model) throws Exception {
 
 		commonService.delete(sampleVO, "sample");// 삭제
-
+		
+		status.setComplete();
+		
 		return "redirect:/cccdms/sample/main.do";
 	}
 }

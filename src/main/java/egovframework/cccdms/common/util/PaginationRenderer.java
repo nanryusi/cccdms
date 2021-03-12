@@ -30,12 +30,12 @@ public class PaginationRenderer extends AbstractPaginationRenderer implements Se
 	}
 	
 	public void initVariables(){
-		firstPageLabel    = "<li class=\"page-item\"><a class=\"page-link\" href=\"?pageIndex={1}\" aria-label=\"Previous\" onclick=\"{0}({1});return false; \"><span aria-hidden=\"true\">&laquo;&laquo;</span></a></li>";
-        previousPageLabel = "<li class=\"page-item\"><a class=\"page-link\" href=\"?pageIndex={1}\" aria-label=\"Previous\" onclick=\"{0}({1});return false; \"><span aria-hidden=\"true\">&laquo;</span></a></li>";
-        currentPageLabel  = "<li class=\"page-item active\"><a class=\"page-link\" href=\"#\">{0}</a></li>";
-        otherPageLabel    = "<li class=\"page-item\"><a class=\"page-link\" href=\"?pageIndex={1}\" onclick=\"{0}({1});return false; \">{2}</a></li>";
-        nextPageLabel     = "<li class=\"page-item\"><a class=\"page-link\" href=\"?pageIndex={1}\" aria-label=\"Next\" onclick=\"{0}({1});return false; \"><span aria-hidden=\"true\">&raquo;</span></a></li>";
-        lastPageLabel     = "<li class=\"page-item\"><a class=\"page-link\" href=\"?pageIndex={1}\" aria-label=\"Next\" onclick=\"{0}({1});return false; \"><span aria-hidden=\"true\">&raquo;&raquo;</span></a></li>";
+		firstPageLabel    = "<li><a href=\"?pageIndex={1}\" onclick=\"{0}({1});return false; \"><span aria-hidden=\"true\">&laquo;&laquo;</span></a></li>";
+        previousPageLabel = "<li><a href=\"?pageIndex={1}\" onclick=\"{0}({1});return false; \"><span aria-hidden=\"true\">&laquo;</span></a></li>";
+        currentPageLabel  = "<li><a class=\"pover\" href=\"#\">{0}</a></li>";
+        otherPageLabel    = "<li><a href=\"?pageIndex={1}\" onclick=\"{0}({1});return false; \">{2}</a></li>";
+        nextPageLabel     = "<li><a href=\"?pageIndex={1}\" onclick=\"{0}({1});return false; \"><span aria-hidden=\"true\">&raquo;</span></a></li>";
+        lastPageLabel     = "<li><a href=\"?pageIndex={1}\" onclick=\"{0}({1});return false; \"><span aria-hidden=\"true\">&raquo;&raquo;</span></a></li>";
 	}
 
 	public void setServletContext(ServletContext servletContext) {

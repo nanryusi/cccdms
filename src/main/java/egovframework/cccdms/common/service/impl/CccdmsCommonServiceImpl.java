@@ -2,6 +2,7 @@ package egovframework.cccdms.common.service.impl;
 
 import java.util.List;
 
+import egovframework.cccdms.common.dao.CccdmsCommonDAO;
 import egovframework.cccdms.common.service.CccdmsCommonService;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

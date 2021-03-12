@@ -1,10 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Sign out</a>
-    </li>
-  </ul>
+<h1><a href="#" target="_parent"><em>CDMS</em>어린이집문서관리시스템</a></h1>
+<div id="gnb">
+	<ul>
+		<li><a href="#" target="_parent">신청관리</a></li>
+		<li><a href="#" target="_parent">게시판관리</a></li>
+		<li><a href="#" target="_parent">운영관리</a></li>
+		<li><a href="#" target="_parent">상담실관리</a></li>
+		<li><a href="#" target="_parent">회원관리</a></li>
+		<li><a href="#" target="_parent">어린이집관리</a></li>
+		<li><a href="#" target="_parent">컨텐츠관리</a></li>
+		<li><a href="#" target="_parent">관련사이트</a></li>
+	</ul>
+</div>
+<div id="topNav">
+	<span class="user">
+		<img alt="" src="top_files/icon_user.png">
+		<b>관리자님</b>
+		<a id="btn_logout" href="#" target="_parent">로그아웃</a>
+	</span>
+</div>

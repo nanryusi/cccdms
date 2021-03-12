@@ -7,10 +7,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="/static/js/cccdms/cm.function.js"></script>
-<div class="table-responsive">
+<div class="sm_title">샘플게시판</div>
 <form:form commandName="sampleVO" name="actionForm" method="post" enctype="multipart/form-data" >
 <form:hidden path="seqNo"/>
-<table class="table table-striped table-sm">
+<table class="bbs_write">
 	<caption>샘플게시판</caption>
 	<colgroup>
 		<col width="15%">
@@ -20,23 +20,11 @@
 	</colgroup>
 	<tbody>
 		<tr>
-			<td>작성자</td>
-			<td><form:input title="작성자 입력" path="regId" cssStyle="width:100%" />&nbsp;<form:errors path="regId" /></td>
-			<td>작성일</td>
-			<td><form:input title="작성일 입력" path="regDt" cssStyle="width:100%" />&nbsp;<form:errors path="regDt" /></td>
-		</tr>
-		<tr>
-			<td>수정자</td>
-			<td><form:input title="수정자 입력" path="modId" cssStyle="width:100%" />&nbsp;<form:errors path="modId" /></td>
-			<td>수정일</td>
-			<td><form:input title="수정일 입력" path="modDt" cssStyle="width:100%" />&nbsp;<form:errors path="modDt" /></td>
-		</tr>
-		<tr>
-			<td>제목</td>
+			<th scope="row">제목</th>
 			<td colspan="3"><form:input title="제목 입력" path="title" cssStyle="width:100%" />&nbsp;<form:errors path="title" /></td>
 		</tr>
 		<tr>
-			<td>내용</td>
+			<th scope="row">내용</th>
 			<td colspan="3"><form:textarea title="내용 입력" path="contents" cols="75" rows="4" cssStyle="width:100%" />&nbsp;<form:errors path="contents" /></td>
 		</tr>
 	</tbody>
@@ -49,5 +37,4 @@
 	<c:if test="${sampleVO.pathVariable eq 'update' }">
 	<button id="btn_updateAction">수정</button>
 	</c:if>
-</div>
 </div>

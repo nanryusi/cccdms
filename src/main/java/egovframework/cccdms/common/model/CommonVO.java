@@ -1,4 +1,4 @@
-package egovframework.cccdms.common.service;
+package egovframework.cccdms.common.model;
 
 import java.io.Serializable;
 

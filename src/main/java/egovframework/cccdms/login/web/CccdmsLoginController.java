@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
+import egovframework.cccdms.login.model.CccdmsLoginVO;
 import egovframework.cccdms.login.service.CccdmsLoginService;
-import egovframework.cccdms.login.service.CccdmsLoginVO;
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
 import egovframework.rte.fdl.cmmn.trace.LeaveaTrace;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by hong on 2021-02-14
  */
 @Controller
-public class cccdmsLoginController {
+public class CccdmsLoginController {
 
 	/** EgovLoginService */
 	@Resource(name = "cccdmsLoginService")
@@ -65,6 +65,7 @@ public class cccdmsLoginController {
 
 		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("") && loginPolicyYn) {
 			request.getSession().setAttribute("LoginVO", resultVO);
+			request.getSession().setAttribute("LoginId", resultVO.getId());
 			return "redirect:/cccdms/main/mainPage.do";
 		} else {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));

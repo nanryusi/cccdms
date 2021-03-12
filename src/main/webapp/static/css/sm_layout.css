@@ -1,0 +1,127 @@
+.sm_btn {margin: 10px 0px 0px; width: 100%; height: 30px; clear: both;}
+.sm_btn li {padding: 0px 3px 0px 0px; display: inline;}
+.sm_btn .center {padding: 0px 0px 1px; text-align: center; clear: both;}
+.sm_btn .left {padding: 0px 0px 1px; float: left;}
+.sm_btn .right {padding: 0px 0px 1px; float: right;}
+.hidden {background: none; margin: 0px; padding: 0px; width: 0px; height: 0px; line-height: 0; font-size: 0px; visibility: hidden; position: absolute;}
+#contents .hidden {background: none; margin: 0px; padding: 0px; width: 0px; height: 0px; line-height: 0; font-size: 0px; visibility: hidden; position: absolute;}
+.space_top {clear: both; margin-top: 5px;}
+.space_top img {vertical-align: middle;}
+.space_top input {vertical-align: middle;}
+.sch {margin: 10px 0px; padding: 10px 0px; border: 1px solid rgb(214, 219, 225); border-image: none; width: 100%; text-align: center; background-color: rgb(248, 248, 248);}
+.sch1 {margin: 10px 0px; padding: 10px 0px 0px; border: 1px solid rgb(214, 219, 225); border-image: none; width: 100%; text-align: center; background-color: rgb(248, 248, 248);}
+.sch img {vertical-align: middle;}
+.sch input {vertical-align: middle;}
+.sch1 img {vertical-align: middle;}
+.sch1 input {vertical-align: middle;}
+.sch2 {font-weight: bold; vertical-align: bottom;}
+.sm_box {width: 100%; clear: both;}
+.sm_box li {width: 19%; margin-right: 7px; float: left;}
+.sm_box li.end {width: 19%; margin-right: 0px; float: left;}
+.sm_box .class2 li.end {width: 37%; margin-right: 0px; float: left;}
+.sm_box .class3 li.small {width: 16%; margin-right: 7px; float: left;}
+.sm_box .class3 li.end {width: 45%; margin-right: 0px; float: left;}
+.sm_box .class4 li.small {width: 15%; margin-right: 7px; float: left;}
+.sm_box .class4 li.end {width: 42%; margin-right: 0px; float: left;}
+.sm_box .class6 li.small {width: 18%; margin-right: 7px; float: left;}
+.sm_box .class6 li.end {width: 39%; margin-right: 0px; float: left;}
+.sm_box .class49 li.small {width: 18%; margin-right: 7px; float: left;}
+.sm_box .class49 li.end {width: 41%; margin-right: 0px; float: left;}
+.sm_ra01 {margin-bottom: 20px;}
+.degree_list {width: 499px; border-top-color: rgb(219, 219, 219); border-bottom-color: rgb(219, 219, 219); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; border-collapse: collapse;}
+.degree_list ul {background: url("/img/board/line1.gif") no-repeat; padding: 8px 0px 0px 5px; width: 499px; height: 29px;}
+.degree_list ul li.first1 {background: url("/img/board/bullet1.gif") no-repeat 0px 2px; padding: 0px 0px 0px 18px; width: 99px; font-weight: bold; float: left;}
+.degree_list ul li.first2 {width: 390px; float: left;}
+.degree_list2 {width: 550px; margin-bottom: 10px;}
+.degree_list2 li {background: url("/img/sub/bullet2.gif") no-repeat 15px 3px; padding: 0px 0px 0px 30px;}
+.degree_list3 {padding: 10px; border: 1px solid rgb(218, 221, 225); border-image: none; width: 550px; margin-bottom: 10px; border-collapse: collapse;}
+.degree_list3 li.photo {background: url("/img/board/photo_bg.gif") no-repeat; padding: 5px 0px 0px 5px; width: 119px; height: 139px; float: left;}
+.degree_list3 li.right {margin-left: 15px; float: left;}
+.degree_list3 li.right .degree_list4 {padding: 7px 0px;}
+.degree_list3 li.right .degree_list4 ul li.first1 {background: url("/img/board/bullet1.gif") no-repeat 0px 2px; padding: 0px 0px 0px 18px; width: 99px; font-weight: bold; float: left;}
+.degree_list3 li.right .degree_list4 ul li.first2 {float: left;}
+.degree_in {margin: 10px 0px 0px 15px; width: 550px;}
+.h_graph ul {list-style: none; margin: 0px 50px 0px 0px; padding: 1px 0px 0px; width: 400px; border-top-color: currentColor; border-right-color: currentColor; border-top-width: 0px; border-right-width: 0px; border-top-style: none; border-right-style: none;}
+.h_graph li {margin: 5px 0px; font-weight: bold; vertical-align: middle; white-space: nowrap; position: relative;}
+.h_graph .g_bar {background: rgb(0, 137, 194); border-width: 1px 1px 1px 0px; border-style: solid solid solid none; border-color: rgb(15, 95, 176) rgb(15, 95, 176) rgb(15, 95, 176) currentColor; border-image: none; height: 10px; vertical-align: middle; display: inline-block; position: relative;}
+.h_graph .g_bar span {top: 0px; width: 40px; right: 0px; color: rgb(118, 118, 118); line-height: 20px; position: absolute;}
+.h_graph .num {color: rgb(0, 119, 180); padding-left: 5px; font-weight: bold;}
+.ly_popup {left: 2px; top: 2px; width: 175px; position: absolute; z-index: 100; background-color: rgb(120, 191, 228);}
+.ly_popup .border_type {padding: 9px 0px 5px; border: 2px solid rgb(11, 137, 192); border-image: none; text-align: center; background-color: rgb(255, 255, 255);}
+.ly_popup .close {top: 9px; text-align: right; right: 9px; position: absolute;}
+.ly_popup .txt {text-align: center; font-weight: bold;}
+.ly_popup .txt a {text-align: center; color: rgb(120, 191, 228); font-size: 6pt; vertical-align: middle;}
+.ly_popup .txt a:hover {text-align: center; color: rgb(254, 116, 204); font-size: 6pt; text-decoration: none; vertical-align: middle;}
+.ly_popup .txt a:visited {text-align: center; color: rgb(254, 116, 204); font-size: 6pt; text-decoration: none; vertical-align: middle;}
+.ly_popup .txt a:active {text-align: center; color: rgb(254, 116, 204); font-size: 6pt; text-decoration: none; vertical-align: middle;}
+.cal {margin: 0px auto; padding: 0px; border: 0px currentColor; border-image: none;}
+.cal caption {margin: 0px auto; padding: 0px 0px 8px 3px; text-align: left; color: rgb(0, 0, 0); font-family: "����",dotum; font-size: 11px; font-weight: bold;}
+.cal tr {border: currentColor; border-image: none;}
+.cal tr a:hover {color: rgb(254, 116, 204); font-weight: bold; text-decoration: none;}
+.cal th {border: currentColor; border-image: none; width: 21px; height: 19px; color: rgb(0, 0, 0); font-family: "����",dotum; font-size: 11px; font-weight: normal;}
+.cal td {border: currentColor; border-image: none; width: 21px; height: 19px; text-align: center; font-family: tahoma; font-size: 11px;}
+.cal td a {color: rgb(110, 110, 110);}
+.poll {width: 100%; height: 500px;}
+.pop_pre {margin: 0px 0px 0px 20px;}
+.pop_pre ul {margin: 0px 20px; width: 90px; float: left;}
+.pop_pre li {padding: 0px 0px 1px;}
+.graph_box {width: 670px; height: 220px; overflow: hidden;}
+.sms_add {width: 400px; height: 200px; -ms-overflow-y: auto;}
+.pop {width: 100%; height: 100px;}
+.popup .top {background: url("/img/popup/1/1_top.gif") repeat-x; width: 100%; height: 65px;}
+.popup .title {background: url("/img/popup/1/1_title.gif") repeat-x; width: 100%; height: 44px;}
+.popup .contents {background: rgb(255, 255, 255); width: 100%; height: 100%; border-right-color: rgb(30, 136, 198); border-bottom-color: rgb(30, 136, 198); border-left-color: rgb(30, 136, 198); border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; float: left;}
+.popup .contents .left {background: url("/img/popup/1/1_left.gif") repeat-y; width: 4px; height: 100%; float: left;}
+.popup .contents .contents {width: 100%; height: 100%; float: left;}
+.popup .contents .contents .com {width: 100%; height: 100%; clear: both;}
+.popup .contents .right {background: url("/img/popup/1/1_right.gif") repeat-y; width: 4px; height: 100%; float: left;}
+.popup .bottom {background: url("/img/popup/1/1_bottom.gif") repeat-x; width: 100%; height: 4px;}
+.clear01 {margin: 5px 0px 0px; clear: both;}
+.poptitle {text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 3px;}
+.list {padding: 0px 0px 0px 10px;}
+.list .in {padding: 5px 0px;}
+.list .in01 {padding: 3px 0px 10px 13px; color: rgb(159, 159, 159); font-size: 11px;}
+.bar_top {height: 10px; clear: both; border-top-color: rgb(3, 113, 200); border-top-width: 2px; border-top-style: solid;}
+.bar_bottom {height: 10px; clear: both; border-top-color: rgb(233, 233, 233); border-top-width: 1px; border-top-style: solid;}
+.tab_red {background: url("/img/board/tab_green_bg.gif") repeat-x; width: 100%; height: 29px; clear: both; margin-top: 10px; margin-bottom: 10px;}
+.tab_red li.select {background: url("/img/board/tab_green_right.gif") no-repeat right top; margin-right: 1px; float: left; _display: inline;}
+.tab_red li.select span {display: block;}
+.tab_red li.select a {background: url("/img/board/tab_green_left.gif") no-repeat left top; padding: 5px 15px 0px; height: 29px; color: rgb(255, 255, 255); font-size: 12px; font-weight: bold; text-decoration: none; float: left; display: block;}
+.tab_red li.select a:hover {color: rgb(255, 247, 153); text-decoration: none;}
+.tab_red li.select a:visited {color: rgb(255, 255, 255); text-decoration: none;}
+.tab_red li {background: url("/img/board/tab_green_right2.gif") no-repeat right top; margin-right: 1px; float: left; _display: inline;}
+.tab_red li span {display: block;}
+.tab_red li a {background: url("/img/board/tab_green_left2.gif") no-repeat left top; padding: 5px 15px 0px; height: 29px; color: rgb(68, 68, 68); font-size: 12px; font-weight: bold; text-decoration: none; display: block; _float: left;}
+.tab_red li a:hover {color: rgb(56, 122, 11); text-decoration: none;}
+.tab_red li a:visited {color: rgb(68, 68, 68); text-decoration: none;}
+.tab_box {padding: 10px 0px;}
+.txt_both {width: 100%;}
+.txt_both .left {text-align: left; float: left;}
+.txt_both .right {text-align: right;}
+.stats {margin: 5px 0px 0px; padding: 20px 20px 10px; border: 1px solid rgb(214, 219, 225); border-image: none; width: 100%;}
+.stats .left {padding: 0px 20px 0px 0px; width: 290px; text-align: left; float: left;}
+.stats .right {width: 360px; text-align: right;}
+.stats1 {margin: 5px 0px 0px; border: 1px solid rgb(214, 219, 225); border-image: none; width: 100%; float: left;}
+.stats1 .left {width: 45%; text-align: left; padding-top: 30px; padding-bottom: 20px; margin-right: 40px; margin-left: 40px; float: left;}
+.stats1 .right {width: 45%; text-align: right; padding-top: 30px; padding-bottom: 20px; float: left;}
+.calendar_tit {height: 18px; text-align: center; color: rgb(111, 176, 17); font-size: 12px; font-weight: bold; margin-bottom: 7px;}
+.calendar_tit img {bottom: 3px; position: relative;}
+.pover {color: rgb(255, 0, 0); font-weight: bold; text-decoration: underline;}
+a.gray {border: 1px solid rgb(112, 112, 112); border-image: none; height: 18px; color: rgb(255, 255, 255); overflow: hidden; font-family: dotum; font-weight: bold; vertical-align: middle; display: inline-block; cursor: pointer;}
+a.gray {background: url("/img/board/btn_bg_gray.gif") repeat-x left bottom; border-radius: 2px;}
+a.gray span {padding: 2px 10px; display: block;}
+input.gray {padding: 0px 10px; border: 1px solid rgb(112, 112, 112); border-image: none; height: 20px; color: rgb(255, 255, 255); line-height: 20px; font-family: dotum; font-weight: bold; vertical-align: middle; display: inline-block; cursor: pointer;}
+input.gray {background: url("/img/board/btn_bg_gray.gif") repeat-x left bottom; border-radius: 2px;}
+a.white {border: 1px solid rgb(208, 208, 208); border-image: none; height: 18px; color: rgb(102, 102, 102); overflow: hidden; font-family: dotum; font-weight: bold; vertical-align: middle; display: inline-block; cursor: pointer;}
+a.white {background: url("/img/board/btn_bg_white.gif") repeat-x left bottom; border-radius: 2px;}
+a.white span {padding: 2px 10px; display: block;}
+input.white {padding: 0px 10px; border: 1px solid rgb(208, 208, 208); border-image: none; height: 20px; color: rgb(102, 102, 102); line-height: 20px; font-family: dotum; font-weight: bold; vertical-align: middle; display: inline-block; cursor: pointer;}
+input.white {background: url("/img/board/btn_bg_white.gif") repeat-x left bottom; border-radius: 2px;}
+.userResalt ul {padding: 15px;}
+.userResalt ul li {margin: 5px 0px; height: 15px; line-height: 1.2em; padding-left: 100px; position: relative;}
+.userResalt ul li strong {left: 0px; width: 100px; text-align: left; color: rgb(68, 68, 68); font-size: 95%; display: block; position: absolute;}
+.userResalt ul li span {right: 0px; color: rgb(68, 68, 68); font-family: Tahoma; font-size: 85%; font-weight: bold; position: absolute;}
+.userResalt ul li div.poll {width: 300px; height: 15px; display: inline; position: absolute;}
+.userResalt ul li.last {margin: 5px 0px; padding-right: 18px; padding-left: 18px; position: relative;}
+.userResalt ul li.last p {padding: 5px; border: 1px dashed rgb(221, 221, 221); border-image: none; line-height: 18px; margin-top: 10px;}
+h5 {padding-top: 30px; padding-bottom: 5px; clear: both; font-size: 14px;}

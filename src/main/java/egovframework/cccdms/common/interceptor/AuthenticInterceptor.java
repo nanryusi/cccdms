@@ -1,7 +1,7 @@
 package egovframework.cccdms.common.interceptor;
 
 import egovframework.cccdms.common.util.CccdmsUserDetailsHelper;
-import egovframework.cccdms.login.service.CccdmsLoginVO;
+import egovframework.cccdms.login.model.CccdmsLoginVO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

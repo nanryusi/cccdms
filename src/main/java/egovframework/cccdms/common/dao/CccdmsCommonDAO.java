@@ -1,8 +1,10 @@
-package egovframework.cccdms.common.service.impl;
+package egovframework.cccdms.common.dao;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+
+import egovframework.cccdms.common.service.impl.EgovComAbstractDAO;
 
 
 /**

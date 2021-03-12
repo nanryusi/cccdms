@@ -7,9 +7,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="/static/js/cccdms/cm.function.js"></script>
-<h2>샘플게시판</h2>
-<div class="table-responsive">
-<table class="table table-striped table-sm">
+<div class="sm_title">샘플게시판</div>
+<table class="data_list">
 	<caption>샘플게시판</caption>
 	<colgroup>
 		<col width="5%">
@@ -20,11 +19,11 @@
 	</colgroup>
 	<thead>
 		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>
+			<th scope="col">번호</th>
+			<th scope="col">제목</th>
+			<th scope="col">작성자</th>
+			<th scope="col">작성일</th>
+			<th scope="col">조회수</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -48,12 +47,15 @@
 	</c:choose>
 	</tbody>
 </table>
-</div>
-<div id="paging_div">
+<div id="pager">>
 	<ul class="pagination">
 		<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_egov_select_noticeList" />    
 	</ul>
-</div>
-<div name="div_m_bottom">
-	<button id="btn_addPage">신규 작성</button>
+</div>.
+<div class="form_btn">
+	<div class="right">
+		<ul>
+  			<li><button id="btn_addPage">신규 작성</button></li>
+		</ul>
+	</div>
 </div>

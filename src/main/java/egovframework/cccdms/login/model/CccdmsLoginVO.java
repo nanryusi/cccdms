@@ -1,4 +1,4 @@
-package egovframework.cccdms.login.service;
+package egovframework.cccdms.login.model;
 
 import java.io.Serializable;
 

@@ -1,5 +1,6 @@
 package egovframework.cccdms.login.service;
 
+import egovframework.cccdms.login.model.CccdmsLoginVO;
 
 /**
  * 일반 로그인을 처리하는 비즈니스 구현 클래스

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by ryusi    on 2021-02-06
  */
 @Controller
-public class cccdmsMainController {
+public class CccdmsMainController {
 
   //메인페이지 호출
   @RequestMapping(value = "/cccdms/main/mainPage.do")

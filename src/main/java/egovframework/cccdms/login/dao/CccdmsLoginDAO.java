@@ -1,7 +1,6 @@
-package egovframework.cccdms.login.service.impl;
+package egovframework.cccdms.login.dao;
 
-import egovframework.cccdms.login.service.CccdmsLoginVO;
-
+import egovframework.cccdms.login.model.CccdmsLoginVO;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 
 import org.springframework.stereotype.Repository;
