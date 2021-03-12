@@ -47,7 +47,7 @@
 	</c:choose>
 	</tbody>
 </table>
-<div id="pager">>
+<div id="pager">
 	<ul class="pagination">
 		<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_egov_select_noticeList" />    
 	</ul>

@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
+import egovframework.cccdms.common.util.CccdmsUserDetailsHelper;
 import egovframework.cccdms.login.model.CccdmsLoginVO;
 import egovframework.cccdms.login.service.CccdmsLoginService;
 import egovframework.com.cmm.EgovMessageSource;
-import egovframework.com.cmm.util.EgovUserDetailsHelper;
 import egovframework.rte.fdl.cmmn.trace.LeaveaTrace;
 import egovframework.rte.fdl.property.EgovPropertyService;
 
@@ -84,7 +84,7 @@ public class CccdmsLoginController {
 	public String actionMain(ModelMap model) throws Exception {
 
 		// 1. 사용자 인증 처리
-		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
+		Boolean isAuthenticated = CccdmsUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
 			return "main/CccdmsLogin";

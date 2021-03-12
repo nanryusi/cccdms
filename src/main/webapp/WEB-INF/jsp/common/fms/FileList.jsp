@@ -49,8 +49,6 @@
 	}
 </script>
 
-
-      
 <!-- <form name="fileForm" action="" method="post" >  -->
 <input type="hidden" name="atchFileId" value="${atchFileId}">
 <input type="hidden" name="fileSn" >

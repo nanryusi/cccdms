@@ -1,4 +1,4 @@
-package egovframework.com.cmm.web;
+package egovframework.cccdms.common.web;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -6,9 +6,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Map;
 
-import egovframework.com.cmm.SessionVO;
-import egovframework.com.cmm.service.EgovFileMngService;
-import egovframework.com.cmm.service.FileVO;
+import egovframework.cccdms.common.service.FileMngService;
+import egovframework.cccdms.common.model.FileVO;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServlet;
@@ -39,17 +38,17 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  */
 @Controller
-public class EgovImageProcessController extends HttpServlet {
+public class ImageProcessController extends HttpServlet {
 
     /**
 	 *  serialVersion UID
 	 */
 	private static final long serialVersionUID = -6339945210971171173L;
 
-	@Resource(name = "EgovFileMngService")
-    private EgovFileMngService fileService;
+	@Resource(name = "FileMngService")
+    private FileMngService fileService;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EgovImageProcessController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ImageProcessController.class);
 
     /**
      * 첨부된 이미지에 대한 미리보기 기능을 제공한다.
@@ -62,8 +61,8 @@ public class EgovImageProcessController extends HttpServlet {
      * @throws Exception
      */
     @SuppressWarnings("resource")
-	@RequestMapping("/cmm/fms/getImage.do")
-    public void getImageInf(SessionVO sessionVO, ModelMap model, @RequestParam Map<String, Object> commandMap, HttpServletResponse response) throws Exception {
+	@RequestMapping("/cccdms/fms/getImage.do")
+    public void getImageInf(ModelMap model, @RequestParam Map<String, Object> commandMap, HttpServletResponse response) throws Exception {
 
 		//@RequestParam("atchFileId") String atchFileId,
 		//@RequestParam("fileSn") String fileSn,

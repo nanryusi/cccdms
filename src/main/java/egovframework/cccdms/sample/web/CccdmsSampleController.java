@@ -161,15 +161,17 @@ public class CccdmsSampleController {
 			sampleVO.setAtchFileId(atchFileId);
 	    }
 		
-	    
-		sampleVO.setRegId(loginId);
-		sampleVO.setModId(loginId);
-		
 		if("insert".equals(pathVariable)) {
+			sampleVO.setRegId(loginId);
+			
 			commonService.insert(sampleVO, PROGRAM_ID);// 입력
+			
 			rtn = "redirect:/cccdms/sample/main.do";
 		} else if("update".equals(pathVariable)) {
+			sampleVO.setModId(loginId);
+			
 			commonService.update(sampleVO, PROGRAM_ID);// 수정
+			
 			rtn = "redirect:/cccdms/sample/view.do?seqNo="+sampleVO.getSeqNo();
 		}
 		
