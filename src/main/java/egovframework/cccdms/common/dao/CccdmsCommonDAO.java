@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import egovframework.cccdms.common.service.impl.EgovComAbstractDAO;
-
 
 /**
  * @Class Name : CccdmsCommonDAO.java

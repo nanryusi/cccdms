@@ -27,6 +27,14 @@
 			<th scope="row">내용</th>
 			<td colspan="3"><form:textarea title="내용 입력" path="contents" cols="75" rows="4" cssStyle="width:100%" />&nbsp;<form:errors path="contents" /></td>
 		</tr>
+		<tr>
+			<th scope="row">첨부파일</th>
+			<td colspan="3">
+				<c:import charEncoding="utf-8" url="/cccdms/fms/selectFileInfs.do" >
+					<%-- <c:param name="atchFileId" value="${indvdlSchdulManageVO.atchFileId}" /> --%>
+				</c:import>
+			</td>
+		</tr>
 	</tbody>
 </table>
 </form:form>

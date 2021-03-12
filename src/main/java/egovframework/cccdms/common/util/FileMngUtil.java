@@ -1,4 +1,4 @@
-package egovframework.com.cmm.service;
+package egovframework.cccdms.common.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import egovframework.cccdms.common.util.StringUtil;
+import egovframework.cccdms.common.model.FileVO;
 
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.rte.fdl.property.EgovPropertyService;
@@ -33,7 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 //import java.util.HashMap;
 
 /**
- * @Class Name  : EgovFileMngUtil.java
+ * @Class Name  : FileMngUtil.java
  * @Description : 메시지 처리 관련 유틸리티
  * @Modification Information
  *
@@ -48,8 +48,8 @@ import org.springframework.web.multipart.MultipartFile;
  * @see
  *
  */
-@Component("EgovFileMngUtil")
-public class EgovFileMngUtil {
+@Component("FileMngUtil")
+public class FileMngUtil {
 
     public static final int BUFF_SIZE = 2048;
 
@@ -59,7 +59,7 @@ public class EgovFileMngUtil {
     @Resource(name = "egovFileIdGnrService")
     private EgovIdGnrService idgenService;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EgovFileMngUtil.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileMngUtil.class);
 
     /**
      * 첨부파일에 대한 목록 정보를 취득한다.
@@ -211,7 +211,7 @@ public class EgovFileMngUtil {
 	/*if ((String)request.getAttribute("downFile") == null) {
 	    downFileName = "";
 	} else {
-	    downFileName = EgovStringUtil.isNullToString(request.getAttribute("downFile"));
+	    downFileName = StringUtil.isNullToString(request.getAttribute("downFile"));
 	}*/
 
 	/*if ((String)request.getAttribute("orgFileName") == null) {
@@ -288,7 +288,7 @@ public class EgovFileMngUtil {
 	long size = file.getSize();
 
 	//newName 은 Naming Convention에 의해서 생성
-	newName = EgovStringUtil.getTimeStamp() + "." + fileExt;
+	newName = StringUtil.getTimeStamp() + "." + fileExt;
 	writeFile(file, newName, stordFilePath);
 	//storedFilePath는 지정
 	map.put(Globals.ORIGIN_FILE_NM, orginFileName);
@@ -362,8 +362,8 @@ public class EgovFileMngUtil {
      * @throws Exception
      */
     public void downFile(HttpServletResponse response, String streFileNm, String orignFileNm) throws Exception {
-    //	String downFileName = EgovStringUtil.isNullToString(request.getAttribute("downFile")).replaceAll("..","");
-    //	String orgFileName = EgovStringUtil.isNullToString(request.getAttribute("orgFileName")).replaceAll("..","");
+    //	String downFileName = StringUtil.isNullToString(request.getAttribute("downFile")).replaceAll("..","");
+    //	String orgFileName = StringUtil.isNullToString(request.getAttribute("orgFileName")).replaceAll("..","");
     String downFileName = StringUtil.isNullToString(streFileNm).replaceAll("..","");
 	String orgFileName = StringUtil.isNullToString(orignFileNm).replaceAll("..","");
 

@@ -26,6 +26,7 @@
                  , del_id delId
                  , view_cnt viewCnt
                  , view_yn viewYn
+                 , atch_file_id atchFileId
 			  FROM TB_SAMPLE
              WHERE DEL_YN = 'N'
              ORDER BY SEQ_NO DESC
@@ -46,6 +47,7 @@
                  , del_id delId
                  , view_cnt viewCnt
                  , view_yn viewYn
+                 , atch_file_id atchFileId
 			  FROM TB_SAMPLE
              WHERE DEL_YN = 'N'
                AND SEQ_NO = #seqNo#
@@ -68,6 +70,7 @@
                       , reg_id
                       , del_yn
                       , view_cnt
+                      , atch_file_id
                       ) VALUES
                       ( (SELECT IFNULL(MAX(seq_no)+1, 1) FROM tb_sample A)
                       , #title#
@@ -76,6 +79,7 @@
                       , #regId#
                       , 'N'
                       , 0
+                      , #atchFileId#
                       )
 	</insert>
 	
@@ -84,6 +88,7 @@
             UPDATE TB_SAMPLE
                SET title = #title#
                  , contents = #contents#
+                 , atch_file_id = #atchFileId#
                  , mod_dt = NOW()
                  , mod_id = #modId#
              WHERE SEQ_NO = #seqNo#

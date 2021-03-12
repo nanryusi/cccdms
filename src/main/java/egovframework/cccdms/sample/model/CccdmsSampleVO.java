@@ -28,6 +28,7 @@ public class CccdmsSampleVO extends CommonVO{
 	private String seqNo;
 	private String title; 
 	private String contents; 
+	private String atchFileId;
 	private String regDt; 
 	private String regId; 
 	private String modDt; 
@@ -55,6 +56,12 @@ public class CccdmsSampleVO extends CommonVO{
 	}
 	public void setContents(String contents) {
 		this.contents = contents;
+	}
+	public String getAtchFileId() {
+		return atchFileId;
+	}
+	public void setAtchFileId(String atchFileId) {
+		this.atchFileId = atchFileId;
 	}
 	public String getRegDt() {
 		return regDt;

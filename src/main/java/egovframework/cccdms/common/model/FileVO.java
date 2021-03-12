@@ -1,4 +1,4 @@
-package egovframework.com.cmm.service;
+package egovframework.cccdms.common.model;
 
 import java.io.Serializable;
 
@@ -32,7 +32,7 @@ public class FileVO implements Serializable {
     /**
      * 생성일자
      */
-    public String regDt = "";
+    public String creatDt = "";
     /**
      * 파일내용
      */
@@ -82,22 +82,22 @@ public class FileVO implements Serializable {
     }
 
     /**
-     * regDt attribute를 리턴한다.
+     * creatDt attribute를 리턴한다.
      *
-     * @return the regDt
+     * @return the creatDt
      */
-    public String getRegDt() {
-	return regDt;
+    public String getCreatDt() {
+	return creatDt;
     }
 
     /**
-     * regDt attribute 값을 설정한다.
+     * creatDt attribute 값을 설정한다.
      *
-     * @param regDt
-     *            the regDt to set
+     * @param creatDt
+     *            the creatDt to set
      */
-    public void setRegDt(String regDt) {
-	this.regDt = regDt;
+    public void setCreatDt(String creatDt) {
+	this.creatDt = creatDt;
     }
 
     /**

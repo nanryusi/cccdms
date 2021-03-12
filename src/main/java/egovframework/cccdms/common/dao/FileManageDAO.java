@@ -1,9 +1,9 @@
-package egovframework.com.cmm.service.impl;
+package egovframework.cccdms.common.dao;
 
 import java.util.Iterator;
 import java.util.List;
 
-import egovframework.com.cmm.service.FileVO;
+import egovframework.cccdms.common.model.FileVO;
 
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Repository;
  * @see
  *
  */
-@Repository("EgovFileManageDAO")
+@Repository("FileManageDAO")
 public class FileManageDAO extends EgovComAbstractDAO {
 
 	/**

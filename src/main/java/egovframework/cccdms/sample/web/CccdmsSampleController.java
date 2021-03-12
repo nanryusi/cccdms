@@ -6,15 +6,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import egovframework.cccdms.common.service.CccdmsCommonService;
+import egovframework.cccdms.common.service.FileMngService;
+import egovframework.cccdms.common.util.FileMngUtil;
 import egovframework.cccdms.sample.model.CccdmsSampleVO;
 import egovframework.com.cmm.EgovMessageSource;
+import egovframework.cccdms.common.model.FileVO;
 import egovframework.rte.fdl.cmmn.trace.LeaveaTrace;
 import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +48,12 @@ public class CccdmsSampleController {
 	/** TRACE */
 	@Resource(name = "leaveaTrace")
 	LeaveaTrace leaveaTrace;
+	
+	@Resource(name = "FileMngService")
+    private FileMngService fileMngService;
+
+    @Resource(name = "FileMngUtil")
+    private FileMngUtil fileUtil;
 	
 	private String PROGRAM_ID = "sample";
 	
@@ -129,9 +141,10 @@ public class CccdmsSampleController {
 	 */
 	@RequestMapping("{pathVariable}Action.do")
 	public String action(@PathVariable String pathVariable, 
-			@ModelAttribute("searchVO") CccdmsSampleVO sampleVO,
-			SessionStatus status,
-			HttpServletRequest request,
+			@ModelAttribute("searchVO") CccdmsSampleVO sampleVO, 
+			MultipartHttpServletRequest multiRequest, 
+			SessionStatus status, 
+			HttpServletRequest request, 
 			ModelMap model) throws Exception {
 		
 		HttpSession session = request.getSession();
@@ -139,6 +152,16 @@ public class CccdmsSampleController {
 		
 		String rtn = "";
 		
+		final Map<String, MultipartFile> files = multiRequest.getFileMap();
+	    String atchFileId = "";
+
+	    if (!files.isEmpty()) {
+	    	List<FileVO> result = fileUtil.parseFileInf(files, "BBS_", 0, "", "");
+			atchFileId = fileMngService.insertFileInfs(result);
+			sampleVO.setAtchFileId(atchFileId);
+	    }
+		
+	    
 		sampleVO.setRegId(loginId);
 		sampleVO.setModId(loginId);
 		
@@ -164,8 +187,13 @@ public class CccdmsSampleController {
 	 * @throws Exception
 	 */
 	@RequestMapping("delete.do")
-	public String delete(@ModelAttribute("searchVO") CccdmsSampleVO sampleVO, SessionStatus status, ModelMap model) throws Exception {
-
+	public String delete(@ModelAttribute("searchVO") CccdmsSampleVO sampleVO, SessionStatus status, HttpServletRequest request, ModelMap model) throws Exception {
+		
+		HttpSession session = request.getSession();
+		String loginId = (String)session.getAttribute("LoginId");
+		
+		sampleVO.setDelId(loginId);
+		
 		commonService.delete(sampleVO, PROGRAM_ID);// 삭제
 		
 		status.setComplete();
