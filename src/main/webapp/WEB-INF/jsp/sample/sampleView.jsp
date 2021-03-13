@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%>
-<%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -42,7 +40,11 @@
 	</tbody>
 </table>
 </form:form>
-<div name="div_m_bottom">
-	<button id="btn_update">수정</button>
-	<button id="btn_delete">삭제</button>
+<div class="form_btn">
+	<div class="right">
+		<ul>
+			<li><a class="btn_l btn_focus" href="#" id="btn_update">수정</a></li>
+			<li><a class="btn_l btn_focus" href="#" id="btn_delete">삭제</a></li>
+		</ul>
+	</div>
 </div>
