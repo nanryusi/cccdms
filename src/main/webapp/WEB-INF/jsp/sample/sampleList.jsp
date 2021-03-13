@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%>
-<%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -51,11 +49,11 @@
 	<ul class="pagination">
 		<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_egov_select_noticeList" />    
 	</ul>
-</div>.
+</div>
 <div class="form_btn">
 	<div class="right">
 		<ul>
-  			<li><button id="btn_addPage">신규 작성</button></li>
+  			<li><a class="btn_l btn_focus" href="#" id="btn_addPage">신규 작성</a></li>
 		</ul>
 	</div>
 </div>
