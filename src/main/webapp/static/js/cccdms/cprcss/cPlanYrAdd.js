@@ -19,6 +19,7 @@ let vCplanYr = {
     ,mainExp    : ''    //주요경험
 
     ,teacher_div : ''   //교사분류
+    ,pathVariable : ''
 };
 
 /** 공통변수 선언 end **/
@@ -44,7 +45,10 @@ const obj_cPlanYr = {
     ev_click() {
         switch (this.id) {
             case 'btn_add_ajax' :
-                fn_add();
+                fn_add('add');
+                break;
+            case 'btn_mod_ajax' :
+                fn_add('mod');
                 break;
             case 'btn_return' :
                 window.location.href = 'mainPage.do';
@@ -92,7 +96,7 @@ function fn_make_selbox(nm, obj){
 }
 
 //저장
-function fn_add(){
+function fn_add(modType){
     //저장데이터 입력
     vCplanYr.year   = document.getElementById("sBox_yr").value;
     vCplanYr.month  = document.getElementById("sBox_mn").value;
@@ -101,6 +105,16 @@ function fn_add(){
     vCplanYr.mainExp    = document.getElementById("txt_m_exp").value;
     vCplanYr.class_code = sBox_cl[sBox_cl.selectedIndex].value;
     vCplanYr.teacher_div= sBox_cl[sBox_cl.selectedIndex].div_cd;
+
+
+    if(modType == 'add'){
+        vCplanYr.pathVariable = 'add';
+    }else if(modType == 'mod'){
+        vCplanYr.pathVariable = 'mod';
+    }else{
+        alert("저장할 수 없습니다.");
+        return false;
+    }
 
     //ajax 통신 호출
     let url = "http://localhost:8080/cccdms/cprcss/cplanyr/add_ajax.do";
@@ -119,10 +133,12 @@ function fn_re_add(reObj){
 function fn_event(){
     /**이벤트 발생 객체 선언**/
     let vAdd = document.getElementById("btn_add_ajax");
+    let vMod = document.getElementById("btn_mod_ajax");
     let vReturn = document.getElementById("btn_return");
     /** 이벤트 리스너 **/
     //저장버튼 클릭
-    vAdd.addEventListener('click', obj_cPlanYr.ev_click);
+    if(vAdd !== null){vAdd.addEventListener('click', obj_cPlanYr.ev_click);}
+    if(vMod !== null){vMod.addEventListener('click', obj_cPlanYr.ev_click);}
     vReturn.addEventListener('click', obj_cPlanYr.ev_click);
 }
 

@@ -96,11 +96,11 @@
                     </tr>
                     <tr>
                         <td class="table-warning">어린이집 행사</td>
-                        <td colspan="3"><form:textarea  id="txt_m_evnt" title="제목 입력" path="mainEvent" cols="75" rows="4" cssStyle="width:100%" /></td>
+                        <td colspan="5"><form:textarea  id="txt_m_evnt" title="제목 입력" path="mainEvent" cols="75" rows="4" cssStyle="width:100%" /></td>
                     </tr>
                     <tr>
                         <td class="table-warning">유아의 주요경험</td>
-                        <td colspan="3"><form:textarea id="txt_m_exp" title="내용 입력" path="mainExp" cols="75" rows="4" cssStyle="width:100%" />&nbsp;</td>
+                        <td colspan="5"><form:textarea id="txt_m_exp" title="내용 입력" path="mainExp" cols="75" rows="4" cssStyle="width:100%" />&nbsp;</td>
                     </tr>
                     </tbody>
                 </table>
@@ -110,7 +110,7 @@
                     <button id="btn_add_ajax" class="btn btn-primary">입력</button>
                 </c:if>
                 <c:if test="${CplanYrVo.pathVariable eq 'update' }">
-                    <button id="btn_updateAction" class="btn btn-primary">수정</button>
+                    <button id="btn_mod_ajax" class="btn btn-primary">수정</button>
                 </c:if>
                 <button id="btn_return" class="btn btn-primary">돌아가기</button>
             </div>

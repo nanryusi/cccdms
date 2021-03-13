@@ -5,10 +5,14 @@
 package egovframework.cccdms.cprcss.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import egovframework.cccdms.common.model.FileVO;
 import egovframework.cccdms.common.service.CccdmsCommonService;
+import egovframework.cccdms.common.service.FileMngService;
+import egovframework.cccdms.common.util.FileMngUtil;
 import egovframework.cccdms.cprcss.domain.CplanYrListVo;
 import egovframework.cccdms.cprcss.domain.CplanYrVo;
 import egovframework.cccdms.cprcss.service.CplanYrService;
+import egovframework.cccdms.sample.model.CccdmsSampleVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,10 +20,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * CplanYrController : 연간보육계획안 컨트롤러
@@ -38,6 +47,11 @@ public class CplanYrController {
     private CplanYrService cplanYrService;
     @Autowired
     private CccdmsCommonService commonService;
+
+    @Autowired
+    private FileMngUtil fileUtil;
+    @Autowired
+    private FileMngService fileMngService;
 
     /**
      * @return : java.lang.String
@@ -146,21 +160,39 @@ public class CplanYrController {
         return "cprcss/cPlanYrForm";
     }
 
-    @RequestMapping("view.do")
+    @RequestMapping("modPage.do")
     public String view(@ModelAttribute("searchDetailVO") CplanYrListVo sVo, ModelMap model) throws Exception {
+
+        CplanYrVo mVo = new CplanYrVo();
 
         //todo 세션에서 user 정보를 가져온다. id, 이름, 어린이집 id, 어린이집 이름
         HashMap<String, String> inMap = new HashMap();
         inMap.put("id", "teacher001");
         inMap.put("school_cd", "100000");
 
-        logger.debug("seqNo : " + sVo.getSeqNo());
+        mVo.setSchool_code(inMap.get("school_cd"));
 
-        CplanYrListVo vo = (CplanYrListVo) commonService.selectDetail(sVo, "cplanyr");// 상세조회
+        //화면에서 가져온 seqNo : 연도||월||주||본반코드 순임
+        String[] arrStr = sVo.getSeqNo().split("\\|\\|");
+
+        mVo.setYear(arrStr[0]);     //년도
+        mVo.setMonth(arrStr[1]);    //월
+        mVo.setWeek(arrStr[2]);     //주
+        mVo.setClass_code(arrStr[3]);   //분반
+
+        CplanYrVo vo = (CplanYrVo) commonService.selectDetail(mVo, "cplanyr");// 상세조회
+
+        
+        //공통코드 호출
+        List<HashMap<String, String>> resList = (List<HashMap<String, String>>) cplanYrService.codeList(inMap);
+        //json 형변환
+        String comm_code = new ObjectMapper().writeValueAsString(resList);
+
 
         //todo 권한이 없으면 deny 처리
-        sVo.setPathVariable("update");
+        vo.setPathVariable("update");
         model.addAttribute("CplanYrVo", vo);
+        model.addAttribute("comm_code", comm_code);
 
         return "cprcss/cPlanYrForm";
     }
@@ -233,14 +265,21 @@ public class CplanYrController {
         sVo.setId("teacher001");
         sVo.setSchool_code("100000");
 
-        int cnt = cplanYrService.cntExist(sVo);
-        if (cnt == 0) {
-            //cplanYrService.addCplanYr(sVo);
-            commonService.insert(sVo, "cplanyr");
+        String pathVariable = sVo.getPathVariable();
+        if(pathVariable.equals("add")){
+            int cnt = cplanYrService.cntExist(sVo);
+            if (cnt == 0) {
+                //cplanYrService.addCplanYr(sVo);
+                commonService.insert(sVo, "cplanyr");
+                reTxt = "Success";
+            } else {
+                reTxt = "이미 등록된 문서입니다.";
+            }
+        }else if(pathVariable.equals("mod")){
+            commonService.update(sVo, "cplanyr");
             reTxt = "Success";
-        } else {
-            reTxt = "이미 등록된 문서입니다.";
         }
+
 
         reMap.put("result", reTxt);
         return reMap;

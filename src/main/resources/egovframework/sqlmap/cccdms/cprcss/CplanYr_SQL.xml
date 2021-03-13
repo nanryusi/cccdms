@@ -3,108 +3,142 @@
 
 <sqlMap namespace="CplanYrMaster">
 
-    <typeAlias  alias="CplanYrVo" type="egovframework.cccdms.cprcss.domain.CplanYrVo"/>
-    <typeAlias  alias="CplanYrListVo" type="egovframework.cccdms.cprcss.domain.CplanYrListVo"/>
+    <typeAlias alias="CplanYrVo" type="egovframework.cccdms.cprcss.domain.CplanYrVo"/>
+    <typeAlias alias="CplanYrListVo" type="egovframework.cccdms.cprcss.domain.CplanYrListVo"/>
 
-	<!-- 연간보육계획안 공통코드 호출 -->
-	<select id="CplanYrDAO.selectCodeList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
-        SELECT
-            A.schl_cl_cd    AS cl_cd
-            ,B.sub_nm       AS cl_nm
-            ,A.tch_div_cd   AS div_cd
-            ,C.nm           AS div_nm
+    <!-- 연간보육계획안 공통코드 호출 -->
+    <select id="CplanYrDAO.selectCodeList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        SELECT A.schl_cl_cd AS cl_cd
+             , B.sub_nm     AS cl_nm
+             , A.tch_div_cd AS div_cd
+             , C.nm         AS div_nm
         FROM tb_teacher A
                  JOIN tb_school B
                       ON A.schl_cd = B.cd
-                       AND A.schl_cl_cd = B.sub_cd
+                          AND A.schl_cl_cd = B.sub_cd
                  LEFT OUTER JOIN tb_common C
-                      ON A.tch_div_cd = C.cd
-        WHERE 1=1
+                                 ON A.tch_div_cd = C.cd
+        WHERE 1 = 1
           AND A.id = #id#
           AND A.schl_cd = #school_cd#
           AND A.us_yn = 'Y'
-	</select>
+    </select>
 
     <!--목록 카운트-->
     <select id="cplanyr.selectCnt" parameterClass="CplanYrListVo" resultClass="java.lang.Integer">
 		<![CDATA[
-        SELECT
-            COUNT(*)
+        SELECT COUNT(*)
         FROM tb_cplan_yr
-        WHERE 1=1
-          AND schl_cd    = #searchSchlCode#
-          AND stnd_yr    = #searchYr#
+        WHERE 1 = 1
+          AND schl_cd = #searchSchlCode#
+          AND stnd_yr = #searchYr#
         ]]>
 	</select>
 
     <!--목록조회-->
     <select id="cplanyr.selectList" parameterClass="CplanYrListVo" resultClass="CplanYrListVo">
 		<![CDATA[
-        SELECT
-            CONCAT(stnd_yr,'||',stnd_mn,'||',stnd_wk,'||',schl_cl_cd) AS seqNo
-            ,CONCAT(stnd_yr,'년도 ',stnd_mn,'월 ',stnd_wk,'주차 연간보육 계획안') as title
-            ,CONCAT(SUBSTRING(main_evnt,1,10), '...') AS contents
-            ,DATE_FORMAT(reg_dt, '%Y.%m.%d') AS regDt
-            ,reg_id AS regId
-            ,DATE_FORMAT(mod_dt, '%Y.%m.%d') AS modDt
-            ,mod_id AS modId
+        SELECT CONCAT(stnd_yr, '||', stnd_mn, '||', stnd_wk, '||', schl_cl_cd) AS seqNo
+             , CONCAT(stnd_yr, '년도 ', stnd_mn, '월 ', stnd_wk, '주차 연간보육 계획안')   AS title
+             , CONCAT(SUBSTRING(main_evnt, 1, 10), '...')                      AS contents
+             , DATE_FORMAT(reg_dt, '%Y.%m.%d')                                 AS regDt
+             , reg_id                                                          AS regId
+             , DATE_FORMAT(mod_dt, '%Y.%m.%d')                                 AS modDt
+             , mod_id                                                          AS modId
         FROM tb_cplan_yr
-        WHERE 1=1
-          AND schl_cd    = #searchSchlCode#
-          AND stnd_yr    = #searchYr#
+        WHERE 1 = 1
+          AND schl_cd = #searchSchlCode#
+          AND stnd_yr = #searchYr#
         ORDER BY stnd_yr, stnd_mn, stnd_wk DESC
-        LIMIT #recordCountPerPage# OFFSET #firstIndex#
+            LIMIT #recordCountPerPage#
+        OFFSET #firstIndex#
         ]]>
 	</select>
 
     <!-- 연간보육기획안 존재유무 확인 -->
     <select id="CplanYrDAO.selectCplanYrCnt" parameterClass="CplanYrVo" resultClass="java.lang.Integer">
 		<![CDATA[
-        SELECT
-            COUNT(*)
+        SELECT COUNT(*)
         FROM tb_cplan_yr
-        WHERE 1=1
-          AND schl_cd    = #school_code#
+        WHERE 1 = 1
+          AND schl_cd = #school_code#
           AND schl_cl_cd = #class_code#
-          AND stnd_yr    = #year#
-          AND stnd_mn    = #month#
-          AND stnd_wk    = #week#
+          AND stnd_yr = #year#
+          AND stnd_mn = #month#
+          AND stnd_wk = #week#
         ]]>
 	</select>
 
     <insert id="cplanyr.insert" parameterClass="CplanYrVo">
         INSERT INTO tb_cplan_yr
-        (   idx
-        ,schl_cd
-        ,schl_cl_cd
-        ,stnd_yr
-        ,stnd_mn
-        ,stnd_wk
-        ,main_evnt
-        ,main_exp
-        ,reg_dt
-        ,reg_id
-        ,mod_dt
-        ,mod_id
-        ) VALUES
-        ( (SELECT IFNULL(MAX(idx)+1, 1) FROM tb_cplan_yr a
-            WHERE a.schl_cd = #school_code#
-              AND a.stnd_yr = #year#
-              AND a.stnd_mn = #month#
-              AND a.stnd_wk = #week#
-          )
-        ,#school_code#
-        ,#class_code#
-        ,#year#
-        ,#month#
-        ,#week#
-        ,#mainEvent#
-        ,#mainExp#
-        ,NOW()
-        ,#id#
-        ,NOW()
-        ,#id#
-        )
+        ( idx
+        , schl_cd
+        , schl_cl_cd
+        , stnd_yr
+        , stnd_mn
+        , stnd_wk
+        , main_evnt
+        , main_exp
+        , reg_dt
+        , reg_id
+        , mod_dt
+        , mod_id)
+        VALUES ( (SELECT IFNULL(MAX(idx) + 1, 1)
+                  FROM tb_cplan_yr a
+                  WHERE a.schl_cd = #school_code#
+                    AND a.stnd_yr = #year#
+                    AND a.stnd_mn = #month#
+                    AND a.stnd_wk = #week#
+                 )
+               , #school_code#
+               , #class_code#
+               , #year#
+               , #month#
+               , #week#
+               , #mainEvent#
+               , #mainExp#
+               , NOW()
+               , #id#
+               , NOW()
+               , #id#)
     </insert>
+
+    <!-- 상세보기 -->
+    <select id="cplanyr.selectDetail" parameterClass="CplanYrVo" resultClass="CplanYrVo">
+        SELECT idx
+             , schl_cd    AS school_code
+             , schl_cl_cd AS class_code
+             , stnd_yr AS year
+             ,stnd_mn       AS month
+             ,stnd_wk       AS week
+             ,main_evnt     AS mainEvent
+             ,main_exp      AS mainExp
+        FROM tb_cplan_yr
+        WHERE 1=1
+          AND schl_cd = #school_code#
+          AND schl_cl_cd = #class_code#
+          AND stnd_yr = #year#
+          AND stnd_mn = #month#
+          AND stnd_wk = #week#
+    </select>
+
+    <!-- 수정 -->
+    <update id="cplanyr.update" parameterClass="CplanYrVo">
+        UPDATE tb_cplan_yr
+        SET stnd_yr    = #year#
+          , stnd_mn    = #month#
+          , stnd_wk    = #week#
+          , schl_cl_cd = #class_code#
+          , main_evnt  = #mainEvent#
+          , main_exp   = #mainExp#
+          , mod_dt     = NOW()
+          , mod_id     = #id#
+        WHERE 1 = 1
+          AND schl_cd = #school_code#
+          AND schl_cl_cd = #class_code#
+          AND stnd_yr = #year#
+          AND stnd_mn = #month#
+          AND stnd_wk = #week#
+    </update>
 
 </sqlMap>

@@ -11,6 +11,6 @@
 function page_move(obj){
     const fm=document.goForm;
     fm.seqNo.value = obj;
-    fm.action = "/cccdms/cprcss/cplanyr/view.do";
+    fm.action = "/cccdms/cprcss/cplanyr/modPage.do";
     fm.submit();
 }
