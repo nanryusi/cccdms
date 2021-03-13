@@ -2,6 +2,7 @@ package egovframework.cccdms.common.dao;
 
 import java.util.List;
 
+import egovframework.cccdms.common.dao.EgovComAbstractDAO;
 import org.springframework.stereotype.Repository;
 
 
@@ -42,7 +43,7 @@ public class CccdmsCommonDAO extends EgovComAbstractDAO {
      * @throws Exception
      */
 	public List<?> selectList(Object vo, String str) throws Exception {
-    	return (List<?>) list(str+".selectList", vo);
+    	return list(str+".selectList", vo);
     }
 	
     /**
@@ -53,7 +54,7 @@ public class CccdmsCommonDAO extends EgovComAbstractDAO {
      * @throws Exception
      */
 	public Object selectDetail(Object vo, String str) throws Exception {
-    	return (Object) select(str+".selectDetail", vo);
+    	return select(str+".selectDetail", vo);
     }
 	
 	/**

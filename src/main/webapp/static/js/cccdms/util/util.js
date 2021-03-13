@@ -25,7 +25,6 @@ let vTHIS_MONTH2 = function(){
 async function fn_ajax(url, obj, re_fn) {
 
     //통신설정
-    //let url = "http://localhost:8080/cccdms/cprcss/search.do";
     let options = {
         method: 'POST'
         , mode: 'cors'

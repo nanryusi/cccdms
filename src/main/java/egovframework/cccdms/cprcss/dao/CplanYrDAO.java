@@ -2,10 +2,10 @@
  * Copyright 2021. Team oktop all rights reserved.
  */
 
-package egovframework.cccdms.cprcss.service.impl;
+package egovframework.cccdms.cprcss.dao;
 
+import egovframework.cccdms.cprcss.domain.CplanYrListVo;
 import egovframework.cccdms.cprcss.domain.CplanYrVo;
-import egovframework.cccdms.cprcss.domain.SearchVo;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import org.springframework.stereotype.Repository;
 
@@ -27,7 +27,7 @@ public class CplanYrDAO extends EgovAbstractDAO {
     * @history :||user      ||date          ||modified comments
     *           ||ryusi    ||2021-02-24     ||created
     **/
-    public List<?> search(SearchVo searchVo) throws Exception{
+    public List<?> search(CplanYrListVo searchVo) throws Exception{
         return listWithPaging("", searchVo, 1, 10);
     }
 

@@ -4,8 +4,8 @@
 
 package egovframework.cccdms.cprcss.service;
 
+import egovframework.cccdms.cprcss.domain.CplanYrListVo;
 import egovframework.cccdms.cprcss.domain.CplanYrVo;
-import egovframework.cccdms.cprcss.domain.SearchVo;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +24,7 @@ public interface CplanYrService {
     * @history :||user      ||date          ||modified comments
     *           ||ryusi    ||2021-02-24     ||created
     **/
-    List<?> search(SearchVo searchVo) throws Exception;
+    List<?> search(CplanYrListVo searchVo) throws Exception;
     
     /**
     * @name    : codeList : 공통 코드 리스트

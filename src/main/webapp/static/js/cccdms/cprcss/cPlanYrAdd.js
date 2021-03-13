@@ -30,10 +30,11 @@ function fn_comm_code(type, obj){
             break;
         default : break;
     }
-
     //기본 년도, 월 선택
-    document.getElementById("sBox_yr").value = vTHIS_YEAR;
-    document.getElementById("sBox_mn").value = vTHIS_MONTH2;
+    $('#sBox_yr').val(vTHIS_YEAR).prop("selected", true);
+    $('#sBox_mn').val(vTHIS_MONTH2).prop("selected", true);
+    //기본 첫번째거 선택
+    $('#comm_cl option:eq(0)').attr("selected", "selected");
 
 }
 
@@ -42,10 +43,11 @@ const obj_cPlanYr = {
     //온클릭 이벤트
     ev_click() {
         switch (this.id) {
-            case 'btn_add' :
+            case 'btn_add_ajax' :
                 fn_add();
                 break;
-
+            case 'btn_return' :
+                window.location.href = 'mainPage.do';
             default :
                 break;
         }
@@ -106,16 +108,22 @@ function fn_add(){
 }
 //저장 콜백
 function fn_re_add(reObj){
-    alert(reObj.result);
+    if(reObj.result=="Success"){
+        alert("저장되었습니다.");
+    }else{
+        alert(reObj.result);
+    }
 }
 
 /** 이벤트 **/
 function fn_event(){
     /**이벤트 발생 객체 선언**/
-    let vAdd = document.getElementById("btn_add");
+    let vAdd = document.getElementById("btn_add_ajax");
+    let vReturn = document.getElementById("btn_return");
     /** 이벤트 리스너 **/
-    //검색버튼 클릭
+    //저장버튼 클릭
     vAdd.addEventListener('click', obj_cPlanYr.ev_click);
+    vReturn.addEventListener('click', obj_cPlanYr.ev_click);
 }
 
 //onload

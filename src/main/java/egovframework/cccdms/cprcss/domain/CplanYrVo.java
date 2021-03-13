@@ -4,8 +4,7 @@
 
 package egovframework.cccdms.cprcss.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * CplanYrVo : 연간보육계획안 Vo
@@ -13,8 +12,7 @@ import lombok.Setter;
  * Modification Information
  * ||수정자       ||수정일     ||수정내용
  */
-@Getter
-@Setter
+@Data
 public class CplanYrVo {
     //어린이집 학교 코드
     private String school_code;
@@ -34,5 +32,7 @@ public class CplanYrVo {
     private String id;
     //교사 구분
     private String teacher_div;
+    //상태값
+    private String pathVariable;
 
 }

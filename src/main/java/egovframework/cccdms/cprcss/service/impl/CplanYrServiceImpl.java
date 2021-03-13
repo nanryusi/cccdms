@@ -4,11 +4,11 @@
 
 package egovframework.cccdms.cprcss.service.impl;
 
+import egovframework.cccdms.cprcss.dao.CplanYrDAO;
+import egovframework.cccdms.cprcss.domain.CplanYrListVo;
 import egovframework.cccdms.cprcss.domain.CplanYrVo;
-import egovframework.cccdms.cprcss.domain.SearchVo;
 import egovframework.cccdms.cprcss.service.CplanYrService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,7 +35,7 @@ public class CplanYrServiceImpl implements CplanYrService {
     *           ||ryusi    ||2021-02-24     ||created
     **/
     @Override
-    public List<?> search(SearchVo searchVo) throws Exception {
+    public List<?> search(CplanYrListVo searchVo) throws Exception {
         return null;
     }
 

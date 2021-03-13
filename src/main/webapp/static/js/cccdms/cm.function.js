@@ -13,7 +13,7 @@ function fnInsertForm(){
 }
 
 function fnUpdateForm(){
-	var updateForm = document.viewForm;
+	const updateForm = document.viewForm;
 	updateForm.action = "updateForm.do";
 	if(confirm("수정하시겠습니까?")){
 		updateForm.submit();
@@ -21,7 +21,7 @@ function fnUpdateForm(){
 }
 
 function fnInsertAction(){
-	var actionForm = document.actionForm;
+	const actionForm = document.actionForm;
 	
 	//actionForm.method = "post";
 	actionForm.action = "insertAction.do";
@@ -32,7 +32,7 @@ function fnInsertAction(){
 }
 
 function fnUpdateAction(){
-	var actionForm = document.actionForm;
+	const actionForm = document.actionForm;
 	
 	//actionForm.method = "post";
 	actionForm.action = "updateAction.do";
@@ -43,7 +43,7 @@ function fnUpdateAction(){
 }
 
 function fnDelete(){
-	var actionForm = document.viewForm;
+	const actionForm = document.viewForm;
 	
 	//actionForm.method = "post";
 	actionForm.action = "delete.do";
