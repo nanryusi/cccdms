@@ -11,6 +11,7 @@ import java.io.Serializable;
  * @ -------    --------    ---------------------------
  * @ 2009.03.03    박지욱          최초 생성
  * @ 2021.02.14  hong      프로젝트환경에 맞게 커스트마이징버전 생성
+ * @ 2021.03.14  ryusi	   학교코드 추가(현재 소속)
  *
  *  @author 공통서비스 개발팀 박지욱
  *  @since 2009.03.03
@@ -49,7 +50,10 @@ public class CccdmsLoginVO implements Serializable{
 	private String failLoginCnt;
 	/** 가입일자 */
 	private String regDt;
-	
+	/** 학교 코드 */
+	private String schoolCd;
+
+
 	public String getId() {
 		return id;
 	}
@@ -122,5 +126,10 @@ public class CccdmsLoginVO implements Serializable{
 	public void setRegDt(String regDt) {
 		this.regDt = regDt;
 	}
-	
+	public String getSchoolCd() {
+		return schoolCd;
+	}
+	public void setSchoolCd(String schoolCd) {
+		this.schoolCd = schoolCd;
+	}
 }

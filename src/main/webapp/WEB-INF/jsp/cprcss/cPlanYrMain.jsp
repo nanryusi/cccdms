@@ -24,7 +24,7 @@
         <script type="text/javascript" src="/static/js/cccdms/cm.function.js"></script>
         <div class="table-responsive">
             <table class="table table-striped table-sm">
-                <caption>샘플게시판</caption>
+                <caption>연간보육계획안</caption>
                 <colgroup>
                     <col width="5%">
                     <col width="*">

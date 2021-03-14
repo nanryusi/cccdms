@@ -66,6 +66,7 @@ public class CccdmsLoginController {
 		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("") && loginPolicyYn) {
 			request.getSession().setAttribute("LoginVO", resultVO);
 			request.getSession().setAttribute("LoginId", resultVO.getId());
+			request.getSession().setAttribute("LoginSchlCd", resultVO.getSchoolCd());
 			return "redirect:/cccdms/main/main.do";
 		} else {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));

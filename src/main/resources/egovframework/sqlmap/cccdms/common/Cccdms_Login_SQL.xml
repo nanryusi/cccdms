@@ -22,6 +22,7 @@
                  , PASSWORD AS password
                  , USER_LEVEL AS userLevel
                  , USER_GROUP AS userGroup
+                 , SCHOOL_CD AS schoolCd
                  , REG_DT AS regDt
                  , USER_IP AS userIp
                  , LAST_LOGIN_DT AS lastLoginDt

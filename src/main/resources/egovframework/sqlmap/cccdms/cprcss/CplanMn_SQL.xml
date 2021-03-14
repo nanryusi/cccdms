@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- 월간보육계획안 -->
+<sqlMap namespace="CplanMnMaster">
+
+    <!--<typeAlias alias="CplanMnVo" type="egovframework.cccdms.cprcss.domain.CplanMnVo"/>-->
+    <typeAlias alias="CplanMnListVo" type="egovframework.cccdms.cprcss.domain.CplanMnListVo"/>
+
+    <!--월간 보육 계획안 목록 카운트-->
+    <select id="cplanMn.selectCnt" parameterClass="CplanMnListVo" resultClass="java.lang.Integer">
+		<![CDATA[
+        SELECT COUNT(*)
+        FROM tb_cplan_yr
+        WHERE 1 = 1
+          AND school_cd = #searchSchlCode#
+        ]]>
+	</select>
+
+    <!--월간 보육 계획안 목록 조회-->
+    <select id="cplanMn.selectList" parameterClass="CplanMnListVo" resultClass="CplanMnListVo">
+		<![CDATA[
+        SELECT idx AS seqNo
+             , CONCAT(stnd_yr, '년도 ', stnd_mn, '월 ', stnd_wk, '주차 월간보육 계획안')     AS title
+             , CONCAT(SUBSTRING(main_exp, 1, 10), '...')                        AS contents
+             , DATE_FORMAT(reg_dt, '%Y.%m.%d')                                   AS regDt
+             , reg_id                                                            AS regId
+             , DATE_FORMAT(mod_dt, '%Y.%m.%d')                                   AS modDt
+             , mod_id                                                            AS modId
+        FROM tb_cplan_mn
+        WHERE 1 = 1
+          AND school_cd = #searchSchlCode#
+        ORDER BY stnd_yr, stnd_mn, stnd_wk DESC
+            LIMIT #recordCountPerPage#
+        OFFSET #firstIndex#
+        ]]>
+	</select>
+
+</sqlMap>
