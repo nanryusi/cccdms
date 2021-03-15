@@ -30,8 +30,10 @@
 		<tr>
 			<th scope="row">첨부파일</th>
 			<td colspan="3">
-				<c:import charEncoding="utf-8" url="/cccdms/fms/selectFileInfs.do" >
-					<c:param name="atchFileId" value="${sampleVO.atchFileId}" />
+				 <input name="file" id="egovComFileUploader" type="file" />
+				<c:import url="/cccdms/fms/selectFileInfs.do" charEncoding="utf-8">
+					<c:param name="param_atchFileId" value="${sampleVO.atchFileId}" />
+					<c:param name="param_updateFlag" value="Y" />
 				</c:import>
 			</td>
 		</tr>

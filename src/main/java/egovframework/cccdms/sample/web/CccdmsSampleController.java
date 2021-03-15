@@ -141,7 +141,7 @@ public class CccdmsSampleController {
 	 */
 	@RequestMapping("{pathVariable}Action.do")
 	public String action(@PathVariable String pathVariable, 
-			@ModelAttribute("searchVO") CccdmsSampleVO sampleVO, 
+			@ModelAttribute("sampleVO") CccdmsSampleVO sampleVO, 
 			MultipartHttpServletRequest multiRequest, 
 			SessionStatus status, 
 			HttpServletRequest request, 
@@ -151,13 +151,14 @@ public class CccdmsSampleController {
 		String loginId = (String)session.getAttribute("LoginId");
 		
 		String rtn = "";
-		
 		final Map<String, MultipartFile> files = multiRequest.getFileMap();
 	    String atchFileId = "";
 
 	    if (!files.isEmpty()) {
-	    	List<FileVO> result = fileUtil.parseFileInf(files, "BBS_", 0, "", "");
+	    	List<FileVO> result = fileUtil.parseFileInf(files, 0, "", "");
+
 			atchFileId = fileMngService.insertFileInfs(result);
+
 			sampleVO.setAtchFileId(atchFileId);
 	    }
 		

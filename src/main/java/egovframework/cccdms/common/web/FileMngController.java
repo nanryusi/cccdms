@@ -52,12 +52,13 @@ public class FileMngController {
     @RequestMapping("/cccdms/fms/selectFileInfs.do")
     public String selectFileInfs(@ModelAttribute("searchVO") FileVO fileVO, @RequestParam Map<String, Object> commandMap, ModelMap model) throws Exception {
 	String atchFileId = (String)commandMap.get("param_atchFileId");
+	String updateFlag = (String)commandMap.get("param_updateFlag");
 
 	fileVO.setAtchFileId(atchFileId);
 	List<FileVO> result = fileService.selectFileInfs(fileVO);
 
 	model.addAttribute("fileList", result);
-	model.addAttribute("updateFlag", "N");
+	model.addAttribute("updateFlag", updateFlag);
 	model.addAttribute("fileListCnt", result.size());
 	model.addAttribute("atchFileId", atchFileId);
 

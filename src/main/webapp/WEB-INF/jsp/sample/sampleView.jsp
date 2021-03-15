@@ -37,6 +37,15 @@
 			<th scope="row"><span class="bar">내용</span></th>
 			<td colspan="3"><c:out value="${resultVO.contents }" escapeXml="false"/></td>
 		</tr>
+		<tr>
+			<th scope="row"><span class="bar">내용</span></th>
+			<td colspan="3">
+				<c:import url="/cccdms/fms/selectFileInfs.do" charEncoding="utf-8">
+					<c:param name="param_atchFileId" value="${resultVO.atchFileId}" />
+					<c:param name="param_updateFlag" value="N" />
+				</c:import>
+			</td>
+		</tr>
 	</tbody>
 </table>
 </form:form>

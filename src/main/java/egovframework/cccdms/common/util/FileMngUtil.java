@@ -68,7 +68,7 @@ public class FileMngUtil {
      * @return
      * @throws Exception
      */
-    public List<FileVO> parseFileInf(Map<String, MultipartFile> files, String KeyStr, int fileKeyParam, String atchFileId, String storePath) throws Exception {
+    public List<FileVO> parseFileInf(Map<String, MultipartFile> files, int fileKeyParam, String atchFileId, String storePath) throws Exception {
 	int fileKey = fileKeyParam;
 
 	String storePathString = "";
@@ -116,7 +116,7 @@ public class FileMngUtil {
 	    int index = orginFileName.lastIndexOf(".");
 	    //String fileName = orginFileName.substring(0, index);
 	    String fileExt = orginFileName.substring(index + 1);
-	    String newName = KeyStr + StringUtil.getTimeStamp() + fileKey;
+	    String newName = "FILE" + StringUtil.getTimeStamp() + fileKey;
 	    long _size = file.getSize();
 
 	    if (!"".equals(orginFileName)) {
