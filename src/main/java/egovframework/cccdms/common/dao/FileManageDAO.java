@@ -123,7 +123,19 @@ public class FileManageDAO extends EgovComAbstractDAO {
 	public int getMaxFileSN(FileVO fvo) throws Exception {
 		return (Integer) select("FileManageDAO.getMaxFileSN", fvo);
 	}
-
+	
+	/**
+	 * 파일 갯수를 구한다.
+	 *
+	 * @param fvo
+	 * @return
+	 * @throws Exception
+	 */
+	public int getFileCnt(FileVO fvo) throws Exception {
+		return (Integer) select("FileManageDAO.getFileCnt", fvo);
+	}
+	
+	
 	/**
 	 * 파일에 대한 상세정보를 조회한다.
 	 *

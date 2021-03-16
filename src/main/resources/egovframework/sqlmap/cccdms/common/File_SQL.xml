@@ -71,7 +71,7 @@
 		<![CDATA[
 			UPDATE TB_ATCH_FILE_DETAIL
 			SET DEL_YN = 'Y'
-			AND DEL_DT = SYSDATE()
+			, DEL_DT = SYSDATE()
 			WHERE ATCH_FILE_ID = #atchFileId#
 			AND	FILE_SN = #fileSn#
 		]]>	
@@ -81,15 +81,31 @@
 		<![CDATA[
 			SELECT IFNULL(MAX(FILE_SN),0)+1 AS FILE_SN
 			FROM TB_ATCH_FILE_DETAIL
-			WHERE ATCH_FILE_ID =  #atchFileId#		
+			WHERE ATCH_FILE_ID =  #atchFileId#
 		]]>
 	</select>
-
- 	<select id="FileManageDAO.selectFileInf" parameterClass="FileVO" resultMap="fileDetail" >
+	
+	<select id="FileManageDAO.getFileCnt" parameterClass="FileVO" resultClass="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*)
+			FROM TB_ATCH_FILE_DETAIL
+			WHERE ATCH_FILE_ID =  #atchFileId#
+			AND	FILE_SN = #fileSn#
+			AND DEL_YN = 'N'
+		]]>
+	</select>
+	
+ 	<select id="FileManageDAO.selectFileInf" parameterClass="FileVO" resultClass="FileVO" >
  		<![CDATA[
 			SELECT 
-				ATCH_FILE_ID, FILE_CN, FILE_SN, FILE_STRE_COURS, STRE_FILE_NM,
-				FILE_EXTSN, ORIGNL_FILE_NM, FILE_SIZE
+				ATCH_FILE_ID atchFileId
+				, FILE_CN fileCn
+				, FILE_SN fileSn
+				, FILE_STRE_COURS fileStreCours
+				, STRE_FILE_NM streFileNm
+				, FILE_EXTSN fileExtsn
+				, ORIGNL_FILE_NM orignlFileNm
+				, FILE_SIZE fileMg
 			FROM TB_ATCH_FILE_DETAIL
 			WHERE ATCH_FILE_ID = #atchFileId#
 			AND FILE_SN = #fileSn#	
@@ -101,7 +117,7 @@
 		<![CDATA[
 			UPDATE TB_ATCH_FILE
 			SET DEL_YN = 'Y'
-			AND DEL_DT = SYSDATE()
+			, DEL_DT = SYSDATE()
 			WHERE ATCH_FILE_ID = #atchFileId#
 		]]>
 	</update>

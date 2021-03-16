@@ -1,5 +1,6 @@
 package egovframework.cccdms.common.web;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -104,32 +105,26 @@ public class FileMngController {
      * @throws Exception
      */
     @RequestMapping("/cccdms/fms/deleteFileInfs.do")
-    public String deleteFileInf(@ModelAttribute("searchVO") FileVO fileVO, @RequestParam("returnUrl") String returnUrl,
+    public Map<String, Boolean> deleteFileInf(@ModelAttribute("searchVO") FileVO fileVO,
 	    HttpServletRequest request,
 	    ModelMap model) throws Exception {
-
-	Boolean isAuthenticated = CccdmsUserDetailsHelper.isAuthenticated();
-
-	if (isAuthenticated) {
-	    fileService.deleteFileInf(fileVO);
-	}
-
-	//--------------------------------------------
-	// contextRoot가 있는 경우 제외 시켜야 함
-	//--------------------------------------------
-	////return "forward:/cccdms/fms/selectFileInfs.do";
-	//return "forward:" + returnUrl;
-
-	if ("".equals(request.getContextPath()) || "/".equals(request.getContextPath())) {
-	    return "forward:" + returnUrl;
-	}
-
-	if (returnUrl.startsWith(request.getContextPath())) {
-	    return "forward:" + returnUrl.substring(returnUrl.indexOf("/", 1));
-	} else {
-	    return "forward:" + returnUrl;
-	}
-	////------------------------------------------
+    	HashMap<String, Boolean> result = new HashMap<String, Boolean>();
+    	Boolean isAuthenticated = CccdmsUserDetailsHelper.isAuthenticated();
+    	Boolean rtn = false;
+		if (isAuthenticated) {
+		    fileService.deleteFileInf(fileVO);
+		    
+		    int fileCnt = fileService.getFileCnt(fileVO);
+		    
+		    if(fileCnt == 0) {
+		    	fileService.deleteAllFileInf(fileVO);
+		    }
+		    
+		    rtn = true;
+		}
+		result.put("result", rtn);
+		
+		return result;
     }
 
     /**

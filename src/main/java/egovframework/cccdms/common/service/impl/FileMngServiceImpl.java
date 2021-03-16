@@ -127,7 +127,16 @@ public class FileMngServiceImpl extends EgovAbstractServiceImpl implements FileM
 	public int getMaxFileSN(FileVO fvo) throws Exception {
     	return fileMngDAO.getMaxFileSN(fvo);
     }
-
+    
+    /**
+	 * 파일 갯수를 구한다.
+	 *
+	 *@see egovframework.com.cmm.service.EgovFileMngService#getFileCnt(egovframework.com.cmm.service.FileVO)
+	 */
+	public int getFileCnt(FileVO fvo) throws Exception {
+		return fileMngDAO.getFileCnt(fvo);
+	}
+    
     /**
      * 전체 파일을 삭제한다.
      *

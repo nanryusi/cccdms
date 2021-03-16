@@ -10,6 +10,7 @@
 <div class="sm_title">샘플게시판</div>
 <form:form commandName="sampleVO" name="actionForm" method="post" enctype="multipart/form-data" >
 <form:hidden path="seqNo"/>
+<input type="hidden" name="returnUrl" value="<c:url value='/cccdms/sample/updateForm.do'/>"/>
 <table class="bbs_write">
 	<caption>샘플게시판</caption>
 	<colgroup>

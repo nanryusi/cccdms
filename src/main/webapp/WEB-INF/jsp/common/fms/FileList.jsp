@@ -16,26 +16,26 @@
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	function fn_egov_downFile(atchFileId, fileSn){
 		window.open("<c:url value='/cccdms/fms/FileDown.do?atchFileId="+atchFileId+"&fileSn="+fileSn+"'/>");
 	}	
 	
 	function fn_egov_deleteFile(atchFileId, fileSn) {
-		forms = document.getElementsByTagName("form");
-
-		for (var i = 0; i < forms.length; i++) {
-			if (typeof(forms[i].atchFileId) != "undefined" &&
-					typeof(forms[i].fileSn) != "undefined" &&
-					typeof(forms[i].fileListCnt) != "undefined") {
-				form = forms[i];
-			}
+		if(confirm("파일을 삭제 하시겠습니까?")){
+			$.getJSON("/cccdms/fms/deleteFileInfs.do", {
+				atchFileId : atchFileId,
+				fileSn : fileSn
+			}, function (returnJson){
+				alert("aaa");
+				if(returnJson.result){
+					alert("파일을 삭제 했습니다.")
+				}else{
+					alert("파일을 삭제 할수 없습니다.")
+				}
+			});
 		}
-		//form = document.forms[0];
-		form.atchFileId.value = atchFileId;
-		form.fileSn.value = fileSn;
-		form.action = "<c:url value='/cccdms/fms/deleteFileInfs.do'/>";
-		form.submit();
 	}
 	
 	function fn_egov_check_file(flag) {

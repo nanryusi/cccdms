@@ -54,7 +54,7 @@ public interface FileMngService {
      * @throws Exception
      */
     void updateFileInfs(List<?> fvoList) throws Exception;
-
+    
     /**
      * 여러 개의 파일을 삭제한다.
      *
@@ -88,7 +88,16 @@ public interface FileMngService {
      * @throws Exception
      */
     int getMaxFileSN(FileVO fvo) throws Exception;
-
+    
+    /**
+	 * 파일 갯수를 구한다.
+	 *
+	 * @param fvo
+	 * @return
+	 * @throws Exception
+	 */
+    int getFileCnt(FileVO fvo) throws Exception;
+    
     /**
      * 전체 파일을 삭제한다.
      *

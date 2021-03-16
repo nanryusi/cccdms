@@ -127,18 +127,16 @@ public class FileDownloadController {
 
 		String atchFileId = (String) commandMap.get("atchFileId");
 		String fileSn = (String) commandMap.get("fileSn");
-
 		Boolean isAuthenticated = CccdmsUserDetailsHelper.isAuthenticated();
-
+		
 		if (isAuthenticated) {
-
 			FileVO fileVO = new FileVO();
 			fileVO.setAtchFileId(atchFileId);
 			fileVO.setFileSn(fileSn);
 			FileVO fvo = fileService.selectFileInf(fileVO);
-
 			File uFile = new File(fvo.getFileStreCours(), fvo.getStreFileNm());
-			long fSize = uFile.length();
+
+			int fSize = (int)uFile.length();
 
 			if (fSize > 0) {
 				String mimetype = "application/x-msdownload";
