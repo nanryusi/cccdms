@@ -131,6 +131,7 @@ function fn_re_add(reObj){
 
 /** 이벤트 **/
 function fn_event(){
+
     /**이벤트 발생 객체 선언**/
     let vAdd = document.getElementById("btn_add_ajax");
     let vMod = document.getElementById("btn_mod_ajax");
@@ -142,7 +143,9 @@ function fn_event(){
     vReturn.addEventListener('click', obj_cPlanYr.ev_click);
 }
 
-//onload
-window.addEventListener('load', function(){
+$(document).ready(function(){
+    //셀렉트박스 css처리
+    $('.selectpicker').selectpicker();
+
     fn_event();
 });

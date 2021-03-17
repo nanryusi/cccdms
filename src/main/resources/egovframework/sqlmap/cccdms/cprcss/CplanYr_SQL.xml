@@ -15,7 +15,7 @@
         FROM tb_teacher A
                  JOIN tb_school B
                       ON A.school_cd = B.cd
-                          AND A.school_cl_cd = B.sub_cd
+                          AND A.class_cd = B.sub_cd
                  LEFT OUTER JOIN tb_common C
                                  ON A.teacher_cd = C.cd
         WHERE 1 = 1

@@ -2,7 +2,7 @@ package egovframework.cccdms.cprcss.web;
 
 import egovframework.cccdms.common.service.CccdmsCommonService;
 import egovframework.cccdms.cprcss.domain.CplanMnListVo;
-import egovframework.cccdms.cprcss.domain.CplanYrListVo;
+import egovframework.cccdms.cprcss.domain.CplanMnVo;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,5 +73,25 @@ public class CplanMnController {
         model.addAttribute("resultCnt", totCnt);
 
         return "cprcss/cPlanMnMain";
+    }
+
+    /**
+    * @name    : form : 등록폼 호출 : 월간보육계획안
+    * @return  : java.lang.String
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-03-15     ||created
+    **/
+    @RequestMapping("{pathVariable}Form.do")
+    public String form(@PathVariable String pathVariable,
+                       @ModelAttribute("searchVO") CplanMnVo mnVo, ModelMap model) throws Exception {
+
+        if("insert".equals(pathVariable)) {
+            mnVo.setPathVariable(pathVariable);
+            model.addAttribute("CplanMnVo", mnVo);
+        } else if("update".equals(pathVariable)) {
+            //todo 수정로직
+        }
+
+        return "sample/cPlanMnForm";
     }
 }
