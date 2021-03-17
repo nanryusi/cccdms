@@ -31,11 +31,14 @@ public class CccdmsSampleVO extends CommonVO{
 	private String atchFileId;
 	private String regDt; 
 	private String regId; 
+	private String regNm;
 	private String modDt; 
 	private String modId; 
+	private String modNm;
 	private String delYn; 
 	private String delDt; 
 	private String delId; 
+	private String delNm;
 	private String viewCnt; 
 	private String viewYn;
 	
@@ -116,5 +119,23 @@ public class CccdmsSampleVO extends CommonVO{
 	}
 	public void setViewYn(String viewYn) {
 		this.viewYn = viewYn;
+	}
+	public String getRegNm() {
+		return regNm;
+	}
+	public void setRegNm(String regNm) {
+		this.regNm = regNm;
+	}
+	public String getModNm() {
+		return modNm;
+	}
+	public void setModNm(String modNm) {
+		this.modNm = modNm;
+	}
+	public String getDelNm() {
+		return delNm;
+	}
+	public void setDelNm(String delNm) {
+		this.delNm = delNm;
 	}
 }

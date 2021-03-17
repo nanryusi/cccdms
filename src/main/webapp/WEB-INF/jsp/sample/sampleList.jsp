@@ -36,7 +36,7 @@
 			<tr>
 				<td><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
 				<td><a href="<c:url value='/cccdms/sample/view.do?seqNo=${result.seqNo }'/>"><c:out value="${result.title }"/></a></td>
-				<td><c:out value="${result.regId }"/></td>
+				<td><c:out value="${result.regNm }"/></td>
 				<td><c:out value="${result.regDt }"/></td>
 				<td><c:out value="${result.viewCnt }"/></td>
 			</tr>

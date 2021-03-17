@@ -19,11 +19,14 @@
                  , contents
                  , DATE_FORMAT(reg_dt, '%Y.%m.%d') regDt
                  , reg_id regId
+                 , (SELECT user_name FROM TB_USER_INFO WHERE id = reg_id) regNm
                  , DATE_FORMAT(mod_dt, '%Y.%m.%d') modDt
                  , mod_id modId
+                 , (SELECT user_name FROM TB_USER_INFO WHERE id = mod_id) modNm
                  , del_yn delYn
                  , DATE_FORMAT(del_dt, '%Y.%m.%d') delDt
                  , del_id delId
+                 , (SELECT user_name FROM TB_USER_INFO WHERE id = del_id) delNm
                  , view_cnt viewCnt
                  , view_yn viewYn
                  , atch_file_id atchFileId
@@ -39,12 +42,14 @@
                  , title
                  , contents
                  , DATE_FORMAT(reg_dt, '%Y.%m.%d') regDt
-                 , reg_id regId
+                 , (SELECT user_name FROM TB_USER_INFO WHERE id = reg_id) regNm
                  , DATE_FORMAT(mod_dt, '%Y.%m.%d') modDt
                  , mod_id modId
+                 , (SELECT user_name FROM TB_USER_INFO WHERE id = mod_id) modNm
                  , del_yn delYn
                  , DATE_FORMAT(del_dt, '%Y.%m.%d') delDt
                  , del_id delId
+                 , (SELECT user_name FROM TB_USER_INFO WHERE id = del_id) delNm
                  , view_cnt viewCnt
                  , view_yn viewYn
                  , atch_file_id atchFileId

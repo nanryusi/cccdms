@@ -19,7 +19,7 @@
 	<tbody>
 		<tr>
 			<th scope="row"><span class="bar">작성자</span></th>
-			<td><c:out value="${resultVO.regId }"/></td>
+			<td><c:out value="${resultVO.regNm }"/>(<c:out value="${resultVO.regId }"/>)</td>
 			<th scope="row"><span class="bar">작성일</span></th>
 			<td><c:out value="${resultVO.regDt }"/></td>
 		</tr>
