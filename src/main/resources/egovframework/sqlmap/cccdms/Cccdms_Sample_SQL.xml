@@ -42,6 +42,7 @@
                  , title
                  , contents
                  , DATE_FORMAT(reg_dt, '%Y.%m.%d') regDt
+                 , reg_id regId
                  , (SELECT user_name FROM TB_USER_INFO WHERE id = reg_id) regNm
                  , DATE_FORMAT(mod_dt, '%Y.%m.%d') modDt
                  , mod_id modId
