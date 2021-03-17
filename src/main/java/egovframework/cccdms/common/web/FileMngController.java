@@ -1,6 +1,5 @@
 package egovframework.cccdms.common.web;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +15,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 /**
  * 파일 조회, 삭제, 다운로드 처리를 위한 컨트롤러 클래스
@@ -105,12 +106,16 @@ public class FileMngController {
      * @throws Exception
      */
     @RequestMapping("/cccdms/fms/deleteFileInfs.do")
-    public Map<String, Boolean> deleteFileInf(@ModelAttribute("searchVO") FileVO fileVO,
+    public ModelAndView deleteFileInf(@ModelAttribute("searchVO") FileVO fileVO,
 	    HttpServletRequest request,
 	    ModelMap model) throws Exception {
-    	HashMap<String, Boolean> result = new HashMap<String, Boolean>();
+    	
+    	ModelAndView mav = new ModelAndView();
+    	MappingJackson2JsonView jsonView = new MappingJackson2JsonView();
+    	
     	Boolean isAuthenticated = CccdmsUserDetailsHelper.isAuthenticated();
     	Boolean rtn = false;
+    	
 		if (isAuthenticated) {
 		    fileService.deleteFileInf(fileVO);
 		    
@@ -122,9 +127,11 @@ public class FileMngController {
 		    
 		    rtn = true;
 		}
-		result.put("result", rtn);
 		
-		return result;
+		mav.setView(jsonView);
+		mav.addObject("result", rtn);
+		
+		return mav;
     }
 
     /**

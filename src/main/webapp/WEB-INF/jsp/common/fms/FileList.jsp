@@ -28,11 +28,11 @@
 				atchFileId : atchFileId,
 				fileSn : fileSn
 			}, function (returnJson){
-				alert("aaa");
 				if(returnJson.result){
-					alert("파일을 삭제 했습니다.")
+					$("#file_"+atchFileId+"_"+fileSn).remove();
+					//$("#fileListCnt").val(eval($("#fileListCnt").val)-1);
 				}else{
-					alert("파일을 삭제 할수 없습니다.")
+					alert("파일을 삭제 할수 없습니다.");
 				}
 			});
 		}
@@ -52,8 +52,9 @@
 <!-- <form name="fileForm" action="" method="post" >  -->
 <input type="hidden" name="atchFileId" value="${atchFileId}">
 <input type="hidden" name="fileSn" >
-<input type="hidden" name="fileListCnt" value="${fileListCnt}">
+<input type="hidden" name="fileListCnt" id="fileListCnt" value="${fileListCnt}">
       	<c:forEach var="fileVO" items="${fileList}" varStatus="status">
+      	<p id="file_<c:out value='${fileVO.atchFileId}'/>_<c:out value='${fileVO.fileSn}'/>">
 	       <c:choose>
 		       <c:when test="${updateFlag=='Y'}">
 			       <c:out value="${fileVO.orignlFileNm}"/>&nbsp;[<c:out value="${fileVO.fileMg}"/>&nbsp;byte]
@@ -65,6 +66,7 @@
 			       </a>
 		       </c:otherwise>
 	       </c:choose>
+	    </p>
         </c:forEach>
         <c:if test="${fn:length(fileList) == 0}">
 	    </c:if>
