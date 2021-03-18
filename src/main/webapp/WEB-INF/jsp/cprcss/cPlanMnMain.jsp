@@ -17,7 +17,6 @@
     <head>
     </head>
     <body>
-    <h2>월간보육계획안</h2>
     <section class="main">
         <script type="text/javascript" src="/static/js/cccdms/cm.function.js"></script>
         <div class="sm_title">월간보육계획안</div>

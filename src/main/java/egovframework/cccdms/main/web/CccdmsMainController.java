@@ -22,8 +22,6 @@ public class CccdmsMainController {
   public String getMainPage(HttpServletRequest request, ModelMap model)
       throws Exception{
 
-    logger.debug("확인용확인용확인용확인용확인용");
-
     return "main/main_sample";
   }
 }

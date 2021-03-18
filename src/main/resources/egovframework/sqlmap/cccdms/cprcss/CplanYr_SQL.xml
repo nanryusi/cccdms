@@ -8,7 +8,7 @@
 
     <!-- 연간보육계획안 공통코드 호출 -->
     <select id="CplanYrDAO.selectCodeList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
-        SELECT A.school_cl_cd AS cl_cd
+        SELECT A.class_cd     AS cl_cd
              , B.sub_nm       AS cl_nm
              , A.teacher_cd   AS div_cd
              , C.nm           AS div_nm

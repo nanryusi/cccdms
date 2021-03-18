@@ -16,6 +16,9 @@ import lombok.Data;
 public class CplanMnVo {
     //상태값
     private String pathVariable;
+    //아이디
+    private String id;
+
     //인덱스
     private String idx;
     //학교코드

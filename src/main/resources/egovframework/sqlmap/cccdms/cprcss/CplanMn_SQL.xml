@@ -3,7 +3,7 @@
 <!-- 월간보육계획안 -->
 <sqlMap namespace="CplanMnMaster">
 
-    <!--<typeAlias alias="CplanMnVo" type="egovframework.cccdms.cprcss.domain.CplanMnVo"/>-->
+    <typeAlias alias="CplanMnVo" type="egovframework.cccdms.cprcss.domain.CplanMnVo"/>
     <typeAlias alias="CplanMnListVo" type="egovframework.cccdms.cprcss.domain.CplanMnListVo"/>
 
     <!--월간 보육 계획안 목록 카운트-->
@@ -34,5 +34,94 @@
         OFFSET #firstIndex#
         ]]>
 	</select>
+
+    <!-- 월간보육계획안 공통코드 : 분반 -->
+    <select id="CplanMnDAO.selectCodeListForClass" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        SELECT A.class_cd     AS cl_cd
+             , B.sub_nm       AS cl_nm
+        FROM tb_teacher A
+                 JOIN tb_school B
+                      ON A.school_cd = B.cd
+                          AND A.class_cd = B.sub_cd
+        WHERE 1 = 1
+          AND A.id = #SESSION_LOGIN_ID#
+          AND A.school_cd = #SESSION_LOGIN_SCHOOL_CD#
+          AND A.us_yn = 'Y'
+    </select>
+
+    <!-- 월간보육계획안 존재유무 확인 -->
+    <select id="CplanMnDAO.selectCplanMnExistCnt" parameterClass="CplanMnVo" resultClass="java.lang.Integer">
+		<![CDATA[
+        SELECT COUNT(*)
+        FROM tb_cplan_mn
+        WHERE 1 = 1
+          AND school_cd = #schoolCode#
+          AND class_cd = #classCode#
+          AND stnd_yr = #stndYear#
+          AND stnd_mn = #stndMonth#
+          AND stnd_wk = #stndWeek#
+          AND us_yn = 'Y'
+        ]]>
+	</select>
+
+    <!-- 월간보육계획안 삭제-->
+    <delete id="cplanMn.delete" parameterClass="CplanMnVo">
+        <![CDATA[
+        DELETE
+        FROM tb_cplan_mn
+        WHERE 1 = 1
+          AND school_cd = #schoolCode#
+          AND class_cd = #classCode#
+          AND stnd_yr = #stndYear#
+          AND stnd_mn = #stndMonth#
+          AND stnd_wk = #stndWeek#
+          AND us_yn = 'N'
+        ]]>
+    </delete>
+
+    <insert id="cplanMn.insert" parameterClass="CplanMnVo">
+        <![CDATA[
+        INSERT INTO tb_cplan_mn
+        ( idx
+        , school_cd
+        , class_cd
+        , stnd_yr
+        , stnd_mn
+        , stnd_wk
+        , title
+        , main_exp
+        , outdr_act
+        , main_act
+        , play_mtl
+        , evnt_plan
+        , app_stat
+        , us_yn
+        , reg_dt
+        , reg_id
+        , mod_dt
+        , mod_id)
+        VALUES ( (SELECT IFNULL(MAX(idx) + 1, 1)
+                  FROM tb_cplan_mn a
+                  WHERE a.school_cd = #schoolCode#
+                 )
+               , #schoolCode#
+               , #classCode#
+               , #stndYear#
+               , #stndMonth#
+               , #stndWeek#
+               , #title#
+               , #mainExp#
+               , #outdoorAct#
+               , #mainAct#
+               , #playMtl#
+               , #eventPlan#
+               , ''
+               , 'Y'
+               , NOW()
+               , #id#
+               , NOW()
+               , #id#)
+        ]]>
+    </insert>
 
 </sqlMap>
