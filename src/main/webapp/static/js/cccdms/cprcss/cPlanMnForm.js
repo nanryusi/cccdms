@@ -6,17 +6,18 @@
 /** 공통변수 선언 start **/
 //월간보육계획안변수
 let vCplanMn = {
-    schoolCode: ''     //학교코드
+      idx: ''           //월간보육계획안번호
+    , schoolCode: ''    //학교코드
     , classCode: ''     //분반코드
-    , stndYear: ''   //해당년도
-    , stndMonth: ''    //해당월
-    , stndWeek: ''    //해당주간
+    , stndYear: ''      //해당년도
+    , stndMonth: ''     //해당월
+    , stndWeek: ''      //해당주간
     , title: ''         //주제
-    , mainExp: ''    //주요경험
+    , mainExp: ''       //주요경험
     , outdoorAct: ''    //야외활동
-    , mainAct: ''    //주요활동
-    , playMtl: ''    //놀이자료
-    , eventPlan: ''    //행사일정
+    , mainAct: ''       //주요활동
+    , playMtl: ''       //놀이자료
+    , eventPlan: ''     //행사일정
     , pathVariable: ''
 };
 /** 공통변수 선언 end **/
@@ -42,6 +43,7 @@ const obj_cPlanMn = {
 //저장
 function fn_add(modType) {
     //저장데이터 입력
+    vCplanMn.idx        = document.getElementById("idx").value;
     vCplanMn.classCode  = document.getElementById("sBox_cl").value;
     vCplanMn.eventPlan  = document.getElementById("eventPlan").value;
     vCplanMn.mainAct    = document.getElementById("mainAct").value;

@@ -7,6 +7,7 @@
 		<pattern>/cccdms/sample/*.do</pattern>
 		<pattern>/cccdms/cprcss/*Page.do</pattern>
 		<pattern>/cccdms/cprcss/*Form.do</pattern>
+		<pattern>/cccdms/*/view.do</pattern>
 	</decorator>
 
 	<excludes>

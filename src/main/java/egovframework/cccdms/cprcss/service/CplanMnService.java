@@ -1,7 +1,7 @@
 package egovframework.cccdms.cprcss.service;
 
+import egovframework.cccdms.cprcss.domain.CplanMnDtlVo;
 import egovframework.cccdms.cprcss.domain.CplanMnVo;
-import egovframework.cccdms.cprcss.domain.CplanYrVo;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,4 +30,13 @@ public interface CplanMnService {
     *           ||ryusi    ||2021-03-18     ||created
     **/
     int cntExist(CplanMnVo vo) throws Exception;
+    
+    
+    /**
+    * @name    : unUsed : 월간보육계획안 사용여부 N
+    * @return  : 
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-03-19     ||created
+    **/
+    void unUsed(CplanMnDtlVo vo) throws Exception;
 }

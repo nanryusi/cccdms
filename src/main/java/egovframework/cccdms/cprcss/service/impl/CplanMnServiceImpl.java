@@ -1,6 +1,7 @@
 package egovframework.cccdms.cprcss.service.impl;
 
 import egovframework.cccdms.cprcss.dao.CplanMnDAO;
+import egovframework.cccdms.cprcss.domain.CplanMnDtlVo;
 import egovframework.cccdms.cprcss.domain.CplanMnVo;
 import egovframework.cccdms.cprcss.service.CplanMnService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +36,24 @@ public class CplanMnServiceImpl implements CplanMnService {
     }
 
     /**
-     * @param vo
-     * @return : Integer
-     * @name : cntExist : 월간보육계획안 존재확인
+     * @name    : cntExist : 월간보육계획안 존재확인
+     * @return  : int
      * @history :||user      ||date          ||modified comments
-     * ||ryusi    ||2021-03-18     ||created
-     */
+     *           ||ryusi    ||2021-03-18     ||created
+     **/
     @Override
     public int cntExist(CplanMnVo vo) throws Exception {
         return cplanMnDAO.selectCplanMnExistCnt(vo);
+    }
+
+    /**
+     * @name    : unUsed : 월간보육계획안 사용여부 N
+     * @return  :
+     * @history :||user      ||date          ||modified comments
+     *           ||ryusi    ||2021-03-18     ||created
+     **/
+    @Override
+    public void unUsed(CplanMnDtlVo vo) throws Exception {
+        cplanMnDAO.updateUseYnN(vo);
     }
 }

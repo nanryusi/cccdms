@@ -49,7 +49,7 @@
                     <c:forEach var="result" items="${resultList}" varStatus="status">
                         <tr>
                             <td><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
-                            <td><a href="<c:url value='/cccdms/sample/view.do?seqNo=${result.seqNo }'/>"><c:out value="${result.title }"/></a></td>
+                            <td><a href="<c:url value='/cccdms/cprcss/cplanMn/view.do?idx=${result.idx }'/>"><c:out value="${result.title }"/></a></td>
                             <td><c:out value="${result.contents }"/></td>
                             <td><c:out value="${result.regId }"/></td>
                             <td><c:out value="${result.regDt }"/></td>
@@ -73,6 +73,5 @@
         </div>
 
     </section>
-<script type="text/javascript" src="/static/js/cccdms/cprcss/cPlanMnMain.js"></script>
     </body>
 </html>

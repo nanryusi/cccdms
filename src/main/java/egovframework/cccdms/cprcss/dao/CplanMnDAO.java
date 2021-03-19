@@ -1,5 +1,6 @@
 package egovframework.cccdms.cprcss.dao;
 
+import egovframework.cccdms.cprcss.domain.CplanMnDtlVo;
 import egovframework.cccdms.cprcss.domain.CplanMnVo;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import org.springframework.stereotype.Repository;
@@ -37,8 +38,24 @@ public class CplanMnDAO extends EgovAbstractDAO {
         return (List<HashMap<String, String>>)list(selectedQueryStr, map);
     }
 
+    /**
+    * @name    : selectCplanMnExistCnt : 월간보육계획안 존재여부 확인
+    * @return  : int
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-03-19     ||created
+    **/
     public int selectCplanMnExistCnt(CplanMnVo vo) throws Exception{
         return (int)select("CplanMnDAO.selectCplanMnExistCnt", vo);
+    }
+
+    /**
+    * @name    : updateUseYnN : 월간보육계획안 사용여부 N
+    * @return  :
+    * @history :||user      ||date          ||modified comments
+    *           ||ryusi    ||2021-03-19     ||created
+    **/
+    public void updateUseYnN(CplanMnDtlVo vo) throws Exception{
+        update("CplanMnDAO.updateUseYnN", vo);
     }
 
 }

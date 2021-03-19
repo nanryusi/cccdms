@@ -18,11 +18,11 @@ public class CplanMnListVo extends CommonVO {
 
     //검색조건 : 년도
     private String searchYr;
-    //검색조건 : 학교코드
-    private String searchSchlCode;
 
+    //학교코드
+    private String schoolCode;
     //순번
-    private String seqNo;
+    private String idx;
     //타이틀
     private String title;
     //컨텐츠
