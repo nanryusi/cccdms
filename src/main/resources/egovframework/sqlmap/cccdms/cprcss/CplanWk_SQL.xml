@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- 주간보육계획안 -->
+<sqlMap namespace="CplanWkMaster">
+
+    <typeAlias alias="CplanWkVo" type="egovframework.cccdms.cprcss.domain.CplanWkVo"/>
+    <typeAlias alias="CplanWkDtlVo" type="egovframework.cccdms.cprcss.domain.CplanWkDtlVo"/>
+    <typeAlias alias="CplanWkListVo" type="egovframework.cccdms.cprcss.domain.CplanWkListVo"/>
+
+    <!--주간 보육 계획안 목록 카운트-->
+    <select id="cplanWk.selectCnt" parameterClass="CplanWkListVo" resultClass="java.lang.Integer">
+		<![CDATA[
+        SELECT COUNT(*)
+        FROM tb_cplan_yr
+        WHERE 1 = 1
+          AND school_cd = #schoolCode#
+        ]]>
+	</select>
+
+    <!--주간 보육 계획안 목록 조회-->
+    <select id="cplanWk.selectList" parameterClass="CplanWkListVo" resultClass="CplanWkListVo">
+		<![CDATA[
+        SELECT idx AS idx
+             , CONCAT(stnd_yr, '년도 ', stnd_mn, '월 ', stnd_wk, '주차 월간보육 계획안')  AS title
+             , CONCAT(SUBSTRING(main_exp, 1, 10), '...')  AS contents
+             , DATE_FORMAT(reg_dt, '%Y.%m.%d')            AS regDt
+             , reg_id                                     AS regId
+             , DATE_FORMAT(mod_dt, '%Y.%m.%d')            AS modDt
+             , mod_id                                     AS modId
+        FROM tb_cplan_mn
+        WHERE 1 = 1
+          AND school_cd = #schoolCode#
+          AND us_yn = 'Y'
+        ORDER BY stnd_yr, stnd_mn, stnd_wk DESC
+            LIMIT #recordCountPerPage#
+        OFFSET #firstIndex#
+        ]]>
+	</select>
+
+    <!-- 주간보육계획안 공통코드 : 분반 -->
+    <select id="CplanWkDAO.selectCodeListForClass" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        SELECT A.class_cd     AS cl_cd
+             , B.sub_nm       AS cl_nm
+        FROM tb_teacher A
+                 JOIN tb_school B
+                      ON A.school_cd = B.cd
+                          AND A.class_cd = B.sub_cd
+        WHERE 1 = 1
+          AND A.id = #SESSION_LOGIN_ID#
+          AND A.school_cd = #SESSION_LOGIN_SCHOOL_CD#
+          AND A.us_yn = 'Y'
+    </select>
+
+    <!-- 주간보육계획안 존재유무 확인 -->
+    <select id="CplanWkDAO.selectCplanWkExistCnt" parameterClass="CplanWkVo" resultClass="java.lang.Integer">
+		<![CDATA[
+        SELECT COUNT(*)
+        FROM tb_cplan_mn
+        WHERE 1 = 1
+          AND school_cd = #schoolCode#
+          AND class_cd = #classCode#
+          AND stnd_yr = #stndYear#
+          AND stnd_mn = #stndMonth#
+          AND stnd_wk = #stndWeek#
+          AND us_yn = 'Y'
+        ]]>
+	</select>
+
+    <!-- 주간보육계획안 삭제-->
+    <delete id="cplanWk.delete" parameterClass="CplanWkVo">
+        <![CDATA[
+        DELETE
+        FROM tb_cplan_mn
+        WHERE 1 = 1
+          AND school_cd = #schoolCode#
+          AND class_cd = #classCode#
+          AND stnd_yr = #stndYear#
+          AND stnd_mn = #stndMonth#
+          AND stnd_wk = #stndWeek#
+          AND us_yn = 'N'
+        ]]>
+    </delete>
+
+    <!-- 주간보육계획안 입력-->
+    <insert id="cplanWk.insert" parameterClass="CplanWkVo">
+        <![CDATA[
+        INSERT INTO tb_cplan_mn
+        ( idx
+        , school_cd
+        , class_cd
+        , stnd_yr
+        , stnd_mn
+        , stnd_wk
+        , title
+        , main_exp
+        , outdr_act
+        , main_act
+        , play_mtl
+        , evnt_plan
+        , app_stat
+        , us_yn
+        , reg_dt
+        , reg_id
+        , mod_dt
+        , mod_id)
+        VALUES ( (SELECT IFNULL(MAX(idx) + 1, 1)
+                  FROM tb_cplan_mn a
+                  WHERE a.school_cd = #schoolCode#
+                 )
+               , #schoolCode#
+               , #classCode#
+               , #stndYear#
+               , #stndMonth#
+               , #stndWeek#
+               , #title#
+               , #mainExp#
+               , #outdoorAct#
+               , #mainAct#
+               , #playMtl#
+               , #eventPlan#
+               , ''
+               , 'Y'
+               , NOW()
+               , #id#
+               , NOW()
+               , #id#)
+        ]]>
+    </insert>
+
+    <!-- 주간보육계획안 수정-->
+    <update id="cplanWk.update" parameterClass="CplanWkVo">
+        <![CDATA[
+        UPDATE tb_cplan_mn
+        SET class_cd = #classCode#
+          , stnd_yr = #stndYear#
+          , stnd_mn = #stndMonth#
+          , stnd_wk = #stndWeek#
+          , title = #title#
+          , main_exp = #mainExp#
+          , outdr_act = #outdoorAct#
+          , main_act = #mainAct#
+          , play_mtl = #playMtl#
+          , evnt_plan = #eventPlan#
+          , mod_dt = NOW()
+          , mod_id = #id#
+        WHERE idx = #idx#
+          AND school_cd = #schoolCode#
+        ]]>
+    </update>
+
+    <!-- 주간보육계획안 상세입력 -->
+    <select id="cplanWk.selectDetail" parameterClass="CplanWkListVo" resultClass="CplanWkDtlVo">
+        <![CDATA[
+        SELECT A.idx          AS idx
+             , A.school_cd    AS schoolCode
+             , A.class_cd     AS classCode
+             , A.stnd_yr      AS stndYear
+             , A.stnd_mn      AS stndMonth
+             , A.stnd_wk      AS stndWeek
+             , A.title        AS title
+             , A.main_exp     AS mainExp
+             , A.outdr_act    AS outdoorAct
+             , A.main_act     AS mainAct
+             , A.play_mtl     AS playMtl
+             , A.evnt_plan    AS eventPlan
+             , A.app_stat     AS appStat
+             , A.us_yn        AS usYn
+             , DATE_FORMAT(A.reg_dt, '%Y.%m.%d')    AS regDt
+             , A.reg_id       AS regId
+             , (SELECT b.user_name FROM tb_user_info B WHERE A.reg_id = B.id)      AS regNm
+             , DATE_FORMAT(A.mod_dt, '%Y.%m.%d')    AS modDt
+             , A.mod_id       AS modId
+             , (SELECT b.user_name FROM tb_user_info B WHERE A.mod_id = B.id)      AS modNm
+        FROM tb_cplan_mn A
+        WHERE A.us_yn = 'Y'
+          AND A.idx = #idx#
+          AND A.school_cd = #schoolCode#
+        ]]>
+    </select>
+
+    <!-- 주간보육계획안 사용여부 N-->
+    <update id="CplanWkDAO.updateUseYnN" parameterClass="CplanWkDtlVo">
+        <![CDATA[
+        UPDATE tb_cplan_mn
+        SET us_yn = 'N'
+          , mod_dt = NOW()
+          , mod_id = #id#
+        WHERE idx = #idx#
+          AND school_cd = #schoolCode#
+        ]]>
+    </update>
+
+</sqlMap>
