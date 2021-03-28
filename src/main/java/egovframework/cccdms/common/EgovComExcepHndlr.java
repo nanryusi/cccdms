@@ -1,4 +1,4 @@
-package egovframework.com.cmm;
+package egovframework.cccdms.common;
 
 import egovframework.rte.fdl.cmmn.exception.handler.ExceptionHandler;
 

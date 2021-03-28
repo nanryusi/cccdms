@@ -62,7 +62,27 @@ public class CccdmsLoginServiceImpl extends EgovAbstractServiceImpl implements C
 
 		return loginVO;
 	}
-
+	
+	/**
+	 * 로그인 성공 시 마지막로그인일시, 아이피 업데이트, 로그인 실패 횟수 초기화
+	 * @param vo CccdmsLoginVO
+	 * @exception Exception
+	 */
+	@Override
+	public void updateLoginInfo(CccdmsLoginVO vo) throws Exception {
+		cccdmsLoginDAO.updateLoginInfo(vo);
+	}
+	
+	/**
+	 * 로그인 실패 시 실패 횟수 증가
+	 * @param vo CccdmsLoginVO
+	 * @exception Exception
+	 */
+	@Override
+	public void updateFailLoginCnt(CccdmsLoginVO vo) throws Exception {
+		cccdmsLoginDAO.updateFailLoginCnt(vo);
+	}
+	
 	/**
 	 * 아이디를 찾는다.
 	 * @param vo CccdmsLoginVO

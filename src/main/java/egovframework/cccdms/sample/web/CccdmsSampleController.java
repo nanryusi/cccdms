@@ -13,7 +13,7 @@ import egovframework.cccdms.common.service.CccdmsCommonService;
 import egovframework.cccdms.common.service.FileMngService;
 import egovframework.cccdms.common.util.FileMngUtil;
 import egovframework.cccdms.sample.model.CccdmsSampleVO;
-import egovframework.com.cmm.EgovMessageSource;
+import egovframework.cccdms.common.EgovMessageSource;
 import egovframework.cccdms.common.model.FileVO;
 import egovframework.rte.fdl.cmmn.trace.LeaveaTrace;
 import egovframework.rte.fdl.property.EgovPropertyService;

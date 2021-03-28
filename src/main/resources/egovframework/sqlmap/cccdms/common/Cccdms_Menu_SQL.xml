@@ -5,6 +5,15 @@
 
 	<typeAlias alias="cccdmsMenuVO" type="egovframework.cccdms.common.model.CccdmsMenuVO"/>
 
-	<select id="cccdmsMenuDAO.actionLogin" resultClass="cccdmsMenuVO">
+	<select id="cccdmsMenuDAO.selectList" resultClass="cccdmsMenuVO">
+		SELECT menu_cd menuCd
+			, menu_nm menuNm
+			, par_menu_cd parMenuCd
+			, menu_lev menuLev
+			, menu_sn menuSn
+			, menu_url menuUrl
+		FROM TB_MENU
+		WHERE DEL_YN = 'N'
+		ORDER BY menu_cd, menu_sn
 	</select>
 </sqlMap>

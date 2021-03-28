@@ -33,6 +33,21 @@
                AND PASSWORD = #password#
 	</select>
 	
+	<!--  -->
+	<update id="cccdmsLoginDAO.updateLoginInfo" parameterClass="cccdmsLoginVO">
+		UPDATE TB_USER_INFO
+		SET LAST_LOGIN_DT = sysdate()
+		, LAST_LOGIN_IP = #lastLoginIp#
+		, FAIL_LOGIN_CNT = 0
+		WHERE ID = #id#
+	</update>
+	
+	<update id="cccdmsLoginDAO.updateFailLoginCnt" parameterClass="cccdmsLoginVO">
+		UPDATE TB_USER_INFO
+		SET FAIL_LOGIN_CNT = FAIL_LOGIN_CNT + 1
+		WHERE ID = #id#
+	</update>
+	
 	<!-- 인증서 로그인
 	<select id="cccdmsLoginDAO.actionCrtfctLogin" resultMap="login">
 		<![CDATA[

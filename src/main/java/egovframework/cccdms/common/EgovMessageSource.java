@@ -1,4 +1,4 @@
-package egovframework.com.cmm;
+package egovframework.cccdms.common;
 
 import java.util.Locale;
 

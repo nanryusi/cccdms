@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
-import egovframework.cccdms.common.util.CccdmsUserDetailsHelper;
 import egovframework.cccdms.login.model.CccdmsLoginVO;
 import egovframework.cccdms.login.service.CccdmsLoginService;
-import egovframework.com.cmm.EgovMessageSource;
+import egovframework.cccdms.common.EgovMessageSource;
 import egovframework.rte.fdl.cmmn.trace.LeaveaTrace;
 import egovframework.rte.fdl.property.EgovPropertyService;
+
+import java.net.InetAddress;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -60,39 +61,29 @@ public class CccdmsLoginController {
 
 		// 1. 일반 로그인 처리
 		CccdmsLoginVO resultVO = cccdmsLoginService.actionLogin(loginVO);
-
+		
+		InetAddress local = InetAddress.getLocalHost();
+		String ip = local.getHostAddress();
+		
+		resultVO.setLastLoginIp(ip);
+		
 		boolean loginPolicyYn = true;
 
 		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("") && loginPolicyYn) {
 			request.getSession().setAttribute("LoginVO", resultVO);
 			request.getSession().setAttribute("LoginId", resultVO.getId());
 			request.getSession().setAttribute("LoginSchlCd", resultVO.getSchoolCd());
+			
+			cccdmsLoginService.updateLoginInfo(resultVO);
+			
 			return "redirect:/cccdms/main/main.do";
 		} else {
+			cccdmsLoginService.updateFailLoginCnt(loginVO);
+			
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
 			return "main/CccdmsLogin";
 		}
 
-	}
-
-	/**
-	 * 로그인 후 메인화면으로 들어간다
-	 * @param
-	 * @return 로그인 페이지
-	 * @exception Exception
-	 */
-	@RequestMapping(value = "/cccdms/login/actionMain.do")
-	public String actionMain(ModelMap model) throws Exception {
-
-		// 1. 사용자 인증 처리
-		Boolean isAuthenticated = CccdmsUserDetailsHelper.isAuthenticated();
-		if (!isAuthenticated) {
-			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "main/CccdmsLogin";
-		}
-
-		// 2. 메인 페이지 이동
-		return "redirect:/cccdms/main/mainPage.do";
 	}
 
 	/**
@@ -105,6 +96,9 @@ public class CccdmsLoginController {
 
 		RequestContextHolder.getRequestAttributes().removeAttribute("LoginVO", RequestAttributes.SCOPE_SESSION);
 		RequestContextHolder.getRequestAttributes().removeAttribute("LoginId", RequestAttributes.SCOPE_SESSION);
+		RequestContextHolder.getRequestAttributes().removeAttribute("LoginSchlCd", RequestAttributes.SCOPE_SESSION);
+		
+		request.getSession().invalidate();
 		
 		return "redirect:/cccdms/login/loginPage.do";
 	}

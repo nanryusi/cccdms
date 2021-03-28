@@ -12,7 +12,7 @@
 	</context:component-scan>
 	
 	<!-- 메시지소스빈 설정 -->
-    <bean id="egovMessageSource" class="egovframework.com.cmm.EgovMessageSource">
+    <bean id="egovMessageSource" class="egovframework.cccdms.common.EgovMessageSource">
         <property name="reloadableResourceBundleMessageSource">
             <ref bean="messageSource" />
         </property> 
@@ -58,7 +58,7 @@
 	<!-- Exception 발생시 후처리용 별도작업을 위해 실행환경의  AntPathMatcher 를 활용하도록 설정 -->
 	<bean id="antPathMater" class="org.springframework.util.AntPathMatcher" />
     <!-- Exception 발생시 후처리용 별도작업을 위해 실행환경의  DefaultTraceHandler 를 활용하도록 설정 egovframework.rte.fdl.cmmn.trace.handler.DefaultTraceHandler -->
-    <bean id="defaultTraceHandler" class="egovframework.com.cmm.EgovComTraceHandler" />
+    <bean id="defaultTraceHandler" class="egovframework.cccdms.common.EgovComTraceHandler" />
 	
     <!-- For Pagination Tag 설정-->
     <bean id="imageRenderer" class="egovframework.cccdms.common.util.PaginationRenderer"/>
@@ -77,7 +77,7 @@
         <property name="maxInMemorySize" value="100000000" />
     </bean>
     <!-- custom multi file resolver -->    
-    <bean id="local.MultiCommonsMultipartResolver" class="egovframework.com.cmm.web.EgovMultipartResolver">
+    <bean id="local.MultiCommonsMultipartResolver" class="egovframework.cccdms.common.EgovMultipartResolver">
         <property name="maxUploadSize" value="100000000" />
         <property name="maxInMemorySize" value="100000000" />
     </bean>

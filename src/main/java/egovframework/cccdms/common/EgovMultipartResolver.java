@@ -1,4 +1,4 @@
-package egovframework.com.cmm.web;
+package egovframework.cccdms.common;
 
 /*
  * Copyright 2001-2006 The Apache Software Foundation.

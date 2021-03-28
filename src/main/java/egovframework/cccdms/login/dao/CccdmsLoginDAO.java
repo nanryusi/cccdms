@@ -35,7 +35,25 @@ public class CccdmsLoginDAO extends EgovAbstractDAO {
 	public CccdmsLoginVO actionLogin(CccdmsLoginVO vo) throws Exception {
 		return (CccdmsLoginVO) select("cccdmsLoginDAO.actionLogin", vo);
 	}
-
+	
+	/**
+	 * 로그인 성공 시 마지막로그인일시, 아이피 업데이트, 로그인 실패 횟수 초기화
+	 * @param vo CccdmsLoginVO
+	 * @exception Exception
+	 */
+	public void updateLoginInfo(CccdmsLoginVO vo) throws Exception {
+		update("cccdmsLoginDAO.updateLoginInfo", vo);
+	}
+	
+	/**
+	 * 로그인 실패 시 실패 횟수 증가
+	 * @param vo CccdmsLoginVO
+	 * @exception Exception
+	 */
+	public void updateFailLoginCnt(CccdmsLoginVO vo) throws Exception {
+		update("cccdmsLoginDAO.updateFailLoginCnt", vo);
+	}
+	
 	/**
 	 * 아이디를 찾는다.
 	 * @param vo CccdmsLoginVO
