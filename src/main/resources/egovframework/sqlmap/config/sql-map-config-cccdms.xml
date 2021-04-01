@@ -6,5 +6,6 @@
 	<!-- 보육과정 cprcss START -->
 	<sqlMap resource="egovframework/sqlmap/cccdms/cprcss/CplanYr_SQL.xml"/>
 	<sqlMap resource="egovframework/sqlmap/cccdms/cprcss/CplanMn_SQL.xml"/>
+	<sqlMap resource="egovframework/sqlmap/cccdms/cprcss/CplanWk_SQL.xml"/>
 	<!-- 보육과정 cprcss END -->
 </sqlMapConfig>

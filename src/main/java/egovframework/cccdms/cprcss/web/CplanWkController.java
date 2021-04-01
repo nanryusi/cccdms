@@ -27,7 +27,7 @@ import java.util.List;
  * ||수정자       ||수정일     ||수정내용
  */
 @Controller
-@RequestMapping("/cccdms/cprcss/cplaWk")
+@RequestMapping("/cccdms/cprcss/cplanWk")
 public class CplanWkController {
     //Log
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -51,6 +51,7 @@ public class CplanWkController {
     public String mainPage(@ModelAttribute("searchVO") CplanWkListVo sVo,
                            HttpServletRequest request,
                            ModelMap model) throws Exception {
+        logger.debug("mainPage Start!!!");
 
         //페이징 기본 처리 start
         PaginationInfo paginationInfo = new PaginationInfo();
@@ -70,8 +71,9 @@ public class CplanWkController {
         String loginSchCd = (String)session.getAttribute("LoginSchlCd");
         sVo.setSchoolCode(loginSchCd);
 
-
+        logger.debug("selectCnt Start!");
         int totCnt = commonService.selectCnt(sVo, PROGRAM_ID);
+        logger.debug("totCnt : "+totCnt);
         List<CplanWkListVo> resultList = (List<CplanWkListVo>) commonService.selectList(sVo, PROGRAM_ID);
 
         paginationInfo.setTotalRecordCount(totCnt);
@@ -124,6 +126,9 @@ public class CplanWkController {
     @ResponseBody
     @RequestMapping("add_ajax.do")
     public HashMap add_ajax(@RequestBody String jsonStr, HttpServletRequest request) throws Exception {
+
+        logger.debug("add_ajax Start!");
+
         HashMap reMap = new HashMap();
         String reTxt = "";
 
@@ -144,7 +149,7 @@ public class CplanWkController {
                 commonService.insert(sVo, PROGRAM_ID);
                 reTxt = "Success";
             } else {
-                reTxt = "이미 등록된 문서입니다.";
+                reTxt = "해당기간 내에 등록된 문서가 있습니다.";
             }
         }else if(pathVariable.equals("mod")){
 

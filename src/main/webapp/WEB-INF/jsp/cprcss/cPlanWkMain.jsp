@@ -1,7 +1,7 @@
 <%-- Copyright 2021. Team oktop all rights reserved. --%>
 
 <%--
-  cPlanYrMain : 주간보육계획안
+  cPlanYrMain : 주간보육일지
   Created by ryusi   on 2021-03-23.
   Modification Information
   ||수정자       ||수정일     ||수정내용

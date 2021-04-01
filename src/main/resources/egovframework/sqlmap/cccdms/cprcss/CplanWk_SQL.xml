@@ -11,9 +11,10 @@
     <select id="cplanWk.selectCnt" parameterClass="CplanWkListVo" resultClass="java.lang.Integer">
 		<![CDATA[
         SELECT COUNT(*)
-        FROM tb_cplan_yr
+        FROM tb_cplan_wk
         WHERE 1 = 1
           AND school_cd = #schoolCode#
+          AND us_yn = 'Y'
         ]]>
 	</select>
 
@@ -21,17 +22,17 @@
     <select id="cplanWk.selectList" parameterClass="CplanWkListVo" resultClass="CplanWkListVo">
 		<![CDATA[
         SELECT idx AS idx
-             , CONCAT(stnd_yr, '년도 ', stnd_mn, '월 ', stnd_wk, '주차 월간보육 계획안')  AS title
-             , CONCAT(SUBSTRING(main_exp, 1, 10), '...')  AS contents
+             , CONCAT(stnd_yr, '년도 ', start_dt, ' ~ ', end_dt, ' 주간보육일지')  AS title
+             , CONCAT(SUBSTRING(morning_act, 1, 10), '...')  AS contents
              , DATE_FORMAT(reg_dt, '%Y.%m.%d')            AS regDt
              , reg_id                                     AS regId
              , DATE_FORMAT(mod_dt, '%Y.%m.%d')            AS modDt
              , mod_id                                     AS modId
-        FROM tb_cplan_mn
+        FROM tb_cplan_wk
         WHERE 1 = 1
           AND school_cd = #schoolCode#
           AND us_yn = 'Y'
-        ORDER BY stnd_yr, stnd_mn, stnd_wk DESC
+        ORDER BY stnd_yr, start_dt DESC
             LIMIT #recordCountPerPage#
         OFFSET #firstIndex#
         ]]>
@@ -55,13 +56,14 @@
     <select id="CplanWkDAO.selectCplanWkExistCnt" parameterClass="CplanWkVo" resultClass="java.lang.Integer">
 		<![CDATA[
         SELECT COUNT(*)
-        FROM tb_cplan_mn
+        FROM tb_cplan_wk
         WHERE 1 = 1
           AND school_cd = #schoolCode#
           AND class_cd = #classCode#
           AND stnd_yr = #stndYear#
-          AND stnd_mn = #stndMonth#
-          AND stnd_wk = #stndWeek#
+          AND ( #startDay# BETWEEN start_dt AND end_dt
+                OR #endDay# BETWEEN start_dt AND end_dt
+              )
           AND us_yn = 'Y'
         ]]>
 	</select>
@@ -70,13 +72,11 @@
     <delete id="cplanWk.delete" parameterClass="CplanWkVo">
         <![CDATA[
         DELETE
-        FROM tb_cplan_mn
+        FROM tb_cplan_wk
         WHERE 1 = 1
           AND school_cd = #schoolCode#
           AND class_cd = #classCode#
           AND stnd_yr = #stndYear#
-          AND stnd_mn = #stndMonth#
-          AND stnd_wk = #stndWeek#
           AND us_yn = 'N'
         ]]>
     </delete>
@@ -84,19 +84,30 @@
     <!-- 주간보육계획안 입력-->
     <insert id="cplanWk.insert" parameterClass="CplanWkVo">
         <![CDATA[
-        INSERT INTO tb_cplan_mn
+        INSERT INTO tb_cplan_wk
         ( idx
         , school_cd
         , class_cd
         , stnd_yr
-        , stnd_mn
-        , stnd_wk
-        , title
-        , main_exp
-        , outdr_act
-        , main_act
-        , play_mtl
-        , evnt_plan
+        , start_dt
+        , end_dt
+        , morning_act
+        , lunch_act
+        , brk_tm_act
+        , indoor_act
+        , outdoor_act
+        , adt_act
+        , first_eval_plan
+        , second_eval_plan
+        , third_eval_plan
+        , forth_eval_plan
+        , fifth_eval_plan
+        , next_eval_plan
+        , first_opr_spcf
+        , second_opr_spcf
+        , third_opr_spcf
+        , forth_opr_spcf
+        , fifth_opr_spcf
         , app_stat
         , us_yn
         , reg_dt
@@ -104,20 +115,31 @@
         , mod_dt
         , mod_id)
         VALUES ( (SELECT IFNULL(MAX(idx) + 1, 1)
-                  FROM tb_cplan_mn a
+                  FROM tb_cplan_wk a
                   WHERE a.school_cd = #schoolCode#
                  )
                , #schoolCode#
                , #classCode#
                , #stndYear#
-               , #stndMonth#
-               , #stndWeek#
-               , #title#
-               , #mainExp#
+               , #startDay#
+               , #endDay#
+               , #morningAct#
+               , #lunchAct#
+               , #breakTimeAct#
                , #outdoorAct#
-               , #mainAct#
-               , #playMtl#
-               , #eventPlan#
+               , #indoorAct#
+               , #additAct#
+               , #firstEvalPlan#
+               , #secondEvalPlan#
+               , #thirdEvalPlan#
+               , #forthEvalPlan#
+               , #fifthEvalPlan#
+               , #nextEvalPlan#
+               , #firstOprSpcf#
+               , #secondOprSpcf#
+               , #thirdOprSpcf#
+               , #forthOprSpcf#
+               , #fifthOprSpcf#
                , ''
                , 'Y'
                , NOW()
@@ -133,14 +155,7 @@
         UPDATE tb_cplan_mn
         SET class_cd = #classCode#
           , stnd_yr = #stndYear#
-          , stnd_mn = #stndMonth#
-          , stnd_wk = #stndWeek#
-          , title = #title#
-          , main_exp = #mainExp#
-          , outdr_act = #outdoorAct#
-          , main_act = #mainAct#
-          , play_mtl = #playMtl#
-          , evnt_plan = #eventPlan#
+
           , mod_dt = NOW()
           , mod_id = #id#
         WHERE idx = #idx#
@@ -155,14 +170,7 @@
              , A.school_cd    AS schoolCode
              , A.class_cd     AS classCode
              , A.stnd_yr      AS stndYear
-             , A.stnd_mn      AS stndMonth
-             , A.stnd_wk      AS stndWeek
-             , A.title        AS title
-             , A.main_exp     AS mainExp
-             , A.outdr_act    AS outdoorAct
-             , A.main_act     AS mainAct
-             , A.play_mtl     AS playMtl
-             , A.evnt_plan    AS eventPlan
+
              , A.app_stat     AS appStat
              , A.us_yn        AS usYn
              , DATE_FORMAT(A.reg_dt, '%Y.%m.%d')    AS regDt

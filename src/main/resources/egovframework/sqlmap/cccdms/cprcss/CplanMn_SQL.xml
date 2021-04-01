@@ -11,9 +11,10 @@
     <select id="cplanMn.selectCnt" parameterClass="CplanMnListVo" resultClass="java.lang.Integer">
 		<![CDATA[
         SELECT COUNT(*)
-        FROM tb_cplan_yr
+        FROM tb_cplan_mn
         WHERE 1 = 1
           AND school_cd = #schoolCode#
+          AND us_yn = 'Y'
         ]]>
 	</select>
 
