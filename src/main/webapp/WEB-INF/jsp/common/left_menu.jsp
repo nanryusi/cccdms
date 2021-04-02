@@ -10,10 +10,10 @@
 	</li>
 	<li class="sel">
 		<a href="/cccdms/cprcss/cplanWk/mainPage.do">주간보육일지</a>
-	</li>
+	</li> -->
 	<li class="sel" >
 		<a href="/cccdms/sample/main.do">샘플게시판</a>
-	</li> -->
+	</li>
 	<c:forEach var="resultLeftMenu" items="${resultLeftMenuList}" varStatus="status">
 	<li <c:if test="${resultLeftMenu.parMenuCd eq param.menuCd}">class="sel"</c:if>><a href="<c:out value="${resultLeftMenu.menuUrl}"/>?menuCd=<c:out value="${resultLeftMenu.parMenuCd}"/>" target="_self"><c:out value="${resultLeftMenu.menuNm}"/></a></li>
 	</c:forEach>
