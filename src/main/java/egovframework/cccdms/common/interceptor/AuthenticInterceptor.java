@@ -1,8 +1,13 @@
 package egovframework.cccdms.common.interceptor;
 
+import egovframework.cccdms.common.model.CccdmsMenuVO;
+import egovframework.cccdms.common.service.CccdmsMenuService;
 import egovframework.cccdms.common.util.CccdmsUserDetailsHelper;
 import egovframework.cccdms.login.model.CccdmsLoginVO;
 
+import java.util.List;
+
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +36,11 @@ import org.springframework.web.servlet.mvc.WebContentInterceptor;
  */
 
 public class AuthenticInterceptor extends WebContentInterceptor {
-
+	
+	/** CccdmsMenuService */
+	@Resource(name = "menuService")
+	private CccdmsMenuService menuService;
+	
 	/**
 	 * 세션에 계정정보(LoginVO)가 있는지 여부로 인증 여부를 체크한다.
 	 * 계정정보(LoginVO)가 없다면, 로그인 페이지로 이동한다.
@@ -40,6 +49,19 @@ public class AuthenticInterceptor extends WebContentInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException {
 		CccdmsLoginVO loginVO = (CccdmsLoginVO) CccdmsUserDetailsHelper.getAuthenticatedUser();
 		if (loginVO.getId() != null) {
+			
+			try {
+				
+				List<CccdmsMenuVO> resultTopMenuList = menuService.selectList("topMenu");
+				List<CccdmsMenuVO> resultLeftMenuList = menuService.selectList("leftMenu");
+				request.getSession().setAttribute("resultTopMenuList", resultTopMenuList);
+				request.getSession().setAttribute("resultLeftMenuList", resultLeftMenuList);
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+						
 			return true;
 		} else {
 			ModelAndView modelAndView = new ModelAndView("redirect:/cccdms/login/loginPage.do");

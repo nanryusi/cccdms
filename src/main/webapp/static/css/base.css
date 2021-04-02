@@ -1,12 +1,12 @@
 @font-face {
-	font-family: Nanum Gothic;
-	src: url(../font/NanumGothic-Regular.eot?#iefix) format("embedded-opentype"), url(../font/NanumGothic-Regular.woff2) format("woff2"), url(../font/NanumGothic-Regular.woff) format("woff"), url(../font/NanumGothic-Regular.ttf) format("truetype");
+	font-family: 'Nanum Gothic', sans-serif;
+	/* src: url(../font/NanumGothic-Regular.eot?#iefix) format("embedded-opentype"), url(../font/NanumGothic-Regular.woff2) format("woff2"), url(../font/NanumGothic-Regular.woff) format("woff"), url(../font/NanumGothic-Regular.ttf) format("truetype"); */
 	font-weight: 400;
 	font-style: normal;
 }
 @font-face {
-	font-family: Nanum Gothic;
-	src: url(../font/NanumGothic-Bold.eot?#iefix) format("embedded-opentype"), url(../font/NanumGothic-Bold.woff2) format("woff2"), url(../font/NanumGothic-Bold.woff) format("woff"), url(../font/NanumGothic-Bold.ttf) format("truetype");
+	font-family: 'Nanum Gothic', sans-serif;
+	/* src: url(../font/NanumGothic-Bold.eot?#iefix) format("embedded-opentype"), url(../font/NanumGothic-Bold.woff2) format("woff2"), url(../font/NanumGothic-Bold.woff) format("woff"), url(../font/NanumGothic-Bold.ttf) format("truetype"); */
 	font-weight: 700;
 	font-style: normal;
 }
@@ -259,7 +259,7 @@ iframe {margin: 0px; padding: 0px; border: currentColor; border-image: none; wid
 .indent3 {text-indent: 45px;}
 .indent4 {text-indent: 60px;}
 #wrap {min-width: 1200px;}
-#header {background: rgb(56, 126, 198); padding: 0px 210px; height: 52px; overflow: hidden; position: relative;}
+#header {background: rgb(56, 126, 198); padding: 0px 240px; height: 52px; overflow: hidden; position: relative;}
 #header h1 {padding: 10px 0px 0px 15px; left: 0px; top: 0px; width: 210px; text-align: left; color: rgb(255, 255, 255); line-height: 14px; letter-spacing: -1px; font-size: 16px; display: block; position: absolute; box-sizing: border-box;}
 #header h1 a {color: rgb(255, 255, 255);}
 #header h1 em {font-size: 11px; display: block;}
@@ -274,14 +274,20 @@ iframe {margin: 0px; padding: 0px; border: currentColor; border-image: none; wid
 #header #topNav #btn_logout {border: 1px solid rgb(255, 255, 255); border-image: none; width: 55px; height: 20px; text-align: center; color: rgb(255, 255, 255); line-height: 20px; margin-left: 10px; display: inline-block;}
 #footer {display: none;}
 #container {padding-left: 210px; position: relative;}
-#lnb {background: rgb(239, 239, 239); left: 0px; top: 0px; width: 210px; bottom: 0px; border-right-color: rgb(218, 217, 222); border-right-width: 1px; border-right-style: solid; position: absolute; box-sizing: border-box; margin-top: 52px;}
+#lnb {background: rgb(239, 239, 239); left: 0px; top: 0px; width: 240px; bottom: 0px; border-right-color: rgb(218, 217, 222); border-right-width: 1px; border-right-style: solid; position: absolute; box-sizing: border-box; margin-top: 52px;}
 #lnb h2 {background: rgb(80, 180, 230); height: 50px; text-align: center; color: rgb(255, 255, 255); line-height: 50px; font-size: 18px; font-weight: bold; vertical-align: middle; display: block;}
 #lnb ul {display: block;}
-#lnb ul li {display: block;}
+#lnb ul li {display: none;}
+/* #lnb ul.M01 {display: none;}
+#lnb ul.M02 {display: none;}
+#lnb ul.M03 {display: none;}
+#lnb ul.M04 {display: none;}
+#lnb ul.M05 {display: none;} */
+#lnb ul li.sel {display: block;}
 #lnb ul li a {display: block;}
 #lnb > ul {background: rgb(255, 255, 255);}
 #lnb > ul > li {border-bottom-color: rgb(212, 211, 216); border-bottom-width: 1px; border-bottom-style: solid; position: relative;}
-#lnb > ul > li > a {padding: 0px 16px; height: 40px; color: rgb(68, 68, 68); line-height: 40px; font-size: 14px;}
+#lnb > ul > li > a {padding: 0px 10px; height: 40px; color: rgb(68, 68, 68); line-height: 40px; font-size: 13px;}
 #lnb > ul > li.on > a {background: url("/SM/images/cms/bg_lnb_active.jpg") no-repeat right / auto 100% rgb(1, 64, 133); color: rgb(255, 255, 255);}
 #lnb > ul > li.on > i {color: rgb(255, 255, 255);}
 #lnb > ul > li > ul {background: rgb(243, 243, 243); padding: 5px 10px 5px 20px; border-top-color: rgb(212, 211, 216); border-top-width: 1px; border-top-style: solid;}
@@ -575,7 +581,7 @@ table.form table.list th {padding: 6px 3px; text-align: center;}
 .inp_inline {vertical-align: top; display: inline-block;}
 .clickDetail td {overflow: hidden; white-space: nowrap; cursor: pointer; -ms-text-overflow: ellipsis;}
 .clickDetail td.active {overflow: inherit; white-space: inherit; -ms-text-overflow: inherit;}
-#wrapper {padding: 0px 35px 35px; position: relative; min-height: 700px; margin-left: 210px;}
+#wrapper {padding: 0px 35px 35px; position: relative; min-height: 700px; margin-left: 240px;}
 .sm_title {background: url("/SM/images/icon_contentTitle.png") no-repeat left 35px; padding: 30px 0px 0px 33px; height: 47px; color: rgb(33, 33, 33); font-size: 22px; margin-bottom: 40px; border-bottom-color: rgb(221, 221, 223); border-bottom-width: 3px; border-bottom-style: solid; position: relative;}
 .sm_title::after {left: 0px; width: 200px; bottom: -3px; border-bottom-color: rgb(44, 44, 44); border-bottom-width: 3px; border-bottom-style: solid; display: block; position: absolute; content: "";}
 .loca {top: 20px; right: 0px; color: rgb(102, 102, 102); font-size: 12px; position: absolute;}

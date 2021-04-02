@@ -6,7 +6,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator" %>
-<script type="text/javascript" src="/static/js/cccdms/cm.function.js"></script>
 <div class="sm_title">샘플게시판</div>
 <form:form commandName="sampleVO" name="actionForm" method="post" enctype="multipart/form-data" >
 <form:hidden path="seqNo"/>

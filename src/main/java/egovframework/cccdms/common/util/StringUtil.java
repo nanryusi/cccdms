@@ -33,7 +33,6 @@ package egovframework.cccdms.common.util;
  * limitations under the License.
  */
 import java.io.UnsupportedEncodingException;
-import java.math.BigDecimal;
 import java.security.SecureRandom;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;

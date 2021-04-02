@@ -15,8 +15,6 @@ import egovframework.cccdms.common.util.FileMngUtil;
 import egovframework.cccdms.sample.model.CccdmsSampleVO;
 import egovframework.cccdms.common.EgovMessageSource;
 import egovframework.cccdms.common.model.FileVO;
-import egovframework.rte.fdl.cmmn.trace.LeaveaTrace;
-import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 import java.util.List;
@@ -33,21 +31,13 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value = "/cccdms/sample")
 public class CccdmsSampleController {
 
-	/** EgovLoginService */
+	/** CccdmsCommonService */
 	@Resource(name = "commonService")
 	private CccdmsCommonService commonService;
 
 	/** EgovMessageSource */
 	@Resource(name = "egovMessageSource")
 	EgovMessageSource egovMessageSource;
-
-	/** EgovPropertyService */
-	@Resource(name = "propertiesService")
-	protected EgovPropertyService propertiesService;
-
-	/** TRACE */
-	@Resource(name = "leaveaTrace")
-	LeaveaTrace leaveaTrace;
 	
 	@Resource(name = "FileMngService")
     private FileMngService fileMngService;
@@ -55,7 +45,7 @@ public class CccdmsSampleController {
     @Resource(name = "FileMngUtil")
     private FileMngUtil fileUtil;
 	
-	private String PROGRAM_ID = "sample";
+	private final String PROGRAM_ID = "sample";
 	
 	/**
 	 * 샘플게시판 목록
@@ -76,7 +66,7 @@ public class CccdmsSampleController {
 		sampleVO.setLastIndex(paginationInfo.getLastRecordIndex());
 		sampleVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
-		int totCnt = commonService.selectCnt(sampleVO, "sample");// 목록 카운트
+		int totCnt = commonService.selectCnt(sampleVO, PROGRAM_ID);// 목록 카운트
 
 		@SuppressWarnings("unchecked")
 		List<CccdmsSampleVO> resultList = (List<CccdmsSampleVO>) commonService.selectList(sampleVO, PROGRAM_ID);// 전체목록 조회

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
-<sqlMap namespace="cccdmsMenuDAO">
+<sqlMap namespace="menuDAO">
 
 	<typeAlias alias="cccdmsMenuVO" type="egovframework.cccdms.common.model.CccdmsMenuVO"/>
 
-	<select id="cccdmsMenuDAO.selectList" resultClass="cccdmsMenuVO">
+	<select id="topMenu.selectList" resultClass="cccdmsMenuVO">
 		SELECT menu_cd menuCd
 			, menu_nm menuNm
 			, par_menu_cd parMenuCd
@@ -14,6 +14,20 @@
 			, menu_url menuUrl
 		FROM TB_MENU
 		WHERE DEL_YN = 'N'
+		AND menu_lev = 'M1'
+		ORDER BY menu_cd, menu_sn
+	</select>
+	
+	<select id="leftMenu.selectList" resultClass="cccdmsMenuVO">
+		SELECT menu_cd menuCd
+			, menu_nm menuNm
+			, par_menu_cd parMenuCd
+			, menu_lev menuLev
+			, menu_sn menuSn
+			, menu_url menuUrl
+		FROM TB_MENU
+		WHERE DEL_YN = 'N'
+		AND menu_lev = 'M2'
 		ORDER BY menu_cd, menu_sn
 	</select>
 </sqlMap>
