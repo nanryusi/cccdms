@@ -35,8 +35,9 @@
 	<!-- cccdms 로그인 체크가 필요한 URL과 로그인 여부를 체크해준다 -->
 	<mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/cccdms/main/*.do"/>
-            <mvc:mapping path="/cccdms/sample/*.do"/>
+        	<mvc:mapping path="/cccdms/**/*.do"/>
+            <!-- <mvc:mapping path="/cccdms/main/*.do"/>
+            <mvc:mapping path="/cccdms/sample/*.do"/> -->
             <mvc:exclude-mapping path="/cccdms/login/*.do"/>
 		    <bean class="egovframework.cccdms.common.interceptor.AuthenticInterceptor" />
         </mvc:interceptor>
