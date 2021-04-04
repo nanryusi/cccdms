@@ -1,12 +1,12 @@
 @font-face {
 	font-family: NanumGothic;
-	src: url(/share/font/NanumGothic-Regular.eot?#iefix) format("embedded-opentype"), url(/share/font/NanumGothic-Regular.ttf) format("truetype");
+	/* src: url(/share/font/NanumGothic-Regular.eot?#iefix) format("embedded-opentype"), url(/share/font/NanumGothic-Regular.ttf) format("truetype"); */
 	font-weight: 400;
 	font-style: normal;
 }
 @font-face {
 	font-family: NanumGothicB;
-	src: url(/share/font/NanumGothic-Bold.eot?#iefix) format("embedded-opentype"), url(/share/font/NanumGothic-Bold.ttf) format("truetype");
+	/* src: url(/share/font/NanumGothic-Bold.eot?#iefix) format("embedded-opentype"), url(/share/font/NanumGothic-Bold.ttf) format("truetype"); */
 	font-weight: 700;
 	font-style: normal;
 }
@@ -60,7 +60,7 @@ hr {display: none;}
 .w80 {width: 80%;}
 .w90 {width: 90%;}
 .w100 {width: 100%;}
-.dot_line {background: url("/img/sub/dot.gif") no-repeat center; margin: 5px 0px; width: 100%; height: 10px; clear: both;}
+/* .dot_line {background: url("/img/sub/dot.gif") no-repeat center; margin: 5px 0px; width: 100%; height: 10px; clear: both;} */
 .inline {display: inline;}
 .block {display: block;}
 .clear {clear: both;}

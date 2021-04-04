@@ -1,34 +1,9 @@
-.loginWrap {left: 50px; top: 50px; right: 50px; bottom: 50px; position: absolute; min-height: 400px; min-width: 800px;}
-.loginWrap .loginLeft {background: url("../../images/bg_loginLeft.jpg"); left: 0px; top: 0px; width: 45%; bottom: 0px; position: absolute;}
-.loginWrap .loginLeft .loginVisual {top: 40%; width: 380px; height: 110px; right: 40px; margin-top: -55px; position: absolute;}
-.loginWrap .loginLeft .loginVisual h1 {left: 150px; top: 0px; color: rgb(255, 255, 255); font-size: 16px; display: block; position: absolute;}
-.loginWrap .loginLeft .loginVisual span {left: 150px; bottom: 10px; color: rgb(238, 238, 238); font-size: 12px; display: block; position: absolute;}
-.loginWrap .loginRight {background: url("../../images/bg_loginRight.jpg"); top: 0px; width: 55%; right: 0px; bottom: 0px; position: absolute;}
-.loginWrap .loginRight form {left: 60px; top: 40%; width: 220px; height: 90px; padding-right: 100px; margin-top: -45px; position: absolute;}
-.loginWrap .loginRight form input[type='text'] {background: rgb(255, 255, 255); border-radius: 5px; border: 1px solid rgb(203, 203, 203); border-image: none; width: 100%; height: 40px; text-indent: 10px;}
-.loginWrap .loginRight form input[type='password'] {background: rgb(255, 255, 255); border-radius: 5px; border: 1px solid rgb(203, 203, 203); border-image: none; width: 100%; height: 40px; text-indent: 10px;}
-.loginWrap .loginRight form input[type='password'] {margin-top: 10px;}
-.loginWrap .loginRight form input[type='submit'] {background: rgb(56, 126, 198); border-radius: 5px; border: 0px currentColor; border-image: none; top: 0px; width: 90px; height: 90px; text-align: center; right: 0px; color: rgb(255, 255, 255); font-size: 15px; position: absolute;}
-.loginWrap .loginFooter {text-align: center; right: 10px; bottom: 10px; color: rgb(102, 102, 102); position: absolute;}
 .ad_main_search {background: rgb(240, 245, 249); padding: 6px; text-align: center; line-height: 32px; margin-bottom: 10px; border-top-color: rgb(62, 62, 62); border-bottom-color: rgb(205, 220, 230); border-top-width: 2px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;}
 .ad_main_search a.date {background: rgb(248, 248, 248); border: 1px solid rgb(213, 216, 220); border-image: none; width: 60px; height: 27px; text-align: center; line-height: 25px; display: inline-block;}
 .ad_main_search a.search {background: rgb(82, 95, 120); width: 80px; height: 20px; text-align: center; color: rgb(255, 255, 255); line-height: 28px; display: inline-block;}
 .dns {width: 0px; height: 0px; overflow: hidden; display: none; visibility: hidden; position: absolute;}
 .search {text-align: center; padding-bottom: 10px;}
 .search select {border: 1px solid rgb(225, 225, 225); border-image: none; height: 22px;}
-.paging {padding: 30px 0px; text-align: center;}
-.paging a {font-size: 11px; font-weight: bold;}
-.paging a span {left: -9999em; top: -9999em; position: absolute;}
-.paging span span {left: -9999em; top: -9999em; position: absolute;}
-.paging .first {background: url("../images/seocho/board/icon_first.gif") no-repeat 0px 4px; padding: 0px 0px 0px 16px; margin-right: 15px;}
-.paging .prev {background: url("../images/seocho/board/icon_prev.gif") no-repeat 0px 4px; padding: 0px 0px 0px 12px; margin-right: 15px;}
-.paging .num {width: 25px; height: 22px; text-align: center; line-height: 22px; padding-right: 3px; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid; display: inline-block;}
-.paging :first-child.num {padding-left: 4px; border-left-color: rgb(204, 204, 204); border-left-width: 1px; border-left-style: solid;}
-.paging .prev + .num {border-left-color: rgb(204, 204, 204); border-left-width: 1px; border-left-style: solid;}
-.paging .next {background: url("../images/seocho/board/icon_next.gif") no-repeat right 4px; padding: 0px 12px 0px 0px; margin-left: 15px;}
-.paging .last {background: url("../images/seocho/board/icon_last.gif") no-repeat right 4px; padding: 0px 16px 0px 0px; margin-left: 15px;}
-.paging .current {color: rgb(209, 35, 56); text-decoration: underline;}
-.paging + .btns {margin-top: -40px;}
 .board .open {background: rgb(46, 99, 170); border-radius: 3px; border: 1px solid rgb(11, 71, 152); border-image: none; width: 50px; height: 16px; color: rgb(255, 255, 255); line-height: 16px; font-size: 12px; display: inline-block;}
 .board .adno-open {background: rgb(198, 0, 19); border-radius: 3px; border: 1px solid rgb(255, 0, 0); border-image: none; width: 50px; height: 16px; color: rgb(255, 255, 255); line-height: 16px; font-size: 12px; display: inline-block;}
 .board .no-open {background: rgb(146, 145, 145); border-radius: 3px; border: 1px solid rgb(118, 118, 118); border-image: none; width: 50px; height: 16px; color: rgb(255, 255, 255); line-height: 16px; font-size: 12px; display: inline-block;}
@@ -38,16 +13,6 @@
 .board .status-ia {background: rgb(134, 229, 127); border-radius: 3px; border: 1px solid rgb(63, 63, 63); border-image: none; width: 70px; height: 16px; color: rgb(255, 255, 255); line-height: 16px; font-size: 12px; display: inline-block;}
 .board .status-move {background: rgb(255, 255, 255); border-radius: 3px; border: 1px solid rgb(96, 68, 162); border-image: none; width: 80px; height: 16px; color: rgb(0, 0, 0); line-height: 16px; font-size: 12px; display: inline-block;}
 .board .status-end2 {background: rgb(228, 111, 53); border-radius: 3px; border: 1px solid rgb(199, 81, 22); border-image: none; width: 70px; height: 16px; text-align: center; color: rgb(0, 0, 0); line-height: 16px; font-size: 11px; display: inline-block;}
-.list1 td.holYear {color: rgb(182, 26, 63);}
-.list1 td.holYear span {color: rgb(182, 26, 63); font-family: tahoma, dotum, sans-serif; font-size: 32px;}
-.list1 td.holDate {padding: 20px; text-align: left;}
-.list1 td.holDate a {margin-bottom: 5px;}
-.currYearMonth {text-align: center; color: rgb(182, 26, 63);}
-.currYearMonth span {color: rgb(182, 26, 63); font-family: tahoma, dotum, sans-serif; font-size: 32px;}
-.currYearMonth a {color: rgb(182, 26, 63); font-family: tahoma, dotum, sans-serif; font-size: 32px;}
-.roomAmount {border-width: 0px; text-align: right; color: rgb(187, 18, 3); font-size: 18px; font-weight: 600;}
-.title1 {background: url("/images/yangcheon/common/content/icon_title1.gif") no-repeat 0px 6px; padding: 0px 0px 12px 12px; color: rgb(65, 88, 110); font-size: 15px; font-weight: bold;}
-.title2 {background: url("/images/yangcheon/common/content/icon_title2.gif") no-repeat 0px 6px; padding: 0px 0px 12px 12px; color: rgb(65, 88, 110); font-size: 15px; font-weight: bold;}
 .list-group {padding-bottom: 15px;}
 .list-group .btn-right {top: 3px; right: 20px; position: absolute;}
 .list-group span.title_txt {width: 85%; font-size: 14px; font-weight: bold; display: inline-block;}
