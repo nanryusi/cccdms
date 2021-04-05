@@ -19,7 +19,7 @@ import java.io.Serializable;
  *  @see
  *  
  */
-public class CccdmsLoginVO implements Serializable{
+public class LoginVO implements Serializable{
 	
 	/**
 	 * 
@@ -52,7 +52,8 @@ public class CccdmsLoginVO implements Serializable{
 	private String regDt;
 	/** 학교 코드 */
 	private String schoolCd;
-
+	/** 승인여부 */
+	private String authYN;
 
 	public String getId() {
 		return id;
@@ -131,5 +132,11 @@ public class CccdmsLoginVO implements Serializable{
 	}
 	public void setSchoolCd(String schoolCd) {
 		this.schoolCd = schoolCd;
+	}
+	public String getAuthYN() {
+		return authYN;
+	}
+	public void setAuthYN(String authYN) {
+		this.authYN = authYN;
 	}
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import egovframework.cccdms.common.service.FileMngService;
-import egovframework.cccdms.common.util.CccdmsUserDetailsHelper;
+import egovframework.cccdms.common.util.UserDetailsHelper;
 import egovframework.cccdms.common.model.FileVO;
 
 import javax.annotation.Resource;
@@ -113,7 +113,7 @@ public class FileMngController {
     	ModelAndView mav = new ModelAndView();
     	MappingJackson2JsonView jsonView = new MappingJackson2JsonView();
     	
-    	Boolean isAuthenticated = CccdmsUserDetailsHelper.isAuthenticated();
+    	Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
     	Boolean rtn = false;
     	
 		if (isAuthenticated) {

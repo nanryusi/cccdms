@@ -12,7 +12,7 @@ import java.util.Map;
 
 import egovframework.cccdms.common.service.FileMngService;
 import egovframework.cccdms.common.model.FileVO;
-import egovframework.cccdms.common.util.CccdmsUserDetailsHelper;
+import egovframework.cccdms.common.util.UserDetailsHelper;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -127,7 +127,7 @@ public class FileDownloadController {
 
 		String atchFileId = (String) commandMap.get("atchFileId");
 		String fileSn = (String) commandMap.get("fileSn");
-		Boolean isAuthenticated = CccdmsUserDetailsHelper.isAuthenticated();
+		Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
 		
 		if (isAuthenticated) {
 			FileVO fileVO = new FileVO();

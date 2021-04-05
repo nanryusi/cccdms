@@ -19,7 +19,7 @@ import java.util.List;
  *
  * </pre>
  */
-public interface CccdmsCommonService {
+public interface CommonService {
 	
 	/**
      * 목록카운트을 불러온다.

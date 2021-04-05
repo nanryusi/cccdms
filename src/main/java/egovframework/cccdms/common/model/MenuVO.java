@@ -18,7 +18,7 @@ import java.io.Serializable;
  *  @see
  *  
  */
-public class CccdmsMenuVO implements Serializable{
+public class MenuVO implements Serializable{
 	
 	/**
 	 * 

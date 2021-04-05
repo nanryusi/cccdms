@@ -25,24 +25,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>경량환경 단순홈페이지 템플릿 - 로그인</title>
-<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+<!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/"> -->
 <link rel="stylesheet" href="/static/css/bootstrap/bootstrap.css">
-<link rel="stylesheet" href="/static/css/bak/signin.css">
-<style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+<link rel="stylesheet" href="/static/css/signin.css">
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-</style>
 <script type="text/javascript">
 function actionLogin() {
     if (document.loginForm.id.value =="") {
@@ -58,6 +44,11 @@ function actionLogin() {
         //document.loginForm.action="<c:url value='/j_spring_security_check'/>";
         document.loginForm.submit();
     }
+}
+
+function memberJoin() {
+	alert("aaa");
+	window.location.href="<c:url value='/cccdms/join/insertForm.do'/>";
 }
 
 function setCookie (name, value, expires) {
@@ -111,16 +102,19 @@ function fnInit() {
     <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1> -->
     <!-- <label for="inputId" class="visually-hidden">아이디</label> -->
-    <input type="text" id="id" name="id" class="form-control" placeholder="아이디를 입력하세요." required autofocus>
+    <input type="text" id="id" name="id" class="form-control" placeholder="아이디를 입력하세요.">
     <!-- <label for="inputPassword" class="visually-hidden">비밀번호</label> -->
-    <input type="password" id="password" name="password" class="form-control" placeholder="비밀번호를 입력하세요." required>
+    <input type="password" id="password" name="password" class="form-control" placeholder="비밀번호를 입력하세요.">
 
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" name="checkId" onclick="saveid(this.form);" id="checkId" value="ID저장"> ID저장
       </label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" onclick="actionLogin();">로그인</button>
+    <div class="d-grid gap-2 d-md-block">
+    <button class="w-45 btn btn-primary" onclick="actionLogin();">로그인</button>
+    <button class="w-45 btn btn-success" onclick="memberJoin();">사용자가입</button>
+    </div>
     <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> -->
   </form:form>
 </div>

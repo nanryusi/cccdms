@@ -3,7 +3,7 @@ package egovframework.cccdms.common.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import egovframework.cccdms.login.model.CccdmsLoginVO;
+import egovframework.cccdms.login.model.LoginVO;
 import egovframework.rte.fdl.string.EgovObjectUtil;
 
 import org.springframework.web.context.request.RequestAttributes;
@@ -29,7 +29,7 @@ import org.springframework.web.context.request.RequestContextHolder;
  * </pre>
  */
 
-public class CccdmsUserDetailsHelper {
+public class UserDetailsHelper {
 	
 		/**
 		 * 인증된 사용자객체를 VO형식으로 가져온다.
@@ -37,7 +37,7 @@ public class CccdmsUserDetailsHelper {
 		 */
 		public static Object getAuthenticatedUser() {
 			return RequestContextHolder.getRequestAttributes().getAttribute("LoginVO", RequestAttributes.SCOPE_SESSION) ==null ?
-					new CccdmsLoginVO() : (CccdmsLoginVO) RequestContextHolder.getRequestAttributes().getAttribute("LoginVO", RequestAttributes.SCOPE_SESSION);
+					new LoginVO() : (LoginVO) RequestContextHolder.getRequestAttributes().getAttribute("LoginVO", RequestAttributes.SCOPE_SESSION);
 
 		}
 

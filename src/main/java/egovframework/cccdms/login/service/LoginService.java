@@ -1,6 +1,6 @@
 package egovframework.cccdms.login.service;
 
-import egovframework.cccdms.login.model.CccdmsLoginVO;
+import egovframework.cccdms.login.model.LoginVO;
 
 /**
  * 일반 로그인을 처리하는 비즈니스 구현 클래스
@@ -20,7 +20,7 @@ import egovframework.cccdms.login.model.CccdmsLoginVO;
  *
  *  </pre>
  */
-public interface CccdmsLoginService {
+public interface LoginService {
 
 	/**
 	 * 일반 로그인을 처리한다
@@ -29,21 +29,21 @@ public interface CccdmsLoginService {
 	 * @param vo    CccdmsLoginVO
 	 * @exception Exception Exception
 	 */
-	CccdmsLoginVO actionLogin(CccdmsLoginVO vo) throws Exception;
+	LoginVO actionLogin(LoginVO vo) throws Exception;
 	
 	/**
 	 * 로그인 성공 시 마지막로그인일시, 아이피 업데이트, 로그인 실패 횟수 초기화
 	 * @param vo CccdmsLoginVO
 	 * @exception Exception
 	 */
-	void updateLoginInfo(CccdmsLoginVO vo) throws Exception;
+	void updateLoginInfo(LoginVO vo) throws Exception;
 	
 	/**
 	 * 로그인 실패 시 실패 횟수 증가
 	 * @param vo CccdmsLoginVO
 	 * @exception Exception
 	 */
-	void updateFailLoginCnt(CccdmsLoginVO vo) throws Exception;
+	void updateFailLoginCnt(LoginVO vo) throws Exception;
 	
 	/**
 	 * 아이디를 찾는다.
@@ -52,7 +52,7 @@ public interface CccdmsLoginService {
 	 * @param vo    CccdmsLoginVO
 	 * @exception Exception Exception
 	 */
-	CccdmsLoginVO searchId(CccdmsLoginVO vo) throws Exception;
+	LoginVO searchId(LoginVO vo) throws Exception;
 
 	/**
 	 * 비밀번호를 찾는다.
@@ -61,6 +61,6 @@ public interface CccdmsLoginService {
 	 * @param vo    CccdmsLoginVO
 	 * @exception Exception Exception
 	 */
-	boolean searchPassword(CccdmsLoginVO vo) throws Exception;
+	boolean searchPassword(LoginVO vo) throws Exception;
 
 }

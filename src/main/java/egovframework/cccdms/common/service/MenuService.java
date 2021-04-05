@@ -2,7 +2,7 @@ package egovframework.cccdms.common.service;
 
 import java.util.List;
 
-import egovframework.cccdms.common.model.CccdmsMenuVO;
+import egovframework.cccdms.common.model.MenuVO;
 
 /**
  *
@@ -21,7 +21,7 @@ import egovframework.cccdms.common.model.CccdmsMenuVO;
  *
  * </pre>
  */
-public interface CccdmsMenuService {
+public interface MenuService {
 	
 	/**
      * 목록을 불러온다.
@@ -30,5 +30,5 @@ public interface CccdmsMenuService {
      * @return
      * @throws Exception
      */
-	List<CccdmsMenuVO> selectList(String str) throws Exception;
+	List<MenuVO> selectList(String str) throws Exception;
 }

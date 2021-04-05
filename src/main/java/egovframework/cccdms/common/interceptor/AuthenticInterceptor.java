@@ -1,9 +1,9 @@
 package egovframework.cccdms.common.interceptor;
 
-import egovframework.cccdms.common.model.CccdmsMenuVO;
-import egovframework.cccdms.common.service.CccdmsMenuService;
-import egovframework.cccdms.common.util.CccdmsUserDetailsHelper;
-import egovframework.cccdms.login.model.CccdmsLoginVO;
+import egovframework.cccdms.common.model.MenuVO;
+import egovframework.cccdms.common.service.MenuService;
+import egovframework.cccdms.common.util.UserDetailsHelper;
+import egovframework.cccdms.login.model.LoginVO;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class AuthenticInterceptor extends WebContentInterceptor {
 	
 	/** CccdmsMenuService */
 	@Resource(name = "menuService")
-	private CccdmsMenuService menuService;
+	private MenuService menuService;
 	
 	/**
 	 * 세션에 계정정보(LoginVO)가 있는지 여부로 인증 여부를 체크한다.
@@ -47,13 +47,11 @@ public class AuthenticInterceptor extends WebContentInterceptor {
 	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException {
-		CccdmsLoginVO loginVO = (CccdmsLoginVO) CccdmsUserDetailsHelper.getAuthenticatedUser();
+		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if (loginVO.getId() != null) {
-			
 			try {
-				
-				List<CccdmsMenuVO> resultTopMenuList = menuService.selectList("topMenu");
-				List<CccdmsMenuVO> resultLeftMenuList = menuService.selectList("leftMenu");
+				List<MenuVO> resultTopMenuList = menuService.selectList("topMenu");
+				List<MenuVO> resultLeftMenuList = menuService.selectList("leftMenu");
 				request.getSession().setAttribute("resultTopMenuList", resultTopMenuList);
 				request.getSession().setAttribute("resultLeftMenuList", resultLeftMenuList);
 				

@@ -21,7 +21,7 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository("commonDAO")
-public class CccdmsCommonDAO extends EgovComAbstractDAO {
+public class CommonDAO extends EgovComAbstractDAO {
 	
 	/**
      * 목록카운트을 불러온다.

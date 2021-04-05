@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
-import egovframework.cccdms.login.model.CccdmsLoginVO;
-import egovframework.cccdms.login.service.CccdmsLoginService;
+import egovframework.cccdms.login.model.LoginVO;
+import egovframework.cccdms.login.service.LoginService;
 import egovframework.cccdms.common.EgovMessageSource;
-import egovframework.rte.fdl.cmmn.trace.LeaveaTrace;
-import egovframework.rte.fdl.property.EgovPropertyService;
 
 import java.net.InetAddress;
 
@@ -23,30 +21,22 @@ import javax.servlet.http.HttpServletRequest;
  * Created by hong on 2021-02-14
  */
 @Controller
-public class CccdmsLoginController {
+public class LoginController {
 
 	/** EgovLoginService */
-	@Resource(name = "cccdmsLoginService")
-	private CccdmsLoginService cccdmsLoginService;
+	@Resource(name = "loginService")
+	private LoginService loginService;
 
 	/** EgovMessageSource */
 	@Resource(name = "egovMessageSource")
 	EgovMessageSource egovMessageSource;
-
-	/** EgovPropertyService */
-	@Resource(name = "propertiesService")
-	protected EgovPropertyService propertiesService;
-
-	/** TRACE */
-	@Resource(name = "leaveaTrace")
-	LeaveaTrace leaveaTrace;	
 
 	//로그인페이지 호출
 	@RequestMapping(value = "/cccdms/login/loginPage.do")
 	public String getMainPage(HttpServletRequest request, ModelMap model)
 	throws Exception{
 
-		return "main/CccdmsLogin";
+		return "login/login";
 	}
 
 	/**
@@ -57,10 +47,10 @@ public class CccdmsLoginController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/cccdms/login/actionLogin.do")
-	public String actionLogin(@ModelAttribute("cccdmsloginVO") CccdmsLoginVO loginVO, HttpServletRequest request, ModelMap model) throws Exception {
+	public String actionLogin(@ModelAttribute("cccdmsloginVO") LoginVO loginVO, HttpServletRequest request, ModelMap model) throws Exception {
 
 		// 1. 일반 로그인 처리
-		CccdmsLoginVO resultVO = cccdmsLoginService.actionLogin(loginVO);
+		LoginVO resultVO = loginService.actionLogin(loginVO);
 		
 		InetAddress local = InetAddress.getLocalHost();
 		String ip = local.getHostAddress();
@@ -70,18 +60,25 @@ public class CccdmsLoginController {
 		boolean loginPolicyYn = true;
 
 		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("") && loginPolicyYn) {
-			request.getSession().setAttribute("LoginVO", resultVO);
-			request.getSession().setAttribute("LoginId", resultVO.getId());
-			request.getSession().setAttribute("LoginSchlCd", resultVO.getSchoolCd());
-			
-			cccdmsLoginService.updateLoginInfo(resultVO);
-			
-			return "redirect:/cccdms/main/main.do";
+			//승인 여부
+			if("Y".equals(resultVO.getAuthYN())){
+				request.getSession().setAttribute("LoginVO", resultVO);
+				request.getSession().setAttribute("LoginId", resultVO.getId());
+				request.getSession().setAttribute("LoginSchlCd", resultVO.getSchoolCd());
+				
+				loginService.updateLoginInfo(resultVO);
+				
+				return "redirect:/cccdms/main/main.do";
+			}else {
+				model.addAttribute("message", egovMessageSource.getMessage("fail.common.loginAuth"));
+				return "login/login";
+			}
 		} else {
-			cccdmsLoginService.updateFailLoginCnt(loginVO);
+			//로그인 실패 시 실패횟수 증가
+			loginService.updateFailLoginCnt(loginVO);
 			
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "main/CccdmsLogin";
+			return "login/login";
 		}
 
 	}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="join">
+
+	<typeAlias alias="joinVO" type="egovframework.cccdms.login.model.LoginVO"/>
+
+	<!-- 아이디 중복 확인 -->
+	<select id="join.selectCnt" parameterClass="joinVO" resultClass="int">
+         SELECT count(*)
+         FROM TB_USER_INFO
+         WHERE ID = #id#
+	</select>
+	
+	<!-- 사용자 정보 입력 -->
+	<insert id="join.insert" parameterClass="joinVO">
+		INSERT INTO TB_USER_INFO
+					( id
+					, password
+					, user_level
+					, user_group
+					, school_cd
+					, reg_dt
+					, fail_login_cnt
+					, user_name
+					, user_ip
+					, auth_yn)
+					values
+					( ##
+					, ##
+					, ##
+					, ##
+					, ##
+					, sysdate()
+					, 0
+					, ##
+					, ##
+					, 'N')
+	</insert>
+	
+	<update id="join.update" parameterClass="joinVO">
+		
+	</update>
+</sqlMap>

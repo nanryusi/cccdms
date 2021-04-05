@@ -1,6 +1,6 @@
 package egovframework.cccdms.login.dao;
 
-import egovframework.cccdms.login.model.CccdmsLoginVO;
+import egovframework.cccdms.login.model.LoginVO;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 
 import org.springframework.stereotype.Repository;
@@ -23,8 +23,8 @@ import org.springframework.stereotype.Repository;
  *
  *  </pre>
  */
-@Repository("cccdmsLoginDAO")
-public class CccdmsLoginDAO extends EgovAbstractDAO {
+@Repository("loginDAO")
+public class LoginDAO extends EgovAbstractDAO {
 
 	/**
 	 * 일반 로그인을 처리한다
@@ -32,8 +32,8 @@ public class CccdmsLoginDAO extends EgovAbstractDAO {
 	 * @return CccdmsLoginVO
 	 * @exception Exception
 	 */
-	public CccdmsLoginVO actionLogin(CccdmsLoginVO vo) throws Exception {
-		return (CccdmsLoginVO) select("cccdmsLoginDAO.actionLogin", vo);
+	public LoginVO actionLogin(LoginVO vo) throws Exception {
+		return (LoginVO) select("login.actionLogin", vo);
 	}
 	
 	/**
@@ -41,8 +41,8 @@ public class CccdmsLoginDAO extends EgovAbstractDAO {
 	 * @param vo CccdmsLoginVO
 	 * @exception Exception
 	 */
-	public void updateLoginInfo(CccdmsLoginVO vo) throws Exception {
-		update("cccdmsLoginDAO.updateLoginInfo", vo);
+	public void updateLoginInfo(LoginVO vo) throws Exception {
+		update("login.updateLoginInfo", vo);
 	}
 	
 	/**
@@ -50,8 +50,8 @@ public class CccdmsLoginDAO extends EgovAbstractDAO {
 	 * @param vo CccdmsLoginVO
 	 * @exception Exception
 	 */
-	public void updateFailLoginCnt(CccdmsLoginVO vo) throws Exception {
-		update("cccdmsLoginDAO.updateFailLoginCnt", vo);
+	public void updateFailLoginCnt(LoginVO vo) throws Exception {
+		update("login.updateFailLoginCnt", vo);
 	}
 	
 	/**
@@ -60,8 +60,8 @@ public class CccdmsLoginDAO extends EgovAbstractDAO {
 	 * @return CccdmsLoginVO
 	 * @exception Exception
 	 */
-	public CccdmsLoginVO searchId(CccdmsLoginVO vo) throws Exception {
-		return (CccdmsLoginVO) select("cccdmsLoginDAO.searchId", vo);
+	public LoginVO searchId(LoginVO vo) throws Exception {
+		return (LoginVO) select("login.searchId", vo);
 	}
 
 	/**
@@ -70,8 +70,8 @@ public class CccdmsLoginDAO extends EgovAbstractDAO {
 	 * @return CccdmsLoginVO
 	 * @exception Exception
 	 */
-	public CccdmsLoginVO searchPassword(CccdmsLoginVO vo) throws Exception {
-		return (CccdmsLoginVO) select("cccdmsLoginDAO.searchPassword", vo);
+	public LoginVO searchPassword(LoginVO vo) throws Exception {
+		return (LoginVO) select("login.searchPassword", vo);
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class CccdmsLoginDAO extends EgovAbstractDAO {
 	 * @param vo CccdmsLoginVO
 	 * @exception Exception
 	 */
-	public void updatePassword(CccdmsLoginVO vo) throws Exception {
-		update("cccdmsLoginDAO.updatePassword", vo);
+	public void updatePassword(LoginVO vo) throws Exception {
+		update("login.updatePassword", vo);
 	}
 }

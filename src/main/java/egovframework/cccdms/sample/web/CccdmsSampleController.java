@@ -9,7 +9,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import egovframework.cccdms.common.service.CccdmsCommonService;
+import egovframework.cccdms.common.service.CommonService;
 import egovframework.cccdms.common.service.FileMngService;
 import egovframework.cccdms.common.util.FileMngUtil;
 import egovframework.cccdms.sample.model.CccdmsSampleVO;
@@ -33,7 +33,7 @@ public class CccdmsSampleController {
 
 	/** CccdmsCommonService */
 	@Resource(name = "commonService")
-	private CccdmsCommonService commonService;
+	private CommonService commonService;
 
 	/** EgovMessageSource */
 	@Resource(name = "egovMessageSource")

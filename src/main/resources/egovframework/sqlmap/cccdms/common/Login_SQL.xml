@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
-<sqlMap namespace="cccdmsLoginDAO">
+<sqlMap namespace="loginDAO">
 
-	<typeAlias alias="cccdmsLoginVO" type="egovframework.cccdms.login.model.CccdmsLoginVO"/>
-	
-	<!-- 아이디 찾기를 위한 resultMap 
-	<resultMap id="id" class="egovframework.com.cmm.LoginVO">
-		<result property="id" column="id" columnIndex="1"/>
-	</resultMap>
-	-->
-	<!-- 비밀번호 처리를 위한 resultMap 
-	<resultMap id="password" class="egovframework.com.cmm.LoginVO">
-		<result property="password" column="password" columnIndex="1"/>
-	</resultMap>
-	-->
+	<typeAlias alias="loginVO" type="egovframework.cccdms.login.model.LoginVO"/>
+
 	<!-- 일반 로그인 -->
-	<select id="cccdmsLoginDAO.actionLogin" resultClass="cccdmsLoginVO">
+	<select id="login.actionLogin" resultClass="loginVO">
             SELECT ID AS id
                  , USER_NAME AS userName
                  , PASSWORD AS password
@@ -28,13 +18,14 @@
                  , LAST_LOGIN_DT AS lastLoginDt
                  , LAST_LOGIN_IP AS lastLoginIp
                  , FAIL_LOGIN_CNT AS failLoginCnt
+                 , AUTH_YN AS authYN
               FROM TB_USER_INFO
              WHERE ID = #id#
                AND PASSWORD = #password#
 	</select>
 	
 	<!--  -->
-	<update id="cccdmsLoginDAO.updateLoginInfo" parameterClass="cccdmsLoginVO">
+	<update id="login.updateLoginInfo" parameterClass="loginVO">
 		UPDATE TB_USER_INFO
 		SET LAST_LOGIN_DT = sysdate()
 		, LAST_LOGIN_IP = #lastLoginIp#
@@ -42,30 +33,14 @@
 		WHERE ID = #id#
 	</update>
 	
-	<update id="cccdmsLoginDAO.updateFailLoginCnt" parameterClass="cccdmsLoginVO">
+	<update id="login.updateFailLoginCnt" parameterClass="loginVO">
 		UPDATE TB_USER_INFO
 		SET FAIL_LOGIN_CNT = FAIL_LOGIN_CNT + 1
 		WHERE ID = #id#
 	</update>
-	
-	<!-- 인증서 로그인
-	<select id="cccdmsLoginDAO.actionCrtfctLogin" resultMap="login">
-		<![CDATA[
-		SELECT emplyr_id AS id
-		     , USER_NM AS name
-		     , password AS password
-		     , ihidnum AS ihidNum
-		     , email_adres AS email
-		     , 'USR' AS userSe
-		     , orgnzt_id AS orgnztId
-		     , ESNTL_ID AS uniqId
-		  FROM LETTNEMPLYRINFO
-		 WHERE sub_dn = #dn#
-		]]>
-	</select>
-	 -->
+
 	<!-- 아이디 찾기
-	<select id="cccdmsLoginDAO.searchId" resultMap="id">
+	<select id="login.searchId" resultMap="id">
 		<isEqual property="userSe" compareValue="GNR">
 			<![CDATA[
 			SELECT mber_id AS id
@@ -96,7 +71,7 @@
 	</select>
 	 -->
 	<!-- 비밀번호 찾기 
-	<select id="cccdmsLoginDAO.searchPassword" resultMap="password">
+	<select id="login.searchPassword" resultMap="password">
 		<isEqual property="userSe" compareValue="GNR">
 			<![CDATA[
 			SELECT password AS password
@@ -136,7 +111,7 @@
 	</select>
 	-->
 	<!-- 변경된 비밀번호를 저장 
-	<update id="cccdmsLoginDAO.updatePassword">
+	<update id="login.updatePassword">
 		<isEqual property="userSe" compareValue="GNR">
 			<![CDATA[
 			UPDATE LETTNGNRLMBER

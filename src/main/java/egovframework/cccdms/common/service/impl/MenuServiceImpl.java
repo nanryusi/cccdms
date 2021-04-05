@@ -2,9 +2,9 @@ package egovframework.cccdms.common.service.impl;
 
 import java.util.List;
 
-import egovframework.cccdms.common.dao.CccdmsMenuDAO;
-import egovframework.cccdms.common.model.CccdmsMenuVO;
-import egovframework.cccdms.common.service.CccdmsMenuService;
+import egovframework.cccdms.common.dao.MenuDAO;
+import egovframework.cccdms.common.model.MenuVO;
+import egovframework.cccdms.common.service.MenuService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 import javax.annotation.Resource;
@@ -27,10 +27,10 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service("menuService")
-public class CccdmsMenuServiceImpl extends EgovAbstractServiceImpl implements CccdmsMenuService {
+public class MenuServiceImpl extends EgovAbstractServiceImpl implements MenuService {
 
 	@Resource(name = "menuDAO")
-	private CccdmsMenuDAO menuDAO;
+	private MenuDAO menuDAO;
 	
 	/**
      * 목록을 불러온다.
@@ -40,7 +40,7 @@ public class CccdmsMenuServiceImpl extends EgovAbstractServiceImpl implements Cc
      * @throws Exception
      */
 	@Override
-	public List<CccdmsMenuVO> selectList(String str) throws Exception {
+	public List<MenuVO> selectList(String str) throws Exception {
     	return menuDAO.selectList(str);
     }
 }

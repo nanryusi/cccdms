@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import egovframework.cccdms.common.model.CccdmsMenuVO;
+import egovframework.cccdms.common.model.MenuVO;
 
 
 /**
@@ -23,7 +23,7 @@ import egovframework.cccdms.common.model.CccdmsMenuVO;
  *
  */
 @Repository("menuDAO")
-public class CccdmsMenuDAO extends EgovComAbstractDAO {
+public class MenuDAO extends EgovComAbstractDAO {
 
 	/**
      * 목록을 불러온다.
@@ -33,7 +33,7 @@ public class CccdmsMenuDAO extends EgovComAbstractDAO {
      * @throws Exception
      */
 	@SuppressWarnings("unchecked")
-	public List<CccdmsMenuVO> selectList(String str) throws Exception {
-    	return (List<CccdmsMenuVO>) list(str+".selectList");
+	public List<MenuVO> selectList(String str) throws Exception {
+    	return (List<MenuVO>) list(str+".selectList");
     }
 }

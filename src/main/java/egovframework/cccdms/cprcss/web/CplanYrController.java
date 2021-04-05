@@ -6,7 +6,7 @@ package egovframework.cccdms.cprcss.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import egovframework.cccdms.common.model.FileVO;
-import egovframework.cccdms.common.service.CccdmsCommonService;
+import egovframework.cccdms.common.service.CommonService;
 import egovframework.cccdms.common.service.FileMngService;
 import egovframework.cccdms.common.util.FileMngUtil;
 import egovframework.cccdms.cprcss.domain.CplanYrListVo;
@@ -46,7 +46,7 @@ public class CplanYrController {
     @Autowired
     private CplanYrService cplanYrService;
     @Autowired
-    private CccdmsCommonService commonService;
+    private CommonService commonService;
 
     @Autowired
     private FileMngUtil fileUtil;

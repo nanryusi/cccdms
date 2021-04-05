@@ -3,9 +3,9 @@
 
 <sqlMap namespace="menuDAO">
 
-	<typeAlias alias="cccdmsMenuVO" type="egovframework.cccdms.common.model.CccdmsMenuVO"/>
+	<typeAlias alias="menuVO" type="egovframework.cccdms.common.model.MenuVO"/>
 
-	<select id="topMenu.selectList" resultClass="cccdmsMenuVO">
+	<select id="topMenu.selectList" resultClass="menuVO">
 		SELECT menu_cd menuCd
 			, menu_nm menuNm
 			, par_menu_cd parMenuCd
@@ -18,7 +18,7 @@
 		ORDER BY menu_cd, menu_sn
 	</select>
 	
-	<select id="leftMenu.selectList" resultClass="cccdmsMenuVO">
+	<select id="leftMenu.selectList" resultClass="menuVO">
 		SELECT menu_cd menuCd
 			, menu_nm menuNm
 			, par_menu_cd parMenuCd

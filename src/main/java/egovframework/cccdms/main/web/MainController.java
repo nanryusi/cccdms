@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by ryusi    on 2021-02-06
  */
 @Controller
-public class CccdmsMainController {
+public class MainController {
   //로그
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

@@ -1,7 +1,7 @@
 package egovframework.cccdms.cprcss.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import egovframework.cccdms.common.service.CccdmsCommonService;
+import egovframework.cccdms.common.service.CommonService;
 import egovframework.cccdms.cprcss.domain.CplanMnDtlVo;
 import egovframework.cccdms.cprcss.domain.CplanMnListVo;
 import egovframework.cccdms.cprcss.domain.CplanMnVo;
@@ -36,7 +36,7 @@ public class CplanMnController {
 
     //Service
     @Autowired
-    private CccdmsCommonService commonService;
+    private CommonService commonService;
     @Autowired
     private CplanMnService cplanMnService;
 

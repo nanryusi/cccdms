@@ -2,8 +2,8 @@ package egovframework.cccdms.common.service.impl;
 
 import java.util.List;
 
-import egovframework.cccdms.common.dao.CccdmsCommonDAO;
-import egovframework.cccdms.common.service.CccdmsCommonService;
+import egovframework.cccdms.common.dao.CommonDAO;
+import egovframework.cccdms.common.service.CommonService;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
@@ -27,10 +27,10 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service("commonService")
-public class CccdmsCommonServiceImpl extends EgovAbstractServiceImpl implements CccdmsCommonService {
+public class CommonServiceImpl extends EgovAbstractServiceImpl implements CommonService {
 
 	@Resource(name = "commonDAO")
-	private CccdmsCommonDAO commonDAO;
+	private CommonDAO commonDAO;
 	
 	/**
      * 목록카운트을 불러온다.
