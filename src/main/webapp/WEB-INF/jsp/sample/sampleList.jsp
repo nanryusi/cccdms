@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<script type="text/javascript" src="/static/js/cccdms/cm.function.js"></script>
 <div class="sm_title">샘플게시판</div>
 <table class="data_list">
 	<caption>샘플게시판</caption>

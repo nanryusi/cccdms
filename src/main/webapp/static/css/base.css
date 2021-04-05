@@ -444,7 +444,7 @@ table.form table.list th {padding: 6px 3px; text-align: center;}
 .clickDetail td {overflow: hidden; white-space: nowrap; cursor: pointer; -ms-text-overflow: ellipsis;}
 .clickDetail td.active {overflow: inherit; white-space: inherit; -ms-text-overflow: inherit;}
 #wrapper {padding: 0px 35px 35px; position: relative; min-height: 700px; margin-left: 240px;}
-/* .sm_title {background: url("/SM/images/icon_contentTitle.png") no-repeat left 35px; padding: 30px 0px 0px 33px; height: 47px; color: rgb(33, 33, 33); font-size: 22px; margin-bottom: 40px; border-bottom-color: rgb(221, 221, 223); border-bottom-width: 3px; border-bottom-style: solid; position: relative;} */
+.sm_title {/* background: url("/SM/images/icon_contentTitle.png") no-repeat left 35px; */ padding: 30px 0px 0px 33px; height: 47px; color: rgb(33, 33, 33); font-size: 22px; margin-bottom: 40px; border-bottom-color: rgb(221, 221, 223); border-bottom-width: 3px; border-bottom-style: solid; position: relative;}
 .sm_title::after {left: 0px; width: 200px; bottom: -3px; border-bottom-color: rgb(44, 44, 44); border-bottom-width: 3px; border-bottom-style: solid; display: block; position: absolute; content: "";}
 .loca {top: 20px; right: 0px; color: rgb(102, 102, 102); font-size: 12px; position: absolute;}
 .bbs_list td {text-align: center;}
