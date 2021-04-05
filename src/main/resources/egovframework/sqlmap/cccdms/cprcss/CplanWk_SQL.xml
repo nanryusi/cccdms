@@ -166,11 +166,29 @@
     <!-- 주간보육계획안 상세입력 -->
     <select id="cplanWk.selectDetail" parameterClass="CplanWkListVo" resultClass="CplanWkDtlVo">
         <![CDATA[
-        SELECT A.idx          AS idx
-             , A.school_cd    AS schoolCode
-             , A.class_cd     AS classCode
-             , A.stnd_yr      AS stndYear
-
+        SELECT A.idx            AS idx
+             , A.school_cd      AS schoolCode
+             , A.class_cd       AS classCode
+             , A.stnd_yr        AS stndYear
+             , DATE_FORMAT(A.start_dt,'%Y-%m-%d')       AS startDay
+             , DATE_FORMAT(A.end_dt,'%Y-%m-%d')         AS endDay
+             , A.morning_act    AS morningAct
+             , A.lunch_act      AS lunchAct
+             , A.brk_tm_act     AS breakTimeAct
+             , A.indoor_act     AS indoorAct
+             , A.outdoor_act    AS outdoorAct
+             , A.adt_act        AS additAct
+             , A.first_eval_plan    AS firstEvalPlan
+             , A.second_eval_plan   AS secondEvalPlan
+             , A.third_eval_plan    AS thirdEvalPlan
+             , A.forth_eval_plan    AS forthEvalPlan
+             , A.fifth_eval_plan    AS fifthEvalPlan
+             , A.next_eval_plan     AS nextEvalPlan
+             , A.first_opr_spcf     AS firstOprSpcf
+             , A.second_opr_spcf    AS secondOprSpcf
+             , A.third_opr_spcf     AS thirdOprSpcf
+             , A.forth_opr_spcf     AS forthOprSpcf
+             , A.fifth_opr_spcf     AS fifthOprSpcf
              , A.app_stat     AS appStat
              , A.us_yn        AS usYn
              , DATE_FORMAT(A.reg_dt, '%Y.%m.%d')    AS regDt
@@ -179,7 +197,7 @@
              , DATE_FORMAT(A.mod_dt, '%Y.%m.%d')    AS modDt
              , A.mod_id       AS modId
              , (SELECT b.user_name FROM tb_user_info B WHERE A.mod_id = B.id)      AS modNm
-        FROM tb_cplan_mn A
+        FROM tb_cplan_wk A
         WHERE A.us_yn = 'Y'
           AND A.idx = #idx#
           AND A.school_cd = #schoolCode#
@@ -189,7 +207,7 @@
     <!-- 주간보육계획안 사용여부 N-->
     <update id="CplanWkDAO.updateUseYnN" parameterClass="CplanWkDtlVo">
         <![CDATA[
-        UPDATE tb_cplan_mn
+        UPDATE tb_cplan_wk
         SET us_yn = 'N'
           , mod_dt = NOW()
           , mod_id = #id#

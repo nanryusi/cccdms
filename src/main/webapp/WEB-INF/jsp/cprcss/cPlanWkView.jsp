@@ -21,7 +21,7 @@
 <script type="text/javascript" src="/static/js/cccdms/cm.function.js"></script>
 <section class="main">
 <div class="sm_title">주간보육일지</div>
-<form:form commandName="CplanWkVo" name="actionForm" method="post" enctype="multipart/form-data" >
+<form:form commandName="CplanWkDtlVo" name="viewForm" method="post" enctype="multipart/form-data" >
     <form:hidden path="idx"/>
     <table class="bbs_write">
         <caption>주간보육일지</caption>
@@ -34,6 +34,18 @@
             <col width="*">
         </colgroup>
         <tbody>
+        <tr>
+            <th scope="row">최초작성자</th>
+            <td colspan="2">
+                <form:input title="최초작성자" path="regNm" cssStyle="width:70%" readonly="true"/>&nbsp;<form:errors path="regNm" />
+                <form:input title="최초작성일" path="regDt" cssStyle="width:30%" readonly="true"/>&nbsp;<form:errors path="regDt" />
+            </td>
+            <th scope="row">최종수정자</th>
+            <td colspan="2">
+                <form:input title="최종수정자" path="modNm" cssStyle="width:70%" readonly="true"/>&nbsp;<form:errors path="modNm" />
+                <form:input title="최종수정일" path="modDt" cssStyle="width:30%" readonly="true"/>&nbsp;<form:errors path="modDt" />
+            </td>
+        </tr>
         <tr>
             <th scope="row">년도</th>
             <td colspan="2">
@@ -63,9 +75,9 @@
         <tr>
             <th scope="row">기간</th>
             <td colspan="2">
-                <input type="date" id="startDay" value="<c:out value="${CplanWkVo.startDay}"/>">
+                <input type="date" id="startDay" value="<c:out value="${CplanWkDtlVo.startDay}"/>">
                 ~
-                <input type="date" id="endDay" value="<c:out value="${CplanWkVo.endDay}"/>">
+                <input type="date" id="endDay" value="<c:out value="${CplanWkDtlVo.endDay}"/>">
             </td>
             <th scope="row">통합보육</th>
             <td colspan="2">
@@ -146,20 +158,18 @@
     </table>
 </form:form>
 <div class="form_btn">
+    <div class="left">
+        <ul>
+            <li><a class="btn_l btn_focus" href="#" id="btn_delete">삭제</a></li>
+        </ul>
+    </div>
     <div class="right">
         <ul>
-            <c:if test="${CplanWkVo.pathVariable eq 'insert' }">
-                <li><a class="btn_l btn_focus" href="#" id="btn_add_ajax">입력</a></li>
-            </c:if>
-            <c:if test="${CplanWkVo.pathVariable eq 'update' }">
-                <li><a class="btn_l btn_focus" href="#" id="btn_mod_ajax">수정</a></li>
-            </c:if>
-            <li><a class="btn_l btn_focus" href="#" id="btn_return">돌아가기</a></li>
+            <li><a class="btn_l btn_focus" href="#" id="btn_update">수정</a></li>
+
         </ul>
     </div>
 </div>
 </section>
-<script type="text/javascript" src="/static/js/cccdms/util/util.js"></script>
-<script type="text/javascript" src="/static/js/cccdms/cprcss/cPlanWkForm.js"></script>
 </body>
 </html>

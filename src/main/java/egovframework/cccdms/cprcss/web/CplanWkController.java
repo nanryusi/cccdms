@@ -107,6 +107,10 @@ public class CplanWkController {
             model.addAttribute("CplanWkVo", sVo);
         } else if("update".equals(pathVariable)) {
             //뷰화면에서 넘어오는 거라 데이터 그대로 가져다주면 됨.
+
+            logger.debug("확인용 start day :"+cplanWkDtlVo.getStartDay());
+            logger.debug("확인용 end day :"+cplanWkDtlVo.getEndDay());
+
             model.addAttribute("CplanWkVo", cplanWkDtlVo);
         }
 
@@ -186,6 +190,9 @@ public class CplanWkController {
         List<HashMap<String, String>> codeList_class = cplanWkService.codeList(sessionMap, "code_class");
         //상세조회
         CplanWkDtlVo vo = (CplanWkDtlVo) commonService.selectDetail(cplanWkListVo, PROGRAM_ID);
+
+        logger.debug("확인용 start day :"+vo.getStartDay());
+        logger.debug("확인용 end day :"+vo.getEndDay());
 
         model.addAttribute("CodeListClass", codeList_class);
         model.addAttribute("CplanWkDtlVo", vo);
