@@ -152,13 +152,31 @@
     <!-- 주간보육계획안 수정-->
     <update id="cplanWk.update" parameterClass="CplanWkVo">
         <![CDATA[
-        UPDATE tb_cplan_mn
-        SET class_cd = #classCode#
-          , stnd_yr = #stndYear#
-
-          , mod_dt = NOW()
-          , mod_id = #id#
-        WHERE idx = #idx#
+        UPDATE tb_cplan_wk
+        SET class_cd        = #classCode#
+          , stnd_yr         = #stndYear#
+          , start_dt	    = #startDay#
+          , end_dt	        = #endDay#
+          , morning_act	    = #morningAct#
+          , lunch_act	    = #lunchAct#
+          , brk_tm_act	    = #breakTimeAct#
+          , indoor_act	    = #outdoorAct#
+          , outdoor_act	    = #indoorAct#
+          , adt_act	        = #additAct#
+          , first_eval_plan     = #firstEvalPlan#
+          , second_eval_plan    = #secondEvalPlan#
+          , third_eval_plan	    = #thirdEvalPlan#
+          , forth_eval_plan	    = #forthEvalPlan#
+          , fifth_eval_plan	    = #fifthEvalPlan#
+          , next_eval_plan	    = #nextEvalPlan#
+          , first_opr_spcf	    = #firstOprSpcf#
+          , second_opr_spcf	    = #secondOprSpcf#
+          , third_opr_spcf	    = #thirdOprSpcf#
+          , forth_opr_spcf	    = #forthOprSpcf#
+          , fifth_opr_spcf	    = #fifthOprSpcf#
+          , mod_dt          = NOW()
+          , mod_id          = #id#
+        WHERE idx       = #idx#
           AND school_cd = #schoolCode#
         ]]>
     </update>
