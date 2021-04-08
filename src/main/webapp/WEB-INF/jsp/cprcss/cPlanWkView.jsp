@@ -23,6 +23,8 @@
 <div class="sm_title">주간보육일지</div>
 <form:form commandName="CplanWkDtlVo" name="viewForm" method="post" enctype="multipart/form-data" >
     <form:hidden path="idx"/>
+    <form:hidden path="startDay"/>
+    <form:hidden path="endDay"/>
     <table class="bbs_write">
         <caption>주간보육일지</caption>
         <colgroup>
