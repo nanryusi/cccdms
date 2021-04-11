@@ -7,13 +7,13 @@ package egovframework.cccdms.cprcss.domain;
 import lombok.Data;
 
 /**
- * CplanWkVo : 주간보육일지 Vo
- * Created by ryusi   on 2021-03-23.
+ * CplanDalVo : 보육일지 Vo
+ * Created by ryusi   on 2021-04-11.
  * Modification Information
  * ||수정자       ||수정일     ||수정내용
  */
 @Data
-public class CplanWkVo {
+public class CplanDalVo {
     //상태값
     private String pathVariable;
     //아이디

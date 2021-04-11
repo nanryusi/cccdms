@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- 주간보육계획안 -->
+<sqlMap namespace="CplanDalMaster">
+
+    <typeAlias alias="CplanDalVo" type="egovframework.cccdms.cprcss.domain.CplanDalVo"/>
+    <typeAlias alias="CplanDalDtlVo" type="egovframework.cccdms.cprcss.domain.CplanDalDtlVo"/>
+    <typeAlias alias="CplanDalListVo" type="egovframework.cccdms.cprcss.domain.CplanDalListVo"/>
+
+    <!--주간 보육 계획안 목록 카운트-->
+    <select id="cplanDal.selectCnt" parameterClass="CplanDalListVo" resultClass="java.lang.Integer">
+		<![CDATA[
+        SELECT COUNT(*)
+        FROM tb_cplan_Dal
+        WHERE 1 = 1
+          AND school_cd = #schoolCode#
+          AND us_yn = 'Y'
+        ]]>
+	</select>
+
+    <!--주간 보육 계획안 목록 조회-->
+    <select id="cplanDal.selectList" parameterClass="CplanDalListVo" resultClass="CplanDalListVo">
+		<![CDATA[
+        SELECT idx AS idx
+             , CONCAT(stnd_yr, '년도 ', start_dt, ' ~ ', end_dt, ' 주간보육일지')  AS title
+             , CONCAT(SUBSTRING(morning_act, 1, 10), '...')  AS contents
+             , DATE_FORMAT(reg_dt, '%Y.%m.%d')            AS regDt
+             , reg_id                                     AS regId
+             , DATE_FORMAT(mod_dt, '%Y.%m.%d')            AS modDt
+             , mod_id                                     AS modId
+        FROM tb_cplan_Dal
+        WHERE 1 = 1
+          AND school_cd = #schoolCode#
+          AND us_yn = 'Y'
+        ORDER BY stnd_yr, start_dt DESC
+            LIMIT #recordCountPerPage#
+        OFFSET #firstIndex#
+        ]]>
+	</select>
+
+    <!-- 주간보육계획안 공통코드 : 분반 -->
+    <select id="CplanDalDAO.selectCodeListForClass" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        SELECT A.class_cd     AS cl_cd
+             , B.sub_nm       AS cl_nm
+        FROM tb_teacher A
+                 JOIN tb_school B
+                      ON A.school_cd = B.cd
+                          AND A.class_cd = B.sub_cd
+        WHERE 1 = 1
+          AND A.id = #SESSION_LOGIN_ID#
+          AND A.school_cd = #SESSION_LOGIN_SCHOOL_CD#
+          AND A.us_yn = 'Y'
+    </select>
+
+    <!-- 주간보육계획안 존재유무 확인 -->
+    <select id="CplanDalDAO.selectCplanDalExistCnt" parameterClass="CplanDalVo" resultClass="java.lang.Integer">
+		<![CDATA[
+        SELECT COUNT(*)
+        FROM tb_cplan_Dal
+        WHERE 1 = 1
+          AND school_cd = #schoolCode#
+          AND class_cd = #classCode#
+          AND stnd_yr = #stndYear#
+          AND ( #startDay# BETWEEN start_dt AND end_dt
+                OR #endDay# BETWEEN start_dt AND end_dt
+              )
+          AND us_yn = 'Y'
+        ]]>
+	</select>
+
+    <!-- 주간보육계획안 삭제-->
+    <delete id="cplanDal.delete" parameterClass="CplanDalVo">
+        <![CDATA[
+        DELETE
+        FROM tb_cplan_Dal
+        WHERE 1 = 1
+          AND school_cd = #schoolCode#
+          AND class_cd = #classCode#
+          AND stnd_yr = #stndYear#
+          AND us_yn = 'N'
+        ]]>
+    </delete>
+
+    <!-- 주간보육계획안 입력-->
+    <insert id="cplanDal.insert" parameterClass="CplanDalVo">
+        <![CDATA[
+        INSERT INTO tb_cplan_Dal
+        ( idx
+        , school_cd
+        , class_cd
+        , stnd_yr
+        , start_dt
+        , end_dt
+        , morning_act
+        , lunch_act
+        , brk_tm_act
+        , indoor_act
+        , outdoor_act
+        , adt_act
+        , first_eval_plan
+        , second_eval_plan
+        , third_eval_plan
+        , forth_eval_plan
+        , fifth_eval_plan
+        , next_eval_plan
+        , first_opr_spcf
+        , second_opr_spcf
+        , third_opr_spcf
+        , forth_opr_spcf
+        , fifth_opr_spcf
+        , app_stat
+        , us_yn
+        , reg_dt
+        , reg_id
+        , mod_dt
+        , mod_id)
+        VALUES ( (SELECT IFNULL(MAX(idx) + 1, 1)
+                  FROM tb_cplan_Dal a
+                  WHERE a.school_cd = #schoolCode#
+                 )
+               , #schoolCode#
+               , #classCode#
+               , #stndYear#
+               , #startDay#
+               , #endDay#
+               , #morningAct#
+               , #lunchAct#
+               , #breakTimeAct#
+               , #outdoorAct#
+               , #indoorAct#
+               , #additAct#
+               , #firstEvalPlan#
+               , #secondEvalPlan#
+               , #thirdEvalPlan#
+               , #forthEvalPlan#
+               , #fifthEvalPlan#
+               , #nextEvalPlan#
+               , #firstOprSpcf#
+               , #secondOprSpcf#
+               , #thirdOprSpcf#
+               , #forthOprSpcf#
+               , #fifthOprSpcf#
+               , ''
+               , 'Y'
+               , NOW()
+               , #id#
+               , NOW()
+               , #id#)
+        ]]>
+    </insert>
+
+    <!-- 주간보육계획안 수정-->
+    <update id="cplanDal.update" parameterClass="CplanDalVo">
+        <![CDATA[
+        UPDATE tb_cplan_Dal
+        SET class_cd        = #classCode#
+          , stnd_yr         = #stndYear#
+          , start_dt	    = #startDay#
+          , end_dt	        = #endDay#
+          , morning_act	    = #morningAct#
+          , lunch_act	    = #lunchAct#
+          , brk_tm_act	    = #breakTimeAct#
+          , indoor_act	    = #outdoorAct#
+          , outdoor_act	    = #indoorAct#
+          , adt_act	        = #additAct#
+          , first_eval_plan     = #firstEvalPlan#
+          , second_eval_plan    = #secondEvalPlan#
+          , third_eval_plan	    = #thirdEvalPlan#
+          , forth_eval_plan	    = #forthEvalPlan#
+          , fifth_eval_plan	    = #fifthEvalPlan#
+          , next_eval_plan	    = #nextEvalPlan#
+          , first_opr_spcf	    = #firstOprSpcf#
+          , second_opr_spcf	    = #secondOprSpcf#
+          , third_opr_spcf	    = #thirdOprSpcf#
+          , forth_opr_spcf	    = #forthOprSpcf#
+          , fifth_opr_spcf	    = #fifthOprSpcf#
+          , mod_dt          = NOW()
+          , mod_id          = #id#
+        WHERE idx       = #idx#
+          AND school_cd = #schoolCode#
+        ]]>
+    </update>
+
+    <!-- 주간보육계획안 상세입력 -->
+    <select id="cplanDal.selectDetail" parameterClass="CplanDalListVo" resultClass="CplanDalDtlVo">
+        <![CDATA[
+        SELECT A.idx            AS idx
+             , A.school_cd      AS schoolCode
+             , A.class_cd       AS classCode
+             , A.stnd_yr        AS stndYear
+             , DATE_FORMAT(A.start_dt,'%Y-%m-%d')       AS startDay
+             , DATE_FORMAT(A.end_dt,'%Y-%m-%d')         AS endDay
+             , A.morning_act    AS morningAct
+             , A.lunch_act      AS lunchAct
+             , A.brk_tm_act     AS breakTimeAct
+             , A.indoor_act     AS indoorAct
+             , A.outdoor_act    AS outdoorAct
+             , A.adt_act        AS additAct
+             , A.first_eval_plan    AS firstEvalPlan
+             , A.second_eval_plan   AS secondEvalPlan
+             , A.third_eval_plan    AS thirdEvalPlan
+             , A.forth_eval_plan    AS forthEvalPlan
+             , A.fifth_eval_plan    AS fifthEvalPlan
+             , A.next_eval_plan     AS nextEvalPlan
+             , A.first_opr_spcf     AS firstOprSpcf
+             , A.second_opr_spcf    AS secondOprSpcf
+             , A.third_opr_spcf     AS thirdOprSpcf
+             , A.forth_opr_spcf     AS forthOprSpcf
+             , A.fifth_opr_spcf     AS fifthOprSpcf
+             , A.app_stat     AS appStat
+             , A.us_yn        AS usYn
+             , DATE_FORMAT(A.reg_dt, '%Y.%m.%d')    AS regDt
+             , A.reg_id       AS regId
+             , (SELECT b.user_name FROM tb_user_info B WHERE A.reg_id = B.id)      AS regNm
+             , DATE_FORMAT(A.mod_dt, '%Y.%m.%d')    AS modDt
+             , A.mod_id       AS modId
+             , (SELECT b.user_name FROM tb_user_info B WHERE A.mod_id = B.id)      AS modNm
+        FROM tb_cplan_Dal A
+        WHERE A.us_yn = 'Y'
+          AND A.idx = #idx#
+          AND A.school_cd = #schoolCode#
+        ]]>
+    </select>
+
+    <!-- 주간보육계획안 사용여부 N-->
+    <update id="CplanDalDAO.updateUseYnN" parameterClass="CplanDalDtlVo">
+        <![CDATA[
+        UPDATE tb_cplan_Dal
+        SET us_yn = 'N'
+          , mod_dt = NOW()
+          , mod_id = #id#
+        WHERE idx = #idx#
+          AND school_cd = #schoolCode#
+        ]]>
+    </update>
+
+</sqlMap>
