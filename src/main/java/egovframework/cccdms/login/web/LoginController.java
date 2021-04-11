@@ -10,6 +10,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import egovframework.cccdms.login.model.LoginVO;
 import egovframework.cccdms.login.service.LoginService;
 import egovframework.cccdms.common.EgovMessageSource;
+import egovframework.cccdms.common.service.CommonService;
 
 import java.net.InetAddress;
 
@@ -26,7 +27,11 @@ public class LoginController {
 	/** EgovLoginService */
 	@Resource(name = "loginService")
 	private LoginService loginService;
-
+	
+	/** CccdmsCommonService */
+	@Resource(name = "commonService")
+	private CommonService commonService;
+	
 	/** EgovMessageSource */
 	@Resource(name = "egovMessageSource")
 	EgovMessageSource egovMessageSource;
@@ -98,5 +103,15 @@ public class LoginController {
 		request.getSession().invalidate();
 		
 		return "redirect:/cccdms/login/loginPage.do";
+	}
+	
+	/**
+	 * 사용자 가입 입력폼으로 이동
+	 * @exception Exception
+	 */
+	@RequestMapping(value = "/cccdms/login/insertForm.do")
+	public String insertForm(HttpServletRequest request, ModelMap model) throws Exception {
+		
+		return "login/joinForm";
 	}
 }

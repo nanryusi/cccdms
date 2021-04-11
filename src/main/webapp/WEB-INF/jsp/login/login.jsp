@@ -26,7 +26,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>경량환경 단순홈페이지 템플릿 - 로그인</title>
 <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/"> -->
-<link rel="stylesheet" href="/static/css/bootstrap/bootstrap.css">
+<!-- <link rel="stylesheet" href="/static/css/bootstrap/bootstrap.css"> -->
 <link rel="stylesheet" href="/static/css/signin.css">
 
 <script type="text/javascript">
@@ -47,8 +47,7 @@ function actionLogin() {
 }
 
 function memberJoin() {
-	alert("aaa");
-	window.location.href="<c:url value='/cccdms/join/insertForm.do'/>";
+	window.location.href="<c:url value='/cccdms/login/insertForm.do'/>";
 }
 
 function setCookie (name, value, expires) {
@@ -112,8 +111,8 @@ function fnInit() {
       </label>
     </div>
     <div class="d-grid gap-2 d-md-block">
-    <button class="w-45 btn btn-primary" onclick="actionLogin();">로그인</button>
-    <button class="w-45 btn btn-success" onclick="memberJoin();">사용자가입</button>
+    <a class="w-40 btn btn-primary" onclick="actionLogin();">로그인</a>
+    <a class="w-40 btn btn-success" onclick="memberJoin();">사용자가입</a>
     </div>
     <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> -->
   </form:form>
