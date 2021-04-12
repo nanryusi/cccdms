@@ -4,8 +4,8 @@
 
 package egovframework.cccdms.hltSft.dao;
 
-import egovframework.cccdms.hltSft.domain.SftCarListVo;
-import egovframework.cccdms.hltSft.domain.SftCarVo;
+import egovframework.cccdms.hltSft.domain.SftRptListVo;
+import egovframework.cccdms.hltSft.domain.SftRptVo;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +19,7 @@ import java.util.List;
  * ||수정자       ||수정일     ||수정내용
  */
 @Repository
-public class SftCarDAO extends EgovAbstractDAO {
+public class SftRptDAO extends EgovAbstractDAO {
 
     /**
     * @name    : search : 차량안전점검표 구현 검색 리스트
@@ -27,7 +27,7 @@ public class SftCarDAO extends EgovAbstractDAO {
     * @history :||user         ||date          ||modified comments
     *           ||denicola4    ||021-04-03     ||created
     **/
-    public List<?> search(SftCarListVo searchVo) throws Exception{
+    public List<?> search(SftRptListVo searchVo) throws Exception{
         return listWithPaging("", searchVo, 1, 10);
     }
 
@@ -38,7 +38,7 @@ public class SftCarDAO extends EgovAbstractDAO {
     *           ||denicola4    ||021-04-03     ||created
     **/
     public List<?> selectCodeList(HashMap map) throws Exception{
-        return list("SftCarDAO.selectCodeList", map);
+        return list("SftRptDAO.selectCodeList", map);
     }
 
     /**
@@ -48,8 +48,8 @@ public class SftCarDAO extends EgovAbstractDAO {
     *           ||denicola4    ||021-04-03     ||created
     **/
 	/*
-	 * public int selectCplanYrCnt(SftCarVo vo) throws Exception{ return
-	 * (int)select("SftCarDAO.selectCplanYrCnt", vo); }
+	 * public int selectCplanYrCnt(SftRptVo vo) throws Exception{ return
+	 * (int)select("SftRptDAO.selectCplanYrCnt", vo); }
 	 */
 
     /**
@@ -59,7 +59,7 @@ public class SftCarDAO extends EgovAbstractDAO {
     *           ||denicola4    ||021-04-03     ||created
     **/
 	/*
-	 * public void insertCplanYr(SftCarVo vo) throws Exception{
-	 * insert("SftCarDAO.insertCplanYr", vo); }
+	 * public void insertCplanYr(SftRptVo vo) throws Exception{
+	 * insert("SftRptDAO.insertCplanYr", vo); }
 	 */
 }

@@ -4,8 +4,8 @@
 
 package egovframework.cccdms.hltSft.service;
 
-import egovframework.cccdms.hltSft.domain.SftCarListVo;
-import egovframework.cccdms.hltSft.domain.SftCarVo;
+import egovframework.cccdms.hltSft.domain.SftRptListVo;
+import egovframework.cccdms.hltSft.domain.SftRptVo;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
  * Modification Information
  * ||수정자       ||수정일     ||수정내용
  */
-public interface SftCarService {
+public interface SftRptService {
 
     /**
     * @name    : search : 차량안전점검표 검색 리스트
@@ -24,7 +24,7 @@ public interface SftCarService {
     * @history :||user         ||date           ||modified comments
     *           ||denicoal4    ||2021-04-03     ||created
     **/
-    List<?> search(SftCarListVo searchVo) throws Exception;
+    List<?> search(SftRptListVo searchVo) throws Exception;
     
     /**
     * @name    : codeList : 공통 코드 리스트

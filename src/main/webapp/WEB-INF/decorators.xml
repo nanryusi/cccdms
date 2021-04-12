@@ -8,6 +8,7 @@
 		<pattern>/cccdms/cprcss/*Page.do</pattern>
 		<pattern>/cccdms/cprcss/*Form.do</pattern>
 		<pattern>/cccdms/*/view.do</pattern>
+		<pattern>/cccdms/hltSft/*Page.do</pattern>
 	</decorator>
 
 	<excludes>

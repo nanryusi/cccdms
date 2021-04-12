@@ -9,4 +9,8 @@
 	<sqlMap resource="egovframework/sqlmap/cccdms/cprcss/CplanWk_SQL.xml"/>
 	<sqlMap resource="egovframework/sqlmap/cccdms/cprcss/CplanDal_SQL.xml"/>
 	<!-- 보육과정 cprcss END -->
+	
+	<!-- 3영역 건강,안전 (hltSft) START -->
+	<sqlMap resource="egovframework/sqlmap/cccdms/hltSft/SftRpt_SQL.xml"/>
+	<!-- 3영역 건강,안전 (hltSft) END -->
 </sqlMapConfig>

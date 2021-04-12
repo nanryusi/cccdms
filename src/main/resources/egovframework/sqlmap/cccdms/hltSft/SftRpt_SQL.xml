@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SftRptMaster">
+
+    <typeAlias alias="SftRptVo" type="egovframework.cccdms.hltSft.domain.SftRptVo"/>
+    <typeAlias alias="SftRptListVo" type="egovframework.cccdms.hltSft.domain.SftRptListVo"/>
+
+    <!--목록 카운트-->
+    <select id="sftRpt.selectCnt" parameterClass="SftRptListVo" resultClass="java.lang.Integer">
+		<![CDATA[
+        SELECT COUNT(*)
+        FROM tb_cplan_yr
+        WHERE 1 = 1
+          AND school_cd = #schoolCode#
+        ]]>
+	</select>
+
+    <!--목록조회-->
+    <select id="sftRpt.selectList" parameterClass="SftRptListVo" resultClass="SftRptListVo">
+		<![CDATA[
+        SELECT CONCAT(stnd_yr, '||', stnd_mn, '||', stnd_wk, '||', school_cl_cd) AS seqNo
+             , CONCAT(stnd_yr, '년도 ', stnd_mn, '월 ', stnd_wk, '주차 연간보육 계획안')     AS title
+             , CONCAT(SUBSTRING(main_evnt, 1, 10), '...')                        AS contents
+             , DATE_FORMAT(reg_dt, '%Y.%m.%d')                                   AS regDt
+             , reg_id                                                            AS regId
+             , DATE_FORMAT(mod_dt, '%Y.%m.%d')                                   AS modDt
+             , mod_id                                                            AS modId
+        FROM tb_cplan_yr
+        WHERE 1 = 1
+          AND school_cd = #schoolCode#
+        ORDER BY stnd_yr, stnd_mn, stnd_wk DESC
+            LIMIT #recordCountPerPage#
+        OFFSET #firstIndex#
+        ]]>
+	</select>
+</sqlMap>

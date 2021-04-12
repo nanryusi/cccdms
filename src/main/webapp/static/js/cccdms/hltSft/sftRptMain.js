@@ -11,6 +11,6 @@
 function page_move(obj){
     const fm=document.goForm;
     fm.seqNo.value = obj;
-    fm.action = "/cccdms/hltSft/sftCar/modPage.do";
+    fm.action = "/cccdms/hltSft/sftRpt/modPage.do";
     fm.submit();
 }
